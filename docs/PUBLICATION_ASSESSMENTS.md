@@ -41,13 +41,13 @@
 
 这些差距保留：不刷历史、不用假账号增加贡献者、不用机器人审批冒充独立审查、不为了分数假签名或隐藏失败。可独立改进的分支保护、依赖更新、应用静态分析和发布证明须作为明确后续维护处理；需要外部独立贡献的条目不伪造。
 
-## OpenSSF Best Practices：申请草案，未登记/未获徽章
+## OpenSSF Best Practices：已创建项目15545，待审核保存/未获徽章
 
-已查询[项目登记API](https://www.bestpractices.dev/en/projects.json?url=https%3A%2F%2Fgithub.com%2FArchimeDAs0612%2Farchimeda-risk-lab)，当前没有该项目记录。本站POST/修改需要独立登录会话，现有GitHub CLI授权不是Best Practices登录；未代建账号、未获取浏览器Cookie、未填写本人知识或2FA等未知声明。
+用户已创建[项目15545](https://www.bestpractices.dev/en/projects/15545)。本次读取公开JSON确认仓库归属正确、badge_level=in_progress、badge_percentage_0=0；编辑表单的24%是自动预填进度，尚未保存，不能写成已获24%认证。后续实际保存状态以平台公开JSON为准。
 
-已准备[官方自动填表格式草案](../.bestpractices.json)、[贡献说明](../CONTRIBUTING.md)、[安全报告流程](../SECURITY.md)。草案只提议有对应URL的基础事实；安全知识、静态/动态分析保持未知，不宣称Passing或100%。
+[官方自动填表草案](../.bestpractices.json)已扩展到可直接核验的文档、Git、构建、CI、测试、警告、交付和哈希证据。未测覆盖率、英文完整性、响应历史、安全知识、应用静态/动态安全分析等继续未知；不因希望拿徽章而全部填Met。N/A仅用于项目自身没有内存不安全语言的专项要求。
 
-本人下一动作：自行用GitHub登录[Best Practices新建项目](https://www.bestpractices.dev/en/projects/new)，仓库填`https://github.com/ArchimeDAs0612/archimeda-risk-lab`，名称填Archimeda Risk Lab，主页填`https://archimedas0612.github.io/archimeda-risk-lab/`。首次编辑Passing时官方工具可读取根目录`.bestpractices.json`提出答案，逐项检查再保存；创建后的数字项目链接可继续用于核验。无需邀请别人参加。
+使用官方`reanalyze=1`可重新读取仓库草案并提出答案，提议不是已保存事实。保存按钮声明按CDLA-Permissive-2.0公开提交的自评资料，因此在实际点击保存前须确认这项数据许可；不改变源码MIT许可。未取得该确认不点击保存，不提取浏览器Cookie或绕过认证。
 
 格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。本文件自行总结，不复制完整官方标准；官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
 

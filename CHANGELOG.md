@@ -3,7 +3,7 @@
 - 将GitHub公开提交、同SHA CI、远程复现和安全/许可纳入每轮正式交付；长期规则写入AGENTS和项目规范。
 - 增加真实公共Linux CI、静态Lab Pages构建与来源指纹、匿名公开交付核验和防假通过测试。
 - 复用0.3.0rc1的风险研究代码和真实实验，算法版本/定义不变；未新增付费服务、未修改个人门户。
-- 实际发布、CI和Pages状态以PUBLICATION_STATUS及GitHub运行结果为准，不在配置时冒称成功。
+- 真实公共CI及Lab Pages部署通过，匿名公开克隆12步复现成功；限流核验改为明确记录授权元数据与匿名公开HTTP的来源，权限错误仍阻断。实际最新HEAD验收以PUBLICATION_STATUS和GitHub运行结果为准。
 
 # 0.3.0rc1 · Mission audit and release candidate · 2026-10-16
 

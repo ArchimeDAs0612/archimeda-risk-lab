@@ -29,7 +29,7 @@ Lab使命持续进行，版本验收不代表职业资产建设结束。不得�
 
 `scripts/build_pages.py`仅复制已公开且实际运行的静态产物，记录部署源码SHA及文件摘要；Pages展示离线工作台和浏览器规则回放，不训练模型、不运行Python后端或LLM。不改变个人门户。Actions使用公共仓库标准Linux runner、短期Pages artifact，不申请付费资源或缓存扩容。
 
-`scripts/verify_publication.py`以匿名GitHub API与HTTP核验公开状态、指定main提交及其成功CI；部署启用时还核对Pages来源SHA。只有检查全部通过才输出正式交付状态。
+`scripts/verify_publication.py`优先匿名API核验指定main及同提交CI；仅明确证实共享匿名额度耗尽时复用已授权GitHub CLI读取元数据，并另以无凭据HTTP核验公开访问。权限错误不作此替代，验证来源明确记录。部署启用时还核对Pages来源SHA；所有检查通过才输出正式交付状态。
 
 ## 来源与维护
 

@@ -1,0 +1,24 @@
+{
+  "status": "DELIVERED / PUBLISHED",
+  "checks": {
+    "public_repository": true,
+    "correct_repository": true,
+    "default_main": true,
+    "remote_commit_matches": true,
+    "same_commit_ci_success": true,
+    "pages_commit_matches": true,
+    "pages_static_only": true,
+    "pages_http_verified": true,
+    "anonymous_public_repository_http": true
+  },
+  "repository": "https://github.com/ArchimeDAs0612/risk-decision-lab",
+  "commit": "376aa58b1bcff5f47266524a307a2a358ab463b4",
+  "ci_url": "https://github.com/ArchimeDAs0612/risk-decision-lab/actions/runs/38868113597",
+  "scope": "GitHub metadata plus independent anonymous public HTTP; quota fallback source explicitly recorded",
+  "anonymous_public_access": true,
+  "metadata_sources": [
+    "authorized_cli_after_confirmed_anonymous_rate_limit"
+  ],
+  "verified_at": "2026-10-16T07:50:01.543496+00:00",
+  "historical_accepted_commit": true
+}

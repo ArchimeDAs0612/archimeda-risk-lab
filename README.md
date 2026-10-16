@@ -15,8 +15,9 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 
 [![Codecov](https://codecov.io/gh/ArchimeDAs0612/archimeda-risk-lab/graph/badge.svg)](https://app.codecov.io/gh/ArchimeDAs0612/archimeda-risk-lab)
 [![Quality evidence](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml)
+[![Sonar new-code quality gate](https://sonarcloud.io/api/project_badges/measure?project=ArchimeDAs0612_archimeda-risk-lab&metric=alert_status)](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)
 
-[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。Codecov完整覆盖19个Python模块，首次路径丢失已修复；平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；[Sonar首次真实扫描](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)发现65项待复核安全问题，尚无门槛通过结论；[OpenSSF自评](https://www.bestpractices.dev/en/projects/15545)已保存76%，尚未Passing。
+[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。Codecov完整覆盖19个Python模块，首次路径丢失已修复；平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；[Sonar默认新增代码门槛](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)已在提交cec86f6真实通过；整体安全评级仍为E、65项扫描发现待复核，徽章不代表全库安全认证；[OpenSSF自评](https://www.bestpractices.dev/en/projects/15545)已保存76%，尚未Passing。
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 

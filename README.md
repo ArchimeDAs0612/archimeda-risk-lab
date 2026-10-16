@@ -4,9 +4,11 @@
 
 长期使命：在不能带走企业数据、代码和项目成果的前提下，将允许公开的通用技术能力转化为独立实验，展示风险分析、机器学习、Pattern研究、策略模拟、字段治理和工具工程能力。完成一个版本或 N6—N10 不是完成这一使命；成长依据是新的可验证能力及对失败的理解。
 
-当前版本 **0.3.0rc1 / Release Candidate**。独立模拟数据和代码；不含企业资料。正式仓库：[risk-decision-lab](https://github.com/ArchimeDAs0612/risk-decision-lab)。本轮正在按用户长期授权执行公开转换及远程CI验收，最终状态见 [公开交付记录](docs/PUBLICATION_STATUS.md)。AI 协助开发，本人的独立掌握仍需练习确认。
+当前版本 **0.3.0rc1 / Release Candidate**。独立模拟数据和代码；不含企业资料。正式公开仓库：[risk-decision-lab](https://github.com/ArchimeDAs0612/risk-decision-lab) · **[在线静态 Demo](https://archimedas0612.github.io/risk-decision-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
 
-**直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。GitHub 的源码预览不会执行 HTML；克隆或下载后自行打开 HTML，核心演示无需网络。
+[![reproducible-research](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml)AI 协助开发，本人的独立掌握仍需练习确认。
+
+**直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
 ## 已验证能力与边界
 
@@ -59,7 +61,7 @@ OR拒绝回放使模拟拒绝从9变为99，额外拒绝72个风险零事件；�
 
 ## 从源码复现
 
-已实测 CPython3.9.6 / macOS arm64。其他系统支持范围不等于已经验收。免费依赖安装后，实验和工作台可离线运行。
+本地实测CPython3.9.6 / macOS arm64，真实GitHub Actions另验收Ubuntu24.04的Python3.9与3.11。其他环境及跨平台逐比特一致性未声称。免费依赖安装后，实验和工作台可离线运行。
 
 ```sh
 python3 -m venv .venv

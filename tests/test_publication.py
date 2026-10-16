@@ -2,7 +2,9 @@ import tempfile
 from pathlib import Path
 import unittest
 from unittest.mock import patch
-from scripts.verify_publication import judge
+from email.message import Message
+from urllib.error import HTTPError
+from scripts.verify_publication import judge,api_json
 from scripts.build_pages import build
 
 
@@ -54,3 +56,18 @@ class PublicationTests(unittest.TestCase):
             self.assertFalse((Path(tmp)/'site/.lab-run').exists())
             self.assertIn('href="README.md"',(Path(tmp)/'site/index.html').read_text())
             self.assertTrue(result['static_only']);self.assertFalse(result['backend'])
+
+    def test_confirmed_shared_quota_uses_existing_authorized_cli_only(self):
+        headers=Message();headers['X-RateLimit-Remaining']='0'
+        error=HTTPError('https://api.github.com/repos/Owner/Lab',403,'quota',headers,None)
+        sources=set()
+        with patch('scripts.verify_publication.fetch',side_effect=error),patch('scripts.verify_publication.subprocess.check_output',return_value='{"private":false}') as call:
+            self.assertFalse(api_json('repos/Owner/Lab',sources)['private'])
+            self.assertEqual(call.call_args.args[0],['gh','api','repos/Owner/Lab'])
+        self.assertEqual(sources,{'authorized_cli_after_confirmed_anonymous_rate_limit'})
+
+    def test_permission_error_never_falls_back_or_claims_success(self):
+        error=HTTPError('https://api.github.com/repos/Owner/Lab',403,'permission',Message(),None)
+        with patch('scripts.verify_publication.fetch',side_effect=error),patch('scripts.verify_publication.subprocess.check_output') as call:
+            with self.assertRaises(HTTPError):api_json('repos/Owner/Lab',set())
+            call.assert_not_called()

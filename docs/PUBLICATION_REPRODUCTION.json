@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "anonymous_public_clone": true,
+  "repository": "https://github.com/ArchimeDAs0612/risk-decision-lab",
+  "tested_commit": "376aa58b1bcff5f47266524a307a2a358ab463b4",
+  "steps": [
+    {
+      "arguments": [
+        "-m",
+        "pip",
+        "install",
+        "--no-deps",
+        "--no-build-isolation",
+        "."
+      ],
+      "exit_code": 0,
+      "seconds": 0.733880875,
+      "log_sha256": "6392d0b1ff4cd7a5bfee92f35ca4c2939e064942bbdd68962819f5ea0ae6807e"
+    },
+    {
+      "arguments": [
+        "-m",
+        "pip",
+        "check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.193487042,
+      "log_sha256": "ec31a4978c2f1f261fb6a3ba1b534aafafda76e106dfa002800919e52cc4d1e2"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 11.024762124999999,
+      "log_sha256": "38bf2f1fa257e0d14a38d31c15090e86465003a0d64fb4bae1ee13e91d21ed60"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "generate",
+        "--out",
+        "runs/data"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9510350840000008,
+      "log_sha256": "1de1e0f15878a02b9ca157951de5f1062ed5556b1f4727d58a38038b705cf182"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "run",
+        "--data",
+        "runs/data",
+        "--out",
+        "runs/legacy"
+      ],
+      "exit_code": 0,
+      "seconds": 1.242359166,
+      "log_sha256": "86c6e0db529aa214418f0f3bb0cfecba34258bc27620e6318d3c5a454e9a897e"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "research-demo",
+        "--out",
+        "runs/research"
+      ],
+      "exit_code": 0,
+      "seconds": 17.182361666000002,
+      "log_sha256": "4450bbfd874bc488fb5a37bd2d484af0f795ed96304009b1b17cb48349f3ea28"
+    },
+    {
+      "arguments": [
+        "scripts/verify_rc1.py",
+        "runs/research/normal"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0603587089999955,
+      "log_sha256": "43a9b95e6d20a120e1a3cac25b9dd86f73f1823c50b6bbdbc2fe6326c15316f3"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "label-study",
+        "--data",
+        "runs/research/normal",
+        "--out",
+        "runs/visibility"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7867379999999997,
+      "log_sha256": "cb0f598533f51ba521e50f84c2cb6efdf129a4e1253ebcfc2cef77a7aef19a07"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "field-workflow",
+        "--data",
+        "runs/research/normal",
+        "--out",
+        "runs/field-tools"
+      ],
+      "exit_code": 0,
+      "seconds": 4.299082374999998,
+      "log_sha256": "589e211a74d5601c7ba54b6f003e74679387af7606a719adb4dc813c4b5685e5"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "predict",
+        "--model",
+        "runs/research/normal/models/raw_forest.json",
+        "--data",
+        "runs/research/normal/samples.csv",
+        "--out",
+        "runs/inference"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8104402089999994,
+      "log_sha256": "3c896fd0aa3c4a765cf06d1fd09f413e846aa6c74b0ef79fcf56627a3be2cf0b"
+    },
+    {
+      "arguments": [
+        "scripts/build_pages.py",
+        "--out",
+        "_site"
+      ],
+      "exit_code": 0,
+      "seconds": 0.07445041599999769,
+      "log_sha256": "804c92edbce434d2001c5c749586f56764671a192ecabcd37f53f9999261e654"
+    },
+    {
+      "arguments": [
+        "scripts/audit_release.py"
+      ],
+      "exit_code": 0,
+      "seconds": 48.590203209,
+      "log_sha256": "987200ffd9853d0d4e959b69913e66ff9492371e099eaf100bfc3304b9a34ac1"
+    }
+  ],
+  "actual_output_comparison": {
+    "frozen_selection": true,
+    "models": true,
+    "patterns": true,
+    "strategies": true,
+    "case_analysis": true,
+    "saved_model_validation": true
+  },
+  "environment": "clean public clone; previously verified pinned venv reused; macOS arm64 CPython3.9.6; GitHub CI separately uses fresh Linux runners"
+}

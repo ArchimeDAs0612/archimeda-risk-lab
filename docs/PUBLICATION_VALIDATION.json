@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "accepted_code_commit": "376aa58b1bcff5f47266524a307a2a358ab463b4",
+  "main_ci_url": "https://github.com/ArchimeDAs0612/risk-decision-lab/actions/runs/38868113597",
+  "main_ci_conclusion": "success",
+  "jobs": [
+    {
+      "name": "validation (Python 3.9)",
+      "conclusion": "success"
+    },
+    {
+      "name": "validation (Python 3.11)",
+      "conclusion": "success"
+    },
+    {
+      "name": "pages-build",
+      "conclusion": "success"
+    },
+    {
+      "name": "pages-deploy",
+      "conclusion": "success"
+    }
+  ],
+  "public_site": {
+    "url": "https://archimedas0612.github.io/risk-decision-lab/artifacts/rc1/research/normal/index.html",
+    "checks": {
+      "actual_events_loaded": true,
+      "model_rows": true,
+      "actual_AP_visible": true,
+      "frozen_candidate": true,
+      "actual_policy_replay": true,
+      "no_mobile_overflow": true,
+      "no_page_errors": true,
+      "no_external_services": true
+    },
+    "passed": true,
+    "errors": [],
+    "external_requests": [],
+    "method": "independent new headless browser process; actual public HTTPS; never attached to user browser"
+  },
+  "anonymous_http_hashes": {
+    "commit": "376aa58b1bcff5f47266524a307a2a358ab463b4",
+    "checks": {
+      "index.html": true,
+      "artifacts/rc1/research/normal/index.html": true,
+      "artifacts/rc1/label-visibility/index.html": true,
+      "artifacts/rc1/field-tools/transcript.json": true
+    },
+    "anonymous": true
+  },
+  "ci_scope": "fresh Ubuntu24.04 standard runners, Python3.9 and3.11; full tests, integration, saved inference, policy, field, label and full reachable history checks",
+  "not_claimed": [
+    "real LLM Agent",
+    "production causal gain",
+    "external data validity",
+    "owner independent mastery",
+    "all-platform bitwise equivalence"
+  ]
+}

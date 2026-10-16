@@ -16,7 +16,7 @@ def candidate_files(root):
     root=Path(root)
     names={'.gitignore','AGENTS.md','README.md','CHECKPOINT.md','CHANGELOG.md','LICENSE','pyproject.toml',
            'requirements.txt','requirements-lock.txt','package.json'}
-    for directory in ['risklab','config','examples','scripts','tests','.github',
+    for directory in ['risklab','config','examples','scripts','tests','.github','studies',
                       'artifacts/rc1','artifacts/reference','artifacts/baseline-v0.1.1']:
         for path in (root/directory).rglob('*'):
             if path.is_file() and path.suffix in TEXT and '__pycache__' not in path.parts:

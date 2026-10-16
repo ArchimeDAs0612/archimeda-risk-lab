@@ -1,16 +1,34 @@
-# Risk Decision Lab · Current checkpoint
+# Risk Decision Lab · 当前检查点与唯一主要待办
 
-Long-term mission: ONGOING. A completed version or N6—N10 does not complete the career mission.
+长期使命：持续进行。当前授权范围：收敛长期规范、中文研究专题与README，完成对应验证和GitHub同步；不新增研究实验、版本或调度。
 
-Current authorized round: Mission Correction & Public Release, 0.3.0rc1.
-Audit and fixes implemented; corrected simulator/ablations/time bounds, saved inference, label identification and deterministic field tool evaluation passed. See docs/RC1_AUDIT.md and docs/RC1_VERIFICATION.json.
+## 当前状态与有效基线
 
-Private RC and remote clone verification: PASSED. Standing public authorization received via GitHub-First V1.0. PUBLIC repository, actual main CI (Linux Python3.9/3.11), Pages and public clean-clone reproduction passed for accepted source 376aa58. Current work: validate final publication-evidence update, then exact-HEAD delivery receipt. See docs/RC1_RELEASE.md for actual repository visibility and remaining publication authorization.
+- 上次正式交付：main `5f6ffad3c197c35fe8412d20a2eae74c123d5cb5`，[同提交CI成功](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/runs/38870739796)，[公开仓库](https://github.com/ArchimeDAs0612/risk-decision-lab)与[静态Demo](https://archimedas0612.github.io/risk-decision-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 本次实现：长期规则已合并到[AGENTS](AGENTS.md)，[专题入口](studies/README.md)连接现有代码/证据；README补足贡献、专题和阅读路线；CI按变化范围复用有效实验，支持增量历史审查。
+- 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
+- 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
+- 历史V0.2和私有阶段记录保留，不再作为当前状态副本。自动续跑任务仍暂停，自动写入式续跑未启用；本次不新建Goal或绝对截止时间，不重置旧任务时间。
 
-Original V0.2 artifacts and release ZIP remain historical evidence. Current source no longer has V0.2 hashes; do not present the old checkpoint as a current source verification. Earlier automatic check exists but is PAUSED; automatic engineering resume remains NOT_ENABLED.
+## 验证与当前下一动作
 
-Private authorized-round ledger: .lab-run/mission-release-20261016/run-state.json. Old V0.2 start/deadline were not changed. No new scheduler or paid service. No other project edits.
+本地实际通过：114项行为测试；保存证据33项核验及475项独立指标/路径/动作复算；公开候选、静态站点扫描与专题链接检查。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
-Owner exercises remain unverified. Next research: selective-label training/selection bias and authorized blind external/time-rolling validation. Actual LLM Agent remains missing.
+本次工程待办已实现。正式接受状态由**本提交同SHA CI + main一致 + Pages来源一致**判定；成功即本次COMPLETED，停止执行。下一动作仅在相关检查失败时从失败处修复，不自动开启下列研究。后续自然语言需求默认在现有专题增量修改。
 
-Permanent delivery rules: AGENTS.md and docs/GITHUB_FIRST.md. Current publication evidence: docs/PUBLICATION_STATUS.md. Never report formal delivery before public remote/CI/reproduction verification.
+## 尚未授权启动的研究待办
+
+| 优先级 | 待研究问题 | 当前证据缺口与验收方向 |
+| --- | --- | --- |
+| 高 | 选择性标签下训练与模型选择 | 已有识别边界，没有纠偏训练；预登记缺失机制、基线、误差和独立评价，零概率缺失保留不可识别结论 |
+| 高 | 滚动时间验证与获准外部数据 | 当前后续窗与同机制种子不是外部域泛化；先核实许可，再盲测、记录漂移和失效 |
+| 高 | 稳定Pattern选择 | 当前训练重发现Jaccard为0；改进训练内稳定选择，冻结后独立评价，不重挑已看过最终窗 |
+| 中 | 校准、阈值与业务约束 | 当前有排序指标及假设策略成本，没有真实业务效用或完整校准研究；新增独立校准/阈值评价 |
+| 中 | 真正LLM工具调用及评估 | 当前确定性工具已运行；缺少获授权模型环境，需实际调用、错误/注入评估与费用边界，不能借规则脚本宣称LLM |
+| 中 | 治理审核身份与真实监控 | 已有版本/禁用/失效传播；没有认证审核身份和生产监控，需新接口授权与可测试威胁模型 |
+
+上述是研究方向，不是已交付功能或运行中的任务。没有当前必须人工授权的发布阻塞；未来LLM/外部数据须先具备合法输入和明确授权。
+
+## 本人掌握
+
+[专题练习](studies/README.md)与[五分钟路线](docs/INTERVIEW_GUIDE.md)提供独立解释、修改和反例验证。本人完成记录尚未提供，不能标记已掌握。工程验收与本人能力验收分开。

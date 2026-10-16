@@ -5,7 +5,7 @@
 ## 当前状态与有效基线
 
 - 上次正式交付：main `d2912601f77e58e973efa3ec9c7b2977df3adb98`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38881597031)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
-- 当前执行：接入官方OpenSSF Scorecard并发布真实自动评估；补贡献/安全说明及Best Practices基础事实草案。[申请与评估证据](docs/PUBLICATION_ASSESSMENTS.md)区分自动扫描、自评、人工认证与算法比赛。首次评估结果未取得前不称已获徽章。Best Practices尚缺本人平台登录，其他工程工作继续。
+- 当前交付：官方OpenSSF Scorecard首次真实评估4.5/10、18项检查，官方运行和公开API均验证；[原始证据与逐项不足](docs/PUBLICATION_ASSESSMENTS.md)及README官方动态徽章已接入。私密漏洞报告已启用，贡献/安全说明及Best Practices草案已公开。核心研究资产不变。
 - 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
 - 历史V0.2和私有阶段记录保留，不再作为当前状态副本。自动续跑任务仍暂停，自动写入式续跑未启用；本次不新建Goal或绝对截止时间，不重置旧任务时间。
@@ -14,12 +14,13 @@
 
 此前实际通过：114项行为测试、保存证据33项核验及475项独立复算。此次对应检查为公开候选/链接/品牌识别、行为测试、增量安全审查和更名后仓库身份/Pages来源一致；实际同提交CI为最终验收来源。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
-下一动作：推送/核验main CI，执行官方Scorecard，获取公开API结果及原始报告，更新真实评分和未完成项。Best Practices须本人独立登录并审核声明，未登记不能声称Passing；不因此阻断无需该登录的自动评估。所有当前可执行交付核验后停止，不自动开启下列研究。
+本次可执行部分已实际完成，正式交付仍以本提交同SHA CI、main/Pages一致及官方评估运行/公开API为准；全部通过后停止。尚未完成：Best Practices本人平台登录、创建项目及声明审核，未登记/未获Passing；比赛和期刊未报名。本人下一动作仅为按[申请说明](docs/PUBLICATION_ASSESSMENTS.md)登录并提供数字项目链接，无需邀请其他人。不自动新增账号、伪造声明或启动其他研究。
 
 ## 尚未授权启动的研究待办
 
 | 优先级 | 待研究问题 | 当前证据缺口与验收方向 |
 | --- | --- | --- |
+| 高 | 自动评估发现的工程安全缺口 | Scorecard已保存真实低分；后续可独立补分支保护、应用静态分析、依赖更新和发布证明，不伪造独立审核/贡献或定时扩项 |
 | 高 | 选择性标签下训练与模型选择 | 已有识别边界，没有纠偏训练；预登记缺失机制、基线、误差和独立评价，零概率缺失保留不可识别结论 |
 | 高 | 滚动时间验证与获准外部数据 | 当前后续窗与同机制种子不是外部域泛化；先核实许可，再盲测、记录漂移和失效 |
 | 高 | 稳定Pattern选择 | 当前训练重发现Jaccard为0；改进训练内稳定选择，冻结后独立评价，不重挑已看过最终窗 |

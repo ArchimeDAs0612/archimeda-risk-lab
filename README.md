@@ -11,6 +11,7 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 独立模拟数据和代码；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[archimeda-risk-lab](https://github.com/ArchimeDAs0612/archimeda-risk-lab) · **[在线静态 Demo](https://archimedas0612.github.io/archimeda-risk-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
 
 [![reproducible-research](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ArchimeDAs0612/archimeda-risk-lab/badge)](https://scorecard.dev/viewer/?uri=github.com/ArchimeDAs0612/archimeda-risk-lab)
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
@@ -133,6 +134,12 @@ python3 -m venv .venv
 本项目由作者定义研究问题并借助AI实现与修订工程；公开价值由可检查的代码、实际实验和失败证据支持。工程验收不代表本人已独立掌握，专题提供解释设计、修改核心逻辑、验证失败反例的练习，尚无本人完成记录。实习经验只作为问题意识来源，Lab成果不倒填为企业贡献。
 
 [MIT](LICENSE)覆盖本项目独立代码与合成数据，无外部用户数据集；[第三方依赖许可](docs/third-party-licenses.txt)单独保留。模拟器机制、时间切分、标签可见性、探索性多重比较和不稳定候选限制外推；没有真实生产收益、企业采用或真实LLM效果声明。测试数量不作为成熟度证据。
+
+## 公开自动评估与申请
+
+已真实运行官方OpenSSF Scorecard并在公开API核验，首次基线**4.5/10（18项检查）**。上方徽章链接到官方最新结果；[原始报告及逐项不足](docs/PUBLICATION_ASSESSMENTS.md)保留首次来源提交。它评估开源仓库安全/维护实践，不是算法效果、基金会人工认证或比赛奖项。新仓库、独立审查、分支保护、应用静态分析等缺口如实显示。
+
+[贡献流程](CONTRIBUTING.md) · [私密漏洞报告](SECURITY.md)。Best Practices自动填表草案已准备，但尚未登记或获Passing徽章，须本人登录独立平台并审核声明；比赛/期刊尚未报名，不用占位登记或晚提交冒充奖项。
 
 ## 长期路线与联系
 

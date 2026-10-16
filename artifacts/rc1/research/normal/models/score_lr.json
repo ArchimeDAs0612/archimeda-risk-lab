@@ -1,0 +1,33 @@
+{
+  "format": "risklab-inference-v1",
+  "kind": "lr",
+  "preprocessing": {
+    "input_columns": [
+      "prior_score"
+    ],
+    "output_columns": [
+      "prior_score",
+      "prior_score__missing"
+    ],
+    "train_medians": {
+      "prior_score": 0.2604350461741976
+    },
+    "missing": "replace by train median and append a missing indicator per input",
+    "dtype": "float32",
+    "fit_scope": "train only"
+  },
+  "threshold": 0.10435559748012645,
+  "coefficients": [
+    0.395849957606008,
+    0.0
+  ],
+  "intercept": -2.6359771696462526,
+  "scaler_mean": [
+    0.29194500160322084,
+    0.0
+  ],
+  "scaler_scale": [
+    0.16228775786622343,
+    1.0
+  ]
+}

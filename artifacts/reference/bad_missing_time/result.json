@@ -1,0 +1,89 @@
+{
+  "execution": "SUCCESS",
+  "admission": {
+    "evidence_admission": "BLOCKED",
+    "findings": [
+      {
+        "severity": "BLOCKED",
+        "code": "TIME_MISSING",
+        "message": "decision time missing: no time validation or model conclusion"
+      }
+    ],
+    "allow_model": false,
+    "source_diagnostic": [
+      {
+        "source": "stream_a",
+        "size": 3447,
+        "mean": 0.09428488540760081
+      },
+      {
+        "source": "stream_b",
+        "size": 3416,
+        "mean": 0.09836065573770492
+      }
+    ],
+    "scope": "predefined deterministic checks only; no claim of complete leakage/confounding absence"
+  },
+  "production_authorization": "NOT_GRANTED",
+  "provenance": {
+    "config": {
+      "seed": 731,
+      "orders": 5000,
+      "days": 90,
+      "train_end_day": 48,
+      "train_asof_day": 55,
+      "select_start_day": 55,
+      "select_end_day": 68,
+      "select_asof_day": 75,
+      "test_start_day": 75,
+      "evaluation_asof_day": 97,
+      "pair_window_hours": 24,
+      "review_fraction": 0.1,
+      "tree_depth": 4,
+      "min_leaf": 70,
+      "candidate_min_select": 45,
+      "candidate_min_test": 45,
+      "bootstrap_repeats": 160,
+      "cost_assumptions": {
+        "risk_loss_multiplier": 1.0,
+        "legitimate_decline_cost": 4.0,
+        "review_cost": 0.5
+      }
+    },
+    "config_sha256": "de52aefe9442659a2b692e7d81c09d129d2fff87f611898a24fda69f479e2f6f",
+    "data_sha256": {
+      "labels.csv": "4f7ab5d903d68ca1a7eeb413dc1c5001e773a2cd9522b79a871f21761a424289",
+      "events.csv": "68d0384617948b0de736118b6972fb29b2aca6c1ac3b7f35b219167d11cf2bc4",
+      "generation.json": "743ce3b18229f5f7b2e2a586909ef9d184bc2db33dbbb2c95eb4203b2f97c521",
+      "contract.json": "5cb90104b11d3c34571c34214afc139a481ff1e12980d662a2240c2399d0916c"
+    },
+    "code_sha256": {
+      "risklab/__init__.py": "20770c59b47e0571b50270e6604adcbfdf1dad905f0fc1abf99ea415019fb105",
+      "risklab/__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3",
+      "risklab/cli.py": "cbc1d70e302b61088d48b33845e44b6bfae273ac1175fd760e1819188a2b446e",
+      "risklab/contracts.py": "959cb386eb75a90a923b9ec003df3189091303eeedd0614f997c31a1670b6914",
+      "risklab/data.py": "c7ce02d0396cc164bbb4b3681509f4c37766efb7a9bf47dd46b62a302be2b486",
+      "risklab/evidence.py": "0983a97a6633c65c1ca3cd73bf79868fef480437dc8ad7beeaf7f3a7d51168db",
+      "risklab/generate.py": "bc9a0eb479608f349a9812364c26132ce36bb03ed86c094890bb235a5f97d80f",
+      "risklab/models.py": "5527cf9b7c9300ea6a92f83ee084ca1d0f03b7f588c8f3dfd9352ce3cc58d00a",
+      "risklab/pipeline.py": "ebd761414ae1ec99c022d2a6cb1d7a5968d919a7fb2cf73e5f7101ffebb0dcbb",
+      "risklab/report.py": "2e3b6d3a20bf9f54c6c52eee5d93cdb1718c987a8b83c53efe7933967a54e2ff",
+      "risklab/sample.sql": "cfc0270af9a64099bd288f5170718db086b6d360781a9549aa3b09013314b08e"
+    },
+    "python": "3.9.6",
+    "dependencies": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1",
+      "joblib": "1.5.3",
+      "threadpoolctl": "3.6.0"
+    },
+    "sqlite_version": "3.51.0",
+    "injection": "missing_time",
+    "execution_scope": "local CPU, no external data or model service"
+  },
+  "candidate_verdict": "NOT_EVALUATED",
+  "model_comparison": null,
+  "elapsed_seconds": 0.06960925000000007
+}

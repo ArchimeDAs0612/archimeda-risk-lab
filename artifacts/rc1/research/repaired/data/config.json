@@ -1,0 +1,25 @@
+{
+  "seed": 20261016,
+  "orders": 7000,
+  "days": 120,
+  "train_end_day": 64,
+  "train_asof_day": 71,
+  "select_start_day": 71,
+  "select_end_day": 88,
+  "select_asof_day": 95,
+  "test_start_day": 95,
+  "evaluation_asof_day": 127,
+  "pair_window_hours": 24,
+  "review_fraction": 0.1,
+  "tree_depth": 4,
+  "min_leaf": 70,
+  "candidate_min_select": 45,
+  "candidate_min_test": 45,
+  "bootstrap_repeats": 160,
+  "cost_assumptions": {
+    "risk_loss_multiplier": 1.0,
+    "legitimate_decline_cost": 4.0,
+    "review_cost": 0.5
+  },
+  "forest_trees": 60
+}

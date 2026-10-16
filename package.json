@@ -1,0 +1,11 @@
+{
+  "name": "risk-decision-lab-ui-checks",
+  "private": true,
+  "version": "0.2.0",
+  "scripts": {
+    "check:workbench": "node scripts/check_workbench.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

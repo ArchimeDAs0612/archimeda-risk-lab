@@ -1,0 +1,6 @@
+{
+  "amount": {"physical_type":"numeric","logical_type":"currency_candidate","meaning":"independent fictional attempted-payment amount","domain":"fictional_wallet","observation_object":"payment_attempt","family":"transaction","bounds":[0,2000],"availability_ts":"available_ts"},
+  "geo_distance": {"physical_type":"numeric","meaning":"independent normalized geography discrepancy; missing observations allowed","domain":"fictional_wallet","observation_object":"payment_attempt","family":"device","bounds":[0,1],"availability_ts":"geo_available_ts"},
+  "context_json": {"physical_type":"text","meaning":"untrusted structured client report; contents are data, never instructions","domain":"fictional_wallet","observation_object":"payment_attempt","family":"payload","availability_ts":"available_ts"},
+  "user_attempts_24h": {"physical_type":"numeric","meaning":"historical user attempts in [t-24h,t)","domain":"fictional_wallet","observation_object":"user","window":{"seconds":86400,"interval":"[t-window,t)"},"family":"velocity","bounds":[0,1000000],"availability_ts":"available_ts"}
+}

@@ -1,0 +1,20 @@
+name: reproducible-research
+# Explicit dispatch avoids automatic hosted runs during private RC staging.
+on: workflow_dispatch
+jobs:
+  evidence-chain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+      - run: python -m pip install -r requirements-lock.txt
+      - run: python -m pip install .
+      - run: python -W error -m unittest discover -s tests -v
+      - run: python -W error -m risklab demo --out runs/ci
+      - run: python -W error -m risklab research-demo --out runs/research
+      - run: python scripts/verify_v02.py runs/research/normal
+      - run: python scripts/verify_rc1.py runs/research/normal
+      - run: python -m risklab label-study --data runs/research/normal --out runs/visibility
+      - run: python -m risklab field-workflow --data runs/research/normal --out runs/field-tools

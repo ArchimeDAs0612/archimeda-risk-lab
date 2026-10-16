@@ -1,0 +1,113 @@
+{
+  "execution": "SUCCESS",
+  "admission": {
+    "evidence_admission": "BLOCKED",
+    "findings": [
+      {
+        "severity": "BLOCKED",
+        "code": "UNREVIEWED_PARENT",
+        "message": "client_latency_ms: upstream evidence invalid or unreviewed: context_json"
+      },
+      {
+        "severity": "BLOCKED",
+        "code": "UNREVIEWED_PARENT",
+        "message": "client_emulator: upstream evidence invalid or unreviewed: context_json"
+      }
+    ],
+    "allow_model": false,
+    "source_diagnostic": [
+      {
+        "source": "stream_a",
+        "size": 4793,
+        "mean": 0.07406634675568538
+      },
+      {
+        "source": "stream_b",
+        "size": 4784,
+        "mean": 0.07587792642140469
+      }
+    ],
+    "scope": "predefined deterministic checks only; no claim of complete leakage/confounding absence"
+  },
+  "provenance": {
+    "version": "0.3.0rc1",
+    "simulator_version": "persistent-device-v2",
+    "config": {
+      "seed": 20261016,
+      "orders": 7000,
+      "days": 120,
+      "train_end_day": 64,
+      "train_asof_day": 71,
+      "select_start_day": 71,
+      "select_end_day": 88,
+      "select_asof_day": 95,
+      "test_start_day": 95,
+      "evaluation_asof_day": 127,
+      "pair_window_hours": 24,
+      "review_fraction": 0.1,
+      "tree_depth": 4,
+      "min_leaf": 70,
+      "candidate_min_select": 45,
+      "candidate_min_test": 45,
+      "bootstrap_repeats": 160,
+      "cost_assumptions": {
+        "risk_loss_multiplier": 1.0,
+        "legitimate_decline_cost": 4.0,
+        "review_cost": 0.5
+      },
+      "forest_trees": 60
+    },
+    "config_sha256": "80e7effb0c9baea93668a265b597a6fcf44ec760741a7eff944434014ec837cb",
+    "data_sha256": {
+      "account.csv": "54c78398e06b1aed5f36532549c53f1373cb7cabf7027c7394b2364f4c4ec6e3",
+      "config.json": "d4db11660fb970268a34757754b044e466f0b2c5cfd55cf747a0c8c3766dff81",
+      "contract.json": "248a8c6bc15d814e17bf3671684e72cd911abe56f0f9a20d64c48a47e2d5e06c",
+      "device.csv": "46b0d8ab74868751676ada03aeb7f09dfaba9b30187fe5f7507d3a4ce9aaf1c0",
+      "entity_edges.csv": "86ed3d20db6d4fea8a0985bb61dc019cbc61005fd70127ad0d6e8551bc13f691",
+      "events.csv": "d46cbc451366973bfea06799da3e822498adaf0dd9381f7b5f5008c909ceeefa",
+      "labels.csv": "961038704a858906c79e2b828d4ee82d9d0956bc5eb02756c78dabf99d314d26",
+      "order.csv": "306b4aace6d5e8ea7bafdfe9932097d4fc573ef665a737dd74695d8ae496f800",
+      "payment_tool.csv": "5b6c16be2f2f4a1c9a37e90b1d98404857cff7e7aed1a782a00fff1158466d18"
+    },
+    "code_sha256": {
+      "risklab/__init__.py": "f3f97749fb9a3ae91ceaf0f0a695be91c28f776c866f1f3fbd8a6e647ffc29f3",
+      "risklab/__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3",
+      "risklab/cli.py": "c70775452776af5ffef14cef52f7409ebb935eeb5b1de9b8ae757e636bfe34c1",
+      "risklab/contracts.py": "22c9b25c721cbf374eee3da2e7634c6912df0b6160675c58d980eb945146781e",
+      "risklab/data.py": "51496653e58192b9ee051c040d5a5c97534aa82ed5aed68d1d41553ae5cd2a4c",
+      "risklab/entities.py": "1ca787f9849000ae3c7789b220979194407dfc7db912740ce4c327ea90f2581a",
+      "risklab/entity_windows.sql": "2a136a6b1f8418f29f76821575ff1ea9c688d1187b86e8020e7f671a2f5d5ff8",
+      "risklab/evidence.py": "0983a97a6633c65c1ca3cd73bf79868fef480437dc8ad7beeaf7f3a7d51168db",
+      "risklab/field_intelligence.py": "8bfcaaf3a207ea1dbf0f144c0bb77646f9aaaf8fb61161b312fcd6aea8117fa5",
+      "risklab/field_workflow.py": "434fb37b73d48facf249ecc2decc69ea49ff86f0772be41a31f1765aa4f3b29f",
+      "risklab/generate.py": "370c9a299124811ae60f9f08ed45d3f819b890098e882d2e611b7821d105b0b4",
+      "risklab/label_visibility.py": "321079a318f3dd216b15953abc0db6fb371877e786fe2bebe6b79c6632c12579",
+      "risklab/model_artifact.py": "f61e2ffb8bfd4aaf663e2e690e38ba7cbb380766779f9ad14993898933a9388a",
+      "risklab/models.py": "5527cf9b7c9300ea6a92f83ee084ca1d0f03b7f588c8f3dfd9352ce3cc58d00a",
+      "risklab/patterns.py": "09231e9d8bf3d913381f86420ee28b6d66dba5fcbeb5ee347b771f83972f3352",
+      "risklab/pipeline.py": "ebd761414ae1ec99c022d2a6cb1d7a5968d919a7fb2cf73e5f7101ffebb0dcbb",
+      "risklab/report.py": "2e3b6d3a20bf9f54c6c52eee5d93cdb1718c987a8b83c53efe7933967a54e2ff",
+      "risklab/research.py": "70e1525cb92102f536c50b3aa345a6daf6cb7d46a0f0c3140a6dc2c72b21030e",
+      "risklab/research_models.py": "e3f537e6bddf93fb4cdbd4d64e12973a97f2b0ee54bfe6bad2e966cea14dcbd0",
+      "risklab/sample.sql": "cfc0270af9a64099bd288f5170718db086b6d360781a9549aa3b09013314b08e",
+      "risklab/workbench.py": "5bd534adbe77f23171cdc003d7889751b163f447c0e20ceee283ec0a45e40164"
+    },
+    "ui_sha256": {
+      "workbench.js": "3f32b928a155f33478667250a12139408f3f8078b83ef40b27f8c1d3dffcfe50",
+      "workbench.css": "4f532128c42766b2cba3f3b1d2bfc590b14de2b8cc2de18dd98a1852245bb47f"
+    },
+    "python": "3.9.6",
+    "dependencies": {
+      "numpy": "2.0.2",
+      "pandas": "2.3.3",
+      "scipy": "1.13.1",
+      "scikit-learn": "1.6.1"
+    },
+    "injection": "field_invalidation",
+    "scope": "independent synthetic CPU experiment; no external data, paid service or model API"
+  },
+  "production_authorization": "NOT_GRANTED",
+  "candidate_verdict": "NOT_EVALUATED",
+  "model_comparison": null,
+  "elapsed_seconds": 0.7623949999999997
+}

@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+runs/
+*.egg-info/
+.DS_Store
+
+.lab-run/
+build/
+dist/
+node_modules/

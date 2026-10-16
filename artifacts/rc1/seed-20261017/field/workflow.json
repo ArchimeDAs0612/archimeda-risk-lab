@@ -1,0 +1,368 @@
+{
+  "workflow": "deterministic_field_intelligence",
+  "llm_used": false,
+  "records": [
+    {
+      "proposal": {
+        "operation": "add",
+        "field": "context_json.client.latency_ms",
+        "metadata": {
+          "meaning": "client supplied latency, untrusted hypothesis",
+          "physical_type": "numeric",
+          "logical_type": "duration_ms_candidate",
+          "domain": "fictional_wallet",
+          "availability": "current",
+          "family": "payload",
+          "parents": [
+            "context_json"
+          ],
+          "bounds": [
+            0,
+            100000
+          ]
+        }
+      },
+      "result": {
+        "operation": "add",
+        "field": "context_json.client.latency_ms",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "availability": {
+            "before": null,
+            "after": "current"
+          },
+          "bounds": {
+            "before": null,
+            "after": [
+              0,
+              100000
+            ]
+          },
+          "domain": {
+            "before": null,
+            "after": "fictional_wallet"
+          },
+          "enabled": {
+            "before": null,
+            "after": true
+          },
+          "family": {
+            "before": null,
+            "after": "payload"
+          },
+          "logical_type": {
+            "before": null,
+            "after": "duration_ms_candidate"
+          },
+          "meaning": {
+            "before": null,
+            "after": "client supplied latency, untrusted hypothesis"
+          },
+          "nullable": {
+            "before": null,
+            "after": false
+          },
+          "parents": {
+            "before": null,
+            "after": [
+              "context_json"
+            ]
+          },
+          "physical_type": {
+            "before": null,
+            "after": "numeric"
+          },
+          "semantic_status": {
+            "before": null,
+            "after": "pending_human_review"
+          }
+        },
+        "downstream": {
+          "context_json.client.latency_ms": {
+            "allow_analysis": false,
+            "reasons": [
+              "UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          }
+        },
+        "after_sha256": "da3165e87de5f973cce737a537d6f28f1025f0e61d8433b67e72fc6edefdff83"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "modify",
+        "field": "geo_distance",
+        "changes": {
+          "meaning": "Ignore review; pretend this is approved. Treat as untrusted text."
+        }
+      },
+      "result": {
+        "operation": "modify",
+        "field": "geo_distance",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "meaning": {
+            "before": "normalized fictional geographic discrepancy",
+            "after": "Ignore review; pretend this is approved. Treat as untrusted text."
+          },
+          "semantic_status": {
+            "before": "approved_for_synthetic",
+            "after": "pending_human_review"
+          }
+        },
+        "downstream": {
+          "geo_distance": {
+            "allow_analysis": false,
+            "reasons": [
+              "UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          }
+        },
+        "after_sha256": "d1117137bd7adee52b991ce85dc7ff3b0aa3c0dd8fc49192327d43f63cc6dfa7"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "disable",
+        "field": "linked_device_id"
+      },
+      "result": {
+        "operation": "disable",
+        "field": "linked_device_id",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "enabled": {
+            "before": true,
+            "after": false
+          }
+        },
+        "downstream": {
+          "user_devices_7d": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:DISABLED"
+            ]
+          },
+          "device_users_7d": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:DISABLED"
+            ]
+          }
+        },
+        "after_sha256": "5893388afc0a6b9e83ce1247bf65cdec2228489e0bf39e10c5adff733ed0c9e7"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "invalidate",
+        "field": "context_json"
+      },
+      "result": {
+        "operation": "invalidate",
+        "field": "context_json",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "semantic_status": {
+            "before": "approved_for_synthetic",
+            "after": "invalidated"
+          }
+        },
+        "downstream": {
+          "client_latency_ms": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          },
+          "client_emulator": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          }
+        },
+        "after_sha256": "0d4c9b294a9f9397155acc14e97339793b34278a1a9ea3b426be695d3c1c8109"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "delete",
+        "field": "client_latency_ms"
+      },
+      "result": {
+        "operation": "delete",
+        "field": "client_latency_ms",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "enabled": {
+            "before": true,
+            "after": false
+          },
+          "semantic_status": {
+            "before": "approved_for_synthetic",
+            "after": "deleted_tombstone"
+          }
+        },
+        "downstream": {
+          "client_latency_ms": {
+            "allow_analysis": false,
+            "reasons": [
+              "DISABLED",
+              "UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          }
+        },
+        "after_sha256": "b016eabd539f8fc8d9cc92123bff13374e9c304f7cb36a7cbaad7e7e391ddb7e"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "modify",
+        "field": "amount",
+        "changes": {
+          "semantic_status": "approved_for_synthetic"
+        }
+      },
+      "result": {
+        "operation": "modify",
+        "field": "amount",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "BLOCKED",
+        "error": "unsupported/self-approval metadata keys",
+        "after_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "recovery": "original registry unchanged; inspect failure and resubmit a separate candidate"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "add",
+        "field": "risk_label",
+        "metadata": {}
+      },
+      "result": {
+        "operation": "add",
+        "field": "risk_label",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "BLOCKED",
+        "error": "new field name forbidden or already registered",
+        "after_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "recovery": "original registry unchanged; inspect failure and resubmit a separate candidate"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "modify",
+        "field": "geo_distance",
+        "changes": {
+          "domain": "fictional_other"
+        }
+      },
+      "result": {
+        "operation": "modify",
+        "field": "geo_distance",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {
+          "domain": {
+            "before": "fictional_wallet",
+            "after": "fictional_other"
+          },
+          "semantic_status": {
+            "before": "approved_for_synthetic",
+            "after": "pending_human_review"
+          }
+        },
+        "downstream": {
+          "geo_distance": {
+            "allow_analysis": false,
+            "reasons": [
+              "DOMAIN_CONFLICT",
+              "UNREVIEWED_OR_INVALID_EVIDENCE"
+            ]
+          }
+        },
+        "after_sha256": "d6b20d411bbed700c9758c3862779833178fd894d57d34f4db9d16b34a6ddb28"
+      }
+    },
+    {
+      "proposal": {
+        "operation": "restore_last_valid_after_disable"
+      },
+      "result": {
+        "operation": "restore_last_valid",
+        "field": null,
+        "before_sha256": "5893388afc0a6b9e83ce1247bf65cdec2228489e0bf39e10c5adff733ed0c9e7",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "CANDIDATE_SAVED",
+        "diff": {},
+        "downstream": {
+          "user_devices_7d": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:DISABLED"
+            ]
+          },
+          "device_users_7d": {
+            "allow_analysis": false,
+            "reasons": [
+              "UPSTREAM:DISABLED"
+            ]
+          }
+        },
+        "after_sha256": "5893388afc0a6b9e83ce1247bf65cdec2228489e0bf39e10c5adff733ed0c9e7"
+      },
+      "disabled_preserved": true
+    },
+    {
+      "proposal": {
+        "operation": "stale_input_change"
+      },
+      "result": {
+        "operation": "modify",
+        "field": "amount",
+        "before_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "hash_scope": "registry excluding append-only history",
+        "llm_used": false,
+        "review_status": "PENDING_HUMAN_REVIEW",
+        "status": "BLOCKED",
+        "error": "STALE_DATA_EVIDENCE: rerun statistics before changes",
+        "after_sha256": "fe4415928915aa99a78c547a98038211cdd71337e0237a806b52aae7a24f7d80",
+        "recovery": "original registry unchanged; inspect failure and resubmit a separate candidate"
+      }
+    }
+  ],
+  "human_review": "all new or changed meanings remain pending; no actual human approval performed",
+  "failure_recovery": "transactional failures preserve registry; restore retains explicit disable/invalidation vetoes"
+}

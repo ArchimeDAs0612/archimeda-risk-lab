@@ -1,0 +1,56 @@
+{
+  "branches": {
+    "normal": {
+      "admission": "PASS",
+      "candidate_verdict": "INSUFFICIENT_SUPPORT",
+      "codes": [],
+      "seconds": 0.524716583
+    },
+    "bad_future": {
+      "admission": "BLOCKED",
+      "candidate_verdict": "NOT_EVALUATED",
+      "codes": [
+        "FUTURE_FEATURE"
+      ],
+      "seconds": 0.06850483299999999
+    },
+    "bad_missing_time": {
+      "admission": "BLOCKED",
+      "candidate_verdict": "NOT_EVALUATED",
+      "codes": [
+        "TIME_MISSING"
+      ],
+      "seconds": 0.06960925000000007
+    },
+    "bad_source_binding": {
+      "admission": "BLOCKED",
+      "candidate_verdict": "NOT_EVALUATED",
+      "codes": [
+        "SOURCE_BINDING"
+      ],
+      "seconds": 0.06601629200000003
+    },
+    "bad_cross_event": {
+      "admission": "BLOCKED",
+      "candidate_verdict": "NOT_EVALUATED",
+      "codes": [
+        "CROSS_EVENT"
+      ],
+      "seconds": 0.06508308399999985
+    },
+    "repaired": {
+      "admission": "PASS",
+      "candidate_verdict": "INSUFFICIENT_SUPPORT",
+      "codes": [],
+      "seconds": 0.5209945409999999
+    }
+  },
+  "repair_comparison": {
+    "model_comparison": true,
+    "candidate": true,
+    "frozen_selection": true,
+    "membership": true,
+    "case_pairing": true
+  },
+  "elapsed_seconds": 1.570584625
+}

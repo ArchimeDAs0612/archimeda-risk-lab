@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "events": 9648,
+  "duplicate_event_keys": 0,
+  "time_and_availability": "PASS",
+  "policy": "reject ambiguous keys/times; never silently deduplicate or backdate"
+}

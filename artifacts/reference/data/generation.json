@@ -1,0 +1,30 @@
+{
+  "config": {
+    "seed": 731,
+    "orders": 5000,
+    "days": 90,
+    "train_end_day": 48,
+    "train_asof_day": 55,
+    "select_start_day": 55,
+    "select_end_day": 68,
+    "select_asof_day": 75,
+    "test_start_day": 75,
+    "evaluation_asof_day": 97,
+    "pair_window_hours": 24,
+    "review_fraction": 0.1,
+    "tree_depth": 4,
+    "min_leaf": 70,
+    "candidate_min_select": 45,
+    "candidate_min_test": 45,
+    "bootstrap_repeats": 160,
+    "cost_assumptions": {
+      "risk_loss_multiplier": 1.0,
+      "legitimate_decline_cost": 4.0,
+      "review_cost": 0.5
+    }
+  },
+  "events": 6863,
+  "data_version": "synthetic-v1",
+  "mechanism": "risklab/generate.py",
+  "label_visibility": "idealized independent audit, all attempts"
+}

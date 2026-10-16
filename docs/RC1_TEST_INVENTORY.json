@@ -1,0 +1,133 @@
+{
+  "test_continuation_guard.py": [
+    "test_running_original_does_not_restart",
+    "test_unknown_or_partial_inventory_fails_closed",
+    "test_stale_future_missing_and_wrong_source_observations",
+    "test_completed_readonly_and_disables_schedule",
+    "test_completion_requires_evidence_not_folders_or_status",
+    "test_exact_deadline_stops_and_is_not_reset",
+    "test_saved_jobs_never_assumed_dead_from_age",
+    "test_blocked_or_unauthorized_branch_yields_independent_work",
+    "test_no_dependency_bypass_or_repeated_failure",
+    "test_manual_stop",
+    "test_resume_descriptor_keeps_exact_action_budget_and_no_writes",
+    "test_workspace_mismatch_and_duplicate_milestones",
+    "test_cross_process_mutex_and_exception_release",
+    "test_probe_real_hashes_corruption_and_readonly",
+    "test_abnormal_fixture_exit_releases_os_lock"
+  ],
+  "test_night_state.py": [
+    "test_readonly_resume_skips_done_and_preserves_last_valid",
+    "test_atomic_previous_snapshot_and_deadline_immutable",
+    "test_stop_deadline_active_jobs_and_workspace_guards"
+  ],
+  "test_label_visibility.py": [
+    "test_sharp_bounds_match_all_missing_outcome_assignments",
+    "test_hidden_oracle_values_cannot_change_deployable_bounds",
+    "test_zero_positive_and_one_sided_unknown_boundaries",
+    "test_regimes_fixed_and_missingness_not_zero_imputed"
+  ],
+  "test_release_scan.py": [
+    "test_credential_families_and_no_values_returned",
+    "test_project_name_is_not_a_token",
+    "test_internal_urls_with_port_end_and_query",
+    "test_local_paths_and_explicit_credentials",
+    "test_binary_requires_explicit_hash_bound_provenance",
+    "test_unknown_binary_and_empty_review_are_not_implicitly_safe",
+    "test_symlink_and_private_directory_scope",
+    "test_cli_root_and_failure_redaction",
+    "test_reachable_history_including_deleted_files_and_symlink"
+  ],
+  "test_pattern_boundaries.py": [
+    "test_root_only_cart_replays_every_row_without_promoting_empty_user_rule",
+    "test_conditional_model_path_and_root_validation",
+    "test_malformed_model_predicates_and_user_operator_fail_closed"
+  ],
+  "test_model_artifact.py": [
+    "test_actual_lr_tree_forest_roundtrip_predictions",
+    "test_missing_column_infinity_and_malformed_artifact_blocked",
+    "test_threshold_boundary_matches_sklearn_float32"
+  ],
+  "test_patterns.py": [
+    "test_boolean_rule_has_independent_set_expected_and_rejects_instructions",
+    "test_strategy_priority_transition_and_cost_hand_calculation",
+    "test_path_transformed_missingness_and_rule_schema",
+    "test_complete_candidate_freeze_and_drop_condition_set"
+  ],
+  "test_simulator_invariants.py": [
+    "test_physical_device_age_advances_exactly_with_time",
+    "test_full_velocity_input_ablation_removes_legacy_and_new_windows",
+    "test_prespecified_final_and_training_bounds_exclude_extra_events",
+    "test_infinite_audit_time_is_blocked_not_silently_dropped"
+  ],
+  "test_entities.py": [
+    "test_entity_grain_and_label_independent_assignments",
+    "test_window_manual_boundary_ties_and_entity_sharing",
+    "test_duplicate_missing_future_and_bad_container_rejected",
+    "test_contract_and_train_only_geometry"
+  ],
+  "test_packaged_cli.py": [
+    "test_bundled_configs_match_explicit_repository_defaults",
+    "test_default_generation_outside_checkout_has_no_cwd_config_dependency"
+  ],
+  "test_research_chain.py": [
+    "test_end_to_end_repair_and_final_label_isolation_with_real_workbench",
+    "test_enriched_bad_inputs_never_train",
+    "test_roundtrip_field_tool_output_restricts_actual_research",
+    "test_untrusted_script_text_cannot_break_embedded_json"
+  ],
+  "test_research_models.py": [
+    "test_ks_lift_and_ap_hand_expected_with_ties",
+    "test_leakage_alerts_and_psi_known_identity",
+    "test_final_labels_cannot_change_models_winner_or_preprocessing"
+  ],
+  "test_chain.py": [
+    "test_duplicate_event_key_rejected",
+    "test_duplicate_label_join_rejected",
+    "test_sql_window_boundary_and_delayed_action",
+    "test_sql_same_timestamp_excludes_ties",
+    "test_single_event_vs_cross_event_counterexample",
+    "test_pairing_different_order_and_earliest",
+    "test_missing_raw_decision_time_rejected",
+    "test_normal_admission_and_no_truth_columns",
+    "test_all_injected_failures_restrict_model",
+    "test_logical_count_and_nonnullable_contract",
+    "test_label_not_allowed_as_feature",
+    "test_domain_and_disabled_field_propagate",
+    "test_contract_text_not_executed_and_disable_persists",
+    "test_upstream_evidence_invalidation_transitive_and_cycle",
+    "test_source_evidence_invalidation_and_proposal_cannot_self_approve",
+    "test_unobserved_not_mapped_to_normal",
+    "test_strict_time_maturity_and_disjoint_partitions",
+    "test_missing_label_maturity_excluded",
+    "test_train_only_imputation_and_missing_indicator",
+    "test_known_tree_path_members_and_simplification",
+    "test_manual_path_threshold_and_missing_mapping",
+    "test_lr_numerics_against_known_coefficients",
+    "test_policy_cost_hand_calculation",
+    "test_metric_hand_calculation",
+    "test_invalidated_upstream_blocks_pipeline_before_training",
+    "test_smoke_bad_repair_and_final_label_isolation"
+  ],
+  "test_field_intelligence.py": [
+    "test_container_and_type_coverage_conflict_are_actual",
+    "test_untrusted_change_and_upstream_veto_with_recovery",
+    "test_failure_does_not_mutate_registry_and_stale_data_blocks",
+    "test_new_field_pending_delete_and_pattern_hypotheses_restricted",
+    "test_bounds_nonfinite_and_selective_dependency_restriction",
+    "test_explicit_review_accept_reject_and_conflict_veto",
+    "test_review_cannot_approve_fractional_count_or_future_observations",
+    "test_atomic_journal_keeps_previous_readable"
+  ],
+  "test_field_workflow.py": [
+    "test_ambiguous_flatten_path_rejected_instead_of_silent_overwrite",
+    "test_actual_inventory_and_admission_calls_have_integrity_evidence",
+    "test_disable_propagates_selectively_and_restore_preserves_veto",
+    "test_stale_evidence_blocks_downstream_even_with_unchanged_contract",
+    "test_matching_evidence_does_not_override_future_availability",
+    "test_untrusted_text_cannot_execute_or_approve_and_unknown_tool_recovers",
+    "test_malformed_arguments_fail_closed_and_caller_objects_are_unchanged",
+    "test_inconsistent_tool_output_is_rejected_then_a_corrected_call_recovers",
+    "test_real_evaluation_artifacts_read_inputs_without_overwriting_them"
+  ]
+}

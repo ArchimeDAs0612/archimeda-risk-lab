@@ -1,0 +1,4 @@
+{
+  "status": "BLOCKED",
+  "reason": "enriched events: missing or duplicate event_id; join multiplication blocked"
+}

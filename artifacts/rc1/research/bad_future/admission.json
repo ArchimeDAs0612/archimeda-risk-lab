@@ -1,0 +1,24 @@
+{
+  "evidence_admission": "BLOCKED",
+  "findings": [
+    {
+      "severity": "BLOCKED",
+      "code": "FUTURE_FEATURE",
+      "message": "current feature acquisition is not at/before decision time"
+    }
+  ],
+  "allow_model": false,
+  "source_diagnostic": [
+    {
+      "source": "stream_a",
+      "size": 4793,
+      "mean": 0.07406634675568538
+    },
+    {
+      "source": "stream_b",
+      "size": 4784,
+      "mean": 0.07587792642140469
+    }
+  ],
+  "scope": "predefined deterministic checks only; no claim of complete leakage/confounding absence"
+}

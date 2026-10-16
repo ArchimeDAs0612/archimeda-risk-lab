@@ -1,0 +1,79 @@
+{
+  "branches": [
+    {
+      "branch": "normal",
+      "admission": "PASS",
+      "candidate": "SUPPORTED_FOR_INVESTIGATION",
+      "link": "normal/index.html"
+    },
+    {
+      "branch": "bad_duplicate",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_duplicate/index.html"
+    },
+    {
+      "branch": "bad_malformed_context",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_malformed_context/index.html"
+    },
+    {
+      "branch": "bad_late_tool",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_late_tool/index.html"
+    },
+    {
+      "branch": "bad_field_invalidation",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_field_invalidation/index.html"
+    },
+    {
+      "branch": "bad_future",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_future/index.html"
+    },
+    {
+      "branch": "bad_missing_time",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_missing_time/index.html"
+    },
+    {
+      "branch": "bad_source_binding",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_source_binding/index.html"
+    },
+    {
+      "branch": "bad_cross_event",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "bad_cross_event/index.html"
+    },
+    {
+      "branch": "disabled_downstream",
+      "admission": "BLOCKED",
+      "candidate": "NOT_EVALUATED",
+      "link": "disabled_downstream/index.html"
+    },
+    {
+      "branch": "repaired",
+      "admission": "PASS",
+      "candidate": "SUPPORTED_FOR_INVESTIGATION",
+      "link": "repaired/index.html"
+    }
+  ],
+  "repair_comparison": {
+    "frozen_selection": true,
+    "models": true,
+    "patterns": true,
+    "strategies": true,
+    "case_analysis": true
+  },
+  "elapsed_seconds": 16.467750332999998,
+  "scope": "sequential bounded engineering smoke; blocked branches save actual received samples and reasons, never train"
+}

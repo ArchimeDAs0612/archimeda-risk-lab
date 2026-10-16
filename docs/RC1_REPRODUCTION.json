@@ -1,0 +1,128 @@
+{
+  "status": "PASS",
+  "fresh_dependency_install": true,
+  "installed_wheel_version": "0.3.0rc1",
+  "working_directory": "outside source; no config directory",
+  "steps": [
+    {
+      "step": "pip check",
+      "exit_code": 0,
+      "log_sha256": "ec31a4978c2f1f261fb6a3ba1b534aafafda76e106dfa002800919e52cc4d1e2",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "generate",
+      "exit_code": 0,
+      "log_sha256": "908fe8d6f743585d551f2a306a4b6749c0e17ee8e7290a25414671e66a26fbc1",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "run",
+      "exit_code": 0,
+      "log_sha256": "363aa03437506db4352db0f6fa9cba398dba1aff72b2d8dc6df6cf0807a3eef5",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "research-demo",
+      "exit_code": 0,
+      "log_sha256": "49efcd08b6a967624fd02c05efb0c51889e0c2c6a28bc22d029c80c389b98427",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "label-study",
+      "exit_code": 0,
+      "log_sha256": "cb0f598533f51ba521e50f84c2cb6efdf129a4e1253ebcfc2cef77a7aef19a07",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "field-workflow",
+      "exit_code": 0,
+      "log_sha256": "589e211a74d5601c7ba54b6f003e74679387af7606a719adb4dc813c4b5685e5",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "predict",
+      "exit_code": 0,
+      "log_sha256": "3c896fd0aa3c4a765cf06d1fd09f413e846aa6c74b0ef79fcf56627a3be2cf0b",
+      "source": "sequential checked subprocess run; all completed before verifier error"
+    },
+    {
+      "step": "verify_rc1.py (corrected serializer)",
+      "exit_code": 0,
+      "checks": {
+        "checks": {
+          "independent_rank_path_policy_and_provenance": true,
+          "unique_prediction_ids": true,
+          "score_lr_artifact_hash": true,
+          "score_lr_all_split_inference": true,
+          "raw_lr_artifact_hash": true,
+          "raw_lr_all_split_inference": true,
+          "hybrid_lr_artifact_hash": true,
+          "hybrid_lr_all_split_inference": true,
+          "raw_tree_artifact_hash": true,
+          "raw_tree_all_split_inference": true,
+          "hybrid_tree_artifact_hash": true,
+          "hybrid_tree_all_split_inference": true,
+          "enriched_tree_artifact_hash": true,
+          "enriched_tree_all_split_inference": true,
+          "score_forest_artifact_hash": true,
+          "score_forest_all_split_inference": true,
+          "raw_forest_artifact_hash": true,
+          "raw_forest_all_split_inference": true,
+          "hybrid_forest_artifact_hash": true,
+          "hybrid_forest_all_split_inference": true,
+          "enriched_lr_artifact_hash": true,
+          "enriched_lr_all_split_inference": true,
+          "enriched_forest_artifact_hash": true,
+          "enriched_forest_all_split_inference": true,
+          "without_velocity_lr_artifact_hash": true,
+          "without_velocity_lr_all_split_inference": true,
+          "without_entity_lr_artifact_hash": true,
+          "without_entity_lr_all_split_inference": true,
+          "without_payload_lr_artifact_hash": true,
+          "without_payload_lr_all_split_inference": true,
+          "without_device_and_entity_lr_artifact_hash": true,
+          "without_device_and_entity_lr_all_split_inference": true,
+          "physical_device_clock_consistent": true
+        },
+        "passed": 33,
+        "total": 33,
+        "inference_max_abs_errors": {
+          "score_lr": 0.0,
+          "raw_lr": 2.7755575615628914e-16,
+          "hybrid_lr": 1.3877787807814457e-16,
+          "raw_tree": 0.0,
+          "hybrid_tree": 0.0,
+          "enriched_tree": 0.0,
+          "score_forest": 0.0,
+          "raw_forest": 0.0,
+          "hybrid_forest": 0.0,
+          "enriched_lr": 2.220446049250313e-16,
+          "enriched_forest": 0.0,
+          "without_velocity_lr": 2.220446049250313e-16,
+          "without_entity_lr": 2.220446049250313e-16,
+          "without_payload_lr": 2.220446049250313e-16,
+          "without_device_and_entity_lr": 1.6653345369377348e-16
+        },
+        "independent_checks": 475,
+        "scope": "saved synthetic evidence only; not external generalization or production assurance"
+      }
+    }
+  ],
+  "actual_output_comparison": {
+    "frozen_selection": true,
+    "models": true,
+    "patterns": true,
+    "strategies": true,
+    "case_analysis": true,
+    "saved_model_validation": true
+  },
+  "saved_inference_final_rows": 1968,
+  "inference_max_abs_error": 0.0,
+  "platform": "CPython3.9.6 macOS arm64; remote/Linux not yet executed",
+  "wheel_sha256": "8c0bf03ef0ba735125d7e8aed6fe686a5a8e469f52f677cd5083b20332065fe9",
+  "resolved_attempts": [
+    "fresh build environment initially lacked wheel; installed explicit free build tools",
+    "verifier initially could not serialize numpy bool; converted to Python bool and reran only affected verification"
+  ]
+}

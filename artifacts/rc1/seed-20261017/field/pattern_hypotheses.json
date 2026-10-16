@@ -1,0 +1,114 @@
+{
+  "status": "GENERATED_NOT_VALIDATED",
+  "candidates": [
+    {
+      "field": "account_age_days",
+      "op": ">",
+      "value": 61.401669560185184,
+      "support": 1265,
+      "risk_rate_train": 0.05612648221343874,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "amount",
+      "op": ">",
+      "value": 56.96207191952116,
+      "support": 1265,
+      "risk_rate_train": 0.09565217391304348,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "attempts_24h",
+      "op": ">",
+      "value": 1.0,
+      "support": 747,
+      "risk_rate_train": 0.07764390896921017,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "auth_strength",
+      "op": ">",
+      "value": 2.0,
+      "support": 0,
+      "risk_rate_train": null,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "client_latency_ms",
+      "op": ">",
+      "value": 172.73223351598432,
+      "support": 1265,
+      "risk_rate_train": 0.07430830039525692,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "declines_7d",
+      "op": ">",
+      "value": 0.0,
+      "support": 21,
+      "risk_rate_train": 0.14285714285714285,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "device_age_days",
+      "op": ">",
+      "value": 56.10461388861071,
+      "support": 1265,
+      "risk_rate_train": 0.045059288537549404,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "device_users_7d",
+      "op": ">",
+      "value": 1.0,
+      "support": 282,
+      "risk_rate_train": 0.07446808510638298,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "geo_distance",
+      "op": ">",
+      "value": 0.35866715313246006,
+      "support": 1091,
+      "risk_rate_train": 0.1154903758020165,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "prior_score",
+      "op": ">",
+      "value": 0.3930022727833581,
+      "support": 1265,
+      "risk_rate_train": 0.12806324110671938,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "tool_users_7d",
+      "op": ">",
+      "value": 1.0,
+      "support": 228,
+      "risk_rate_train": 0.11403508771929824,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    },
+    {
+      "field": "user_amount_1h",
+      "op": ">",
+      "value": 7.968863632372027,
+      "support": 1265,
+      "risk_rate_train": 0.07588932806324111,
+      "status": "TRAINING_HYPOTHESIS_ONLY",
+      "provenance": "registered, admitted numeric field; training 75th percentile"
+    }
+  ],
+  "scope": "candidate ideas only; requires independent selection and later evaluation, no auto-promotion"
+}

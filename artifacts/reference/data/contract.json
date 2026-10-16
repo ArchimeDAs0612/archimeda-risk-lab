@@ -1,0 +1,169 @@
+{
+  "version": "1.1",
+  "domain": "fictional_wallet",
+  "sample_key": "event_id",
+  "timezone": "UTC",
+  "target": "risk_label",
+  "label_semantics": "Bernoulli attempted-risk outcome; mature independent audit, including declines",
+  "missing_label": "unobserved, never mapped to zero",
+  "idealization": "all attempts audited after 2-7 days",
+  "fields": {
+    "amount": {
+      "physical_type": "numeric",
+      "logical_type": "currency_unit",
+      "meaning": "current request amount",
+      "bounds": [
+        0,
+        2000
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "behavior",
+      "nullable": false,
+      "parents": []
+    },
+    "account_age_days": {
+      "physical_type": "numeric",
+      "logical_type": "days",
+      "meaning": "fictional account age at decision",
+      "bounds": [
+        0,
+        10000
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "behavior",
+      "nullable": false,
+      "parents": []
+    },
+    "device_age_days": {
+      "physical_type": "numeric",
+      "logical_type": "days",
+      "meaning": "age of current observed device",
+      "bounds": [
+        0,
+        10000
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "device",
+      "nullable": false,
+      "parents": []
+    },
+    "auth_strength": {
+      "physical_type": "numeric",
+      "logical_type": "ordinal",
+      "meaning": "requested authentication level 0, 1, 2",
+      "bounds": [
+        0,
+        2
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "behavior",
+      "nullable": false,
+      "parents": []
+    },
+    "geo_distance": {
+      "physical_type": "numeric",
+      "logical_type": "unit_interval",
+      "meaning": "normalized fictional geographic discrepancy",
+      "bounds": [
+        0,
+        1
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "device",
+      "nullable": true,
+      "parents": []
+    },
+    "attempts_24h": {
+      "physical_type": "numeric",
+      "logical_type": "count",
+      "meaning": "same user attempts in [decision-24h, decision)",
+      "bounds": [
+        0,
+        1000000
+      ],
+      "availability": "history",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "behavior",
+      "nullable": false,
+      "parents": [
+        "decision_ts"
+      ]
+    },
+    "declines_7d": {
+      "physical_type": "numeric",
+      "logical_type": "count",
+      "meaning": "same user known declines in [decision-7d, decision)",
+      "bounds": [
+        0,
+        1000000
+      ],
+      "availability": "history",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "behavior",
+      "nullable": false,
+      "parents": [
+        "action",
+        "decision_ts",
+        "result_ts"
+      ]
+    },
+    "prior_score": {
+      "physical_type": "numeric",
+      "logical_type": "unit_interval",
+      "meaning": "fixed noisy score from decision-time signals, no fitted labels",
+      "bounds": [
+        0,
+        1
+      ],
+      "availability": "current",
+      "enabled": true,
+      "domain": "fictional_wallet",
+      "semantic_status": "approved_for_synthetic",
+      "family": "score",
+      "nullable": false,
+      "parents": []
+    }
+  },
+  "source_fields": {
+    "action": {
+      "enabled": true,
+      "semantic_status": "approved_for_synthetic",
+      "domain": "fictional_wallet",
+      "availability": "history",
+      "parents": []
+    },
+    "decision_ts": {
+      "enabled": true,
+      "semantic_status": "approved_for_synthetic",
+      "domain": "fictional_wallet",
+      "availability": "history",
+      "parents": []
+    },
+    "result_ts": {
+      "enabled": true,
+      "semantic_status": "approved_for_synthetic",
+      "domain": "fictional_wallet",
+      "availability": "history",
+      "parents": []
+    }
+  }
+}

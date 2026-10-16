@@ -1,0 +1,30 @@
+{
+  "operation": "disable",
+  "field": "linked_device_id",
+  "before_sha256": "64b9963f69b49299bdfd762a4bcd5f40518edcb845205cba644ca92a31397c58",
+  "hash_scope": "registry excluding append-only history",
+  "llm_used": false,
+  "review_status": "PENDING_HUMAN_REVIEW",
+  "status": "CANDIDATE_SAVED",
+  "diff": {
+    "enabled": {
+      "before": true,
+      "after": false
+    }
+  },
+  "downstream": {
+    "user_devices_7d": {
+      "allow_analysis": false,
+      "reasons": [
+        "UPSTREAM:DISABLED"
+      ]
+    },
+    "device_users_7d": {
+      "allow_analysis": false,
+      "reasons": [
+        "UPSTREAM:DISABLED"
+      ]
+    }
+  },
+  "after_sha256": "8913e2a31ed9c457963e8b7978896865837928ea9e19f2515daebd635e91c4fc"
+}

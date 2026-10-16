@@ -1,0 +1,170 @@
+{
+  "oracle": {
+    "n": 1968,
+    "positives": 162,
+    "base_rate": 0.08231707317073171,
+    "ap": 0.20442764608306316,
+    "auc": 0.6910965505926746,
+    "brier": 0.07276116573958595,
+    "threshold": 0.10635297333013136,
+    "flagged": 187,
+    "flagged_fraction": 0.09502032520325203,
+    "precision": 0.27807486631016043,
+    "recall": 0.32098765432098764,
+    "false_positive_rate": 0.07475083056478406
+  },
+  "regimes": [
+    {
+      "regime": "full_independent_audit",
+      "observed": 1968,
+      "missing": 0,
+      "naive_observed_metrics": {
+        "n": 1968,
+        "positives": 162,
+        "base_rate": 0.08231707317073171,
+        "ap": 0.20442764608306316,
+        "auc": 0.6910965505926746,
+        "brier": 0.07276116573958595,
+        "threshold": 0.10635297333013136,
+        "flagged": 187,
+        "flagged_fraction": 0.09502032520325203,
+        "precision": 0.27807486631016043,
+        "recall": 0.32098765432098764,
+        "false_positive_rate": 0.07475083056478406
+      },
+      "bounds": {
+        "n": 1968,
+        "observed": 1968,
+        "unknown": 0,
+        "prevalence": [
+          0.08231707317073171,
+          0.08231707317073171
+        ],
+        "recall": [
+          0.32098765432098764,
+          0.32098765432098764
+        ],
+        "point_identified": true,
+        "scope": "sharp binary-outcome bounds with fixed decisions; unknown outcomes never zero-filled"
+      }
+    },
+    {
+      "regime": "non_declined_only",
+      "observed": 1959,
+      "missing": 9,
+      "naive_observed_metrics": {
+        "n": 1959,
+        "positives": 160,
+        "base_rate": 0.0816743236345074,
+        "ap": 0.19665798219464198,
+        "auc": 0.6888844496942745,
+        "brier": 0.07236502224213424,
+        "threshold": 0.10635297333013136,
+        "flagged": 182,
+        "flagged_fraction": 0.09290454313425217,
+        "precision": 0.27472527472527475,
+        "recall": 0.3125,
+        "false_positive_rate": 0.07337409672040023
+      },
+      "bounds": {
+        "n": 1968,
+        "observed": 1959,
+        "unknown": 9,
+        "prevalence": [
+          0.08130081300813008,
+          0.0858739837398374
+        ],
+        "recall": [
+          0.3048780487804878,
+          0.3333333333333333
+        ],
+        "point_identified": false,
+        "scope": "sharp binary-outcome bounds with fixed decisions; unknown outcomes never zero-filled"
+      }
+    },
+    {
+      "regime": "settled_only",
+      "observed": 1786,
+      "missing": 182,
+      "naive_observed_metrics": {
+        "n": 1786,
+        "positives": 137,
+        "base_rate": 0.0767077267637178,
+        "ap": 0.19324647574214895,
+        "auc": 0.7019959010769633,
+        "brier": 0.06811945611432343,
+        "threshold": 0.10635297333013136,
+        "flagged": 168,
+        "flagged_fraction": 0.0940649496080627,
+        "precision": 0.26785714285714285,
+        "recall": 0.3284671532846715,
+        "false_positive_rate": 0.07459066100667071
+      },
+      "bounds": {
+        "n": 1968,
+        "observed": 1786,
+        "unknown": 182,
+        "prevalence": [
+          0.06961382113821138,
+          0.16209349593495934
+        ],
+        "recall": [
+          0.15,
+          0.41025641025641024
+        ],
+        "point_identified": false,
+        "scope": "sharp binary-outcome bounds with fixed decisions; unknown outcomes never zero-filled"
+      }
+    },
+    {
+      "regime": "random_25pct_decline_audit",
+      "observed": 1961,
+      "missing": 7,
+      "naive_observed_metrics": {
+        "n": 1961,
+        "positives": 160,
+        "base_rate": 0.0815910249872514,
+        "ap": 0.19562653162426866,
+        "auc": 0.6883276651860077,
+        "brier": 0.07230939646549295,
+        "threshold": 0.10635297333013136,
+        "flagged": 184,
+        "flagged_fraction": 0.09382967873533911,
+        "precision": 0.2717391304347826,
+        "recall": 0.3125,
+        "false_positive_rate": 0.07440310938367574
+      },
+      "bounds": {
+        "n": 1968,
+        "observed": 1961,
+        "unknown": 7,
+        "prevalence": [
+          0.08130081300813008,
+          0.08485772357723577
+        ],
+        "recall": [
+          0.3048780487804878,
+          0.32515337423312884
+        ],
+        "point_identified": false,
+        "scope": "sharp binary-outcome bounds with fixed decisions; unknown outcomes never zero-filled"
+      },
+      "known_design_ipw_prevalence": 0.0813421453990849,
+      "ipw_scope": "known randomized audit design only; deterministic missingness has zero propensity and is not IPW-identifiable"
+    }
+  ],
+  "conclusion": "Observed-subset AP/recall describe different populations. Missing outcomes do not identify attempted-population metrics or policy gain.",
+  "policy_scope": "No counterfactual behavioral outcomes; even complete synthetic oracle is not causal business evidence.",
+  "seed": 20261016,
+  "audit_probability": 0.25,
+  "model_selection": "frozen before visibility analysis; no retraining or reselection",
+  "provenance": {
+    "model": "raw_forest",
+    "inputs": {
+      "result.json": "1f923a95bbf9ff9177346228e1168f71987b26eacec73558c93a8237e187c6de",
+      "samples.csv": "3ae9c8e8e3f366ee54b4d1eca03b994f970e9613e70c3af6156ee07b5c68ca1e",
+      "predictions.csv": "db5f528c84aa3b0704183ab20b44ea6f51f3bed1a52c881ae14cc81654d36fc7",
+      "frozen_selection.json": "139daf92e1f083297f1341c7ab713d581bf7ad6ce3995a61f6bd09c411e2137d"
+    }
+  }
+}

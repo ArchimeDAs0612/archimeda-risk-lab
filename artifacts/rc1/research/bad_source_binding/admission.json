@@ -1,0 +1,24 @@
+{
+  "evidence_admission": "BLOCKED",
+  "findings": [
+    {
+      "severity": "BLOCKED",
+      "code": "SOURCE_BINDING",
+      "message": "source risk-rate gap > 0.60 with >=30 events per source; business interpretation blocked"
+    }
+  ],
+  "allow_model": false,
+  "source_diagnostic": [
+    {
+      "source": "other_stream",
+      "size": 8859,
+      "mean": 0.0
+    },
+    {
+      "source": "risk_stream",
+      "size": 718,
+      "mean": 1.0
+    }
+  ],
+  "scope": "predefined deterministic checks only; no claim of complete leakage/confounding absence"
+}

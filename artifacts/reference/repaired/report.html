@@ -1,0 +1,1078 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>从合成支付事件到可核验的调查候选</title><style>
+:root{--ink:#18324a;--blue:#185c92;--muted:#60758b;--line:#d7e2ec;--bg:#f4f8fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 system-ui,-apple-system,"PingFang SC",sans-serif}main{max-width:1120px;margin:40px auto;padding:40px;background:#fff;border-top:6px solid var(--blue)}h1{font-size:32px;line-height:1.3;margin:12px 0 22px}h2{font-size:23px;margin:42px 0 12px;color:var(--blue)}h3{font-size:18px}p{max-width:88ch}small,.muted{color:var(--muted)}.tag{color:#185c92;letter-spacing:.08em;font-size:13px}.notice{padding:18px 22px;background:#eef5fb;border-left:4px solid #185c92}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{background:#f0f5fa}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;padding:20px;font:13px/1.6 ui-monospace,monospace}details{margin:16px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:10px 0;color:var(--blue)}a{color:var(--blue)}.bars{margin:20px 0}.barrow{display:grid;grid-template-columns:165px 1fr 70px;align-items:center;gap:12px;margin:12px 0;font-size:14px}.track{background:#eaf0f6;height:19px}.fill{background:#2c78ae;height:19px}.rail{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;font-size:13px}@media(max-width:720px){main{margin:0;padding:24px 16px}h1{font-size:26px}.barrow{grid-template-columns:125px 1fr 55px;font-size:12px}}@media print{main{padding:0;margin:0;max-width:none}pre{font-size:10px}.table-wrap{overflow:visible}}
+</style></head><body><main><div class="tag">RISK DECISION LAB / SYNTHETIC EXPERIMENT</div><h1>从合成支付事件到可核验的调查候选</h1><p class="notice">工程执行：SUCCESS · 证据准入：PASS · 候选结论：INSUFFICIENT_SUPPORT · 生产授权：未授予</p><h2>本次实验支持什么</h2><p>在选择窗口按 AP 选定 hybrid_lr。最终窗口相对 score_lr 的 AP 差为 0.1203，用户簇重采样区间为 [0.05400906127064584, 0.20191132688723373]。这衡量此合成场景的排序增益，不代表真实支付收益。</p><p>完整路径候选在最终窗口覆盖 101 次尝试，其中风险标签 17 次，风险率 0.1683；结论为 INSUFFICIENT_SUPPORT。支持标准预设为选择/测试最小覆盖、测试至少 5 个风险标签，且固定候选对其余样本风险率差的用户簇区间下界大于零。</p><p>候选用途仅限调查。拒绝后通过不是误伤标签；来源诊断、标签置乱和分层反证不能证明无泄漏或无混淆。重新发现只做 3 次，不能声称稳定规律。本人理解与修改练习尚待本人完成。</p><h2>问题与数据合同</h2><p>分析单位是一次支付尝试。唯一目标是决策时预测 risk_label；支付结果、后续通过关系、调查候选是不同概念。审计在 2–7 天后完全观察所有尝试，是理想化条件。主体隐藏倾向和随机真值生成量不写入特征，拒绝交易不会被当作正常。</p><p>原始事件包含用户、订单、设备和 UTC 决策时间。SQL 用 [t−24h,t) 构建用户尝试量，用 [t−7d,t) 与已可见动作构建拒绝量；同时间事件不互相使用。预处理只在训练窗拟合，当前字段采集时间不得晚于决策时间。</p><div class="table-wrap"><table><thead><tr><th>窗口</th><th>样本数</th><th>风险标签数</th><th>风险率</th><th>相对训练的新主体事件</th><th>新主体数</th></tr></thead><tbody><tr><td>train</td><td>3574</td><td>333</td><td>0.0932</td><td>0</td><td>0</td></tr><tr><td>select</td><td>997</td><td>99</td><td>0.0993</td><td>197</td><td>72</td></tr><tr><td>test</td><td>1182</td><td>139</td><td>0.1176</td><td>381</td><td>137</td></tr></tbody></table></div><p>按相对起始日：训练 [0,48)，冻结第 55 天；选择 [55,68)，冻结第 75 天；最终 [75,90)，审计截止第 97 天。窗口外或未成熟排除 1110 行。已有主体跨窗允许，另列新主体结果。</p><h2>LR、树模型与信号对照</h2><p>固定浅层 CART 树便于逐条保留路径；LR 使用训练中位数、缺失指示和训练标准化。没有过采样，按自然不平衡基准率评价。AP 是 average precision；另报 ROC-AUC、Brier 和选择窗分位阈值。树叶分数并列可使覆盖超过名义 10%，实际覆盖如下。</p><div class="table-wrap"><table><thead><tr><th>模型</th><th>窗口</th><th>AP</th><th>ROC-AUC</th><th>Brier</th><th>实际标记比例</th><th>Precision</th><th>Recall</th></tr></thead><tbody><tr><td>score_lr</td><td>select</td><td>0.2096</td><td>0.6617</td><td>0.0867</td><td>0.1003</td><td>0.2400</td><td>0.2424</td></tr><tr><td>score_lr</td><td>test</td><td>0.1575</td><td>0.5964</td><td>0.1037</td><td>0.1015</td><td>0.1750</td><td>0.1511</td></tr><tr><td>raw_lr</td><td>select</td><td>0.2596</td><td>0.7036</td><td>0.0838</td><td>0.1003</td><td>0.2600</td><td>0.2626</td></tr><tr><td>raw_lr</td><td>test</td><td>0.2801</td><td>0.6984</td><td>0.0981</td><td>0.0871</td><td>0.3398</td><td>0.2518</td></tr><tr><td>hybrid_lr</td><td>select</td><td>0.2647</td><td>0.7057</td><td>0.0835</td><td>0.1003</td><td>0.2700</td><td>0.2727</td></tr><tr><td>hybrid_lr</td><td>test</td><td>0.2778</td><td>0.7010</td><td>0.0981</td><td>0.0863</td><td>0.3333</td><td>0.2446</td></tr><tr><td>raw_tree</td><td>select</td><td>0.2244</td><td>0.6707</td><td>0.0836</td><td>0.1866</td><td>0.2151</td><td>0.4040</td></tr><tr><td>raw_tree</td><td>test</td><td>0.2404</td><td>0.7022</td><td>0.0980</td><td>0.1853</td><td>0.2694</td><td>0.4245</td></tr><tr><td>hybrid_tree</td><td>select</td><td>0.2423</td><td>0.6810</td><td>0.0829</td><td>0.1866</td><td>0.2151</td><td>0.4040</td></tr><tr><td>hybrid_tree</td><td>test</td><td>0.2394</td><td>0.6928</td><td>0.0983</td><td>0.1853</td><td>0.2694</td><td>0.4245</td></tr><tr><td>without_device_lr</td><td>select</td><td>0.1818</td><td>0.6741</td><td>0.0869</td><td>0.1003</td><td>0.2000</td><td>0.2020</td></tr><tr><td>without_device_lr</td><td>test</td><td>0.1792</td><td>0.5968</td><td>0.1039</td><td>0.0922</td><td>0.2202</td><td>0.1727</td></tr><tr><td>constant</td><td>select</td><td>0.0993</td><td>0.5000</td><td>0.0895</td><td>0.0000</td><td>—</td><td>0.0000</td></tr><tr><td>constant</td><td>test</td><td>0.1176</td><td>0.5000</td><td>0.1044</td><td>0.0000</td><td>—</td><td>0.0000</td></tr></tbody></table></div><h3>最终窗口 AP（横轴 0–1，静态实测值）</h3><div class="bars" role="img" aria-label="最终窗口各模型 AP 对比"><div class="barrow"><span>score_lr</span><div class="track"><div class="fill" style="width:15.75139%"></div></div><span>0.1575</span></div><div class="barrow"><span>raw_lr</span><div class="track"><div class="fill" style="width:28.00945%"></div></div><span>0.2801</span></div><div class="barrow"><span>hybrid_lr</span><div class="track"><div class="fill" style="width:27.77944%"></div></div><span>0.2778</span></div><div class="barrow"><span>raw_tree</span><div class="track"><div class="fill" style="width:24.03876%"></div></div><span>0.2404</span></div><div class="barrow"><span>hybrid_tree</span><div class="track"><div class="fill" style="width:23.93705%"></div></div><span>0.2394</span></div><div class="barrow"><span>without_device_lr</span><div class="track"><div class="fill" style="width:17.92343%"></div></div><span>0.1792</span></div><div class="barrow"><span>constant</span><div class="track"><div class="fill" style="width:11.75973%"></div></div><span>0.1176</span></div></div><details><summary>新主体 / 已有主体泛化与概率分箱</summary><pre>{
+  &quot;subgroups&quot;: {
+    &quot;seen_subject&quot;: {
+      &quot;score_lr&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.14676843506162793,
+        &quot;auc&quot;: 0.6065451285116557,
+        &quot;brier&quot;: 0.09350015502557485,
+        &quot;threshold&quot;: 0.13747549395867398,
+        &quot;flagged&quot;: 68,
+        &quot;flagged_fraction&quot;: 0.08489388264669163,
+        &quot;precision&quot;: 0.16176470588235295,
+        &quot;recall&quot;: 0.13095238095238096,
+        &quot;false_positive_rate&quot;: 0.0794979079497908
+      },
+      &quot;raw_lr&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.2469200104568867,
+        &quot;auc&quot;: 0.7116291425914858,
+        &quot;brier&quot;: 0.09026872822077252,
+        &quot;threshold&quot;: 0.1665709801300202,
+        &quot;flagged&quot;: 27,
+        &quot;flagged_fraction&quot;: 0.033707865168539325,
+        &quot;precision&quot;: 0.4074074074074074,
+        &quot;recall&quot;: 0.13095238095238096,
+        &quot;false_positive_rate&quot;: 0.022315202231520222
+      },
+      &quot;hybrid_lr&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.2509935061975377,
+        &quot;auc&quot;: 0.7165271966527196,
+        &quot;brier&quot;: 0.09005343143820915,
+        &quot;threshold&quot;: 0.16608279506902002,
+        &quot;flagged&quot;: 28,
+        &quot;flagged_fraction&quot;: 0.03495630461922597,
+        &quot;precision&quot;: 0.39285714285714285,
+        &quot;recall&quot;: 0.13095238095238096,
+        &quot;false_positive_rate&quot;: 0.023709902370990237
+      },
+      &quot;raw_tree&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.22970551045296145,
+        &quot;auc&quot;: 0.7226373115494454,
+        &quot;brier&quot;: 0.08865906536441659,
+        &quot;threshold&quot;: 0.13945578231292516,
+        &quot;flagged&quot;: 141,
+        &quot;flagged_fraction&quot;: 0.1760299625468165,
+        &quot;precision&quot;: 0.2765957446808511,
+        &quot;recall&quot;: 0.4642857142857143,
+        &quot;false_positive_rate&quot;: 0.14225941422594143
+      },
+      &quot;hybrid_tree&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.22718929056689358,
+        &quot;auc&quot;: 0.7079846582984658,
+        &quot;brier&quot;: 0.0888586725548702,
+        &quot;threshold&quot;: 0.13945578231292516,
+        &quot;flagged&quot;: 141,
+        &quot;flagged_fraction&quot;: 0.1760299625468165,
+        &quot;precision&quot;: 0.2765957446808511,
+        &quot;recall&quot;: 0.4642857142857143,
+        &quot;false_positive_rate&quot;: 0.14225941422594143
+      },
+      &quot;without_device_lr&quot;: {
+        &quot;n&quot;: 801,
+        &quot;positives&quot;: 84,
+        &quot;base_rate&quot;: 0.10486891385767791,
+        &quot;ap&quot;: 0.12737694525997767,
+        &quot;auc&quot;: 0.5549744304974431,
+        &quot;brier&quot;: 0.09600961293238963,
+        &quot;threshold&quot;: 0.13844128567593086,
+        &quot;flagged&quot;: 16,
+        &quot;flagged_fraction&quot;: 0.019975031210986267,
+        &quot;precision&quot;: 0.125,
+        &quot;recall&quot;: 0.023809523809523808,
+        &quot;false_positive_rate&quot;: 0.019525801952580194
+      }
+    },
+    &quot;new_subject&quot;: {
+      &quot;score_lr&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.1818021298607464,
+        &quot;auc&quot;: 0.5662576687116564,
+        &quot;brier&quot;: 0.12514577622646314,
+        &quot;threshold&quot;: 0.13747549395867398,
+        &quot;flagged&quot;: 52,
+        &quot;flagged_fraction&quot;: 0.13648293963254593,
+        &quot;precision&quot;: 0.19230769230769232,
+        &quot;recall&quot;: 0.18181818181818182,
+        &quot;false_positive_rate&quot;: 0.12883435582822086
+      },
+      &quot;raw_lr&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.36041518839683656,
+        &quot;auc&quot;: 0.6824316787506972,
+        &quot;brier&quot;: 0.11445960192111092,
+        &quot;threshold&quot;: 0.1665709801300202,
+        &quot;flagged&quot;: 76,
+        &quot;flagged_fraction&quot;: 0.1994750656167979,
+        &quot;precision&quot;: 0.3157894736842105,
+        &quot;recall&quot;: 0.43636363636363634,
+        &quot;false_positive_rate&quot;: 0.15950920245398773
+      },
+      &quot;hybrid_lr&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.34899161581610366,
+        &quot;auc&quot;: 0.6794757389849414,
+        &quot;brier&quot;: 0.11497380167195514,
+        &quot;threshold&quot;: 0.16608279506902002,
+        &quot;flagged&quot;: 74,
+        &quot;flagged_fraction&quot;: 0.1942257217847769,
+        &quot;precision&quot;: 0.3108108108108108,
+        &quot;recall&quot;: 0.41818181818181815,
+        &quot;false_positive_rate&quot;: 0.15644171779141106
+      },
+      &quot;raw_tree&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.25724150138021473,
+        &quot;auc&quot;: 0.658505298382599,
+        &quot;brier&quot;: 0.11759405687912436,
+        &quot;threshold&quot;: 0.13945578231292516,
+        &quot;flagged&quot;: 78,
+        &quot;flagged_fraction&quot;: 0.2047244094488189,
+        &quot;precision&quot;: 0.2564102564102564,
+        &quot;recall&quot;: 0.36363636363636365,
+        &quot;false_positive_rate&quot;: 0.17791411042944785
+      },
+      &quot;hybrid_tree&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.25492053740156106,
+        &quot;auc&quot;: 0.6507250418293363,
+        &quot;brier&quot;: 0.11801805085203247,
+        &quot;threshold&quot;: 0.13945578231292516,
+        &quot;flagged&quot;: 78,
+        &quot;flagged_fraction&quot;: 0.2047244094488189,
+        &quot;precision&quot;: 0.2564102564102564,
+        &quot;recall&quot;: 0.36363636363636365,
+        &quot;false_positive_rate&quot;: 0.17791411042944785
+      },
+      &quot;without_device_lr&quot;: {
+        &quot;n&quot;: 381,
+        &quot;positives&quot;: 55,
+        &quot;base_rate&quot;: 0.14435695538057744,
+        &quot;ap&quot;: 0.2516319109469184,
+        &quot;auc&quot;: 0.6550474065811489,
+        &quot;brier&quot;: 0.12033801896248464,
+        &quot;threshold&quot;: 0.13844128567593086,
+        &quot;flagged&quot;: 93,
+        &quot;flagged_fraction&quot;: 0.2440944881889764,
+        &quot;precision&quot;: 0.23655913978494625,
+        &quot;recall&quot;: 0.4,
+        &quot;false_positive_rate&quot;: 0.21779141104294478
+      }
+    }
+  },
+  &quot;calibration&quot;: {
+    &quot;score_lr&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1169,
+        &quot;mean_prediction&quot;: 0.08886652292522786,
+        &quot;risk_rate&quot;: 0.11719418306244654
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 13,
+        &quot;mean_prediction&quot;: 0.2186630789312652,
+        &quot;risk_rate&quot;: 0.15384615384615385
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ],
+    &quot;raw_lr&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1111,
+        &quot;mean_prediction&quot;: 0.06715330842483135,
+        &quot;risk_rate&quot;: 0.10261026102610261
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 65,
+        &quot;mean_prediction&quot;: 0.2546974086513442,
+        &quot;risk_rate&quot;: 0.3230769230769231
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 6,
+        &quot;mean_prediction&quot;: 0.4467170064586005,
+        &quot;risk_rate&quot;: 0.6666666666666666
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ],
+    &quot;hybrid_lr&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1111,
+        &quot;mean_prediction&quot;: 0.06759364499345745,
+        &quot;risk_rate&quot;: 0.1035103510351035
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 66,
+        &quot;mean_prediction&quot;: 0.25574520492544606,
+        &quot;risk_rate&quot;: 0.3181818181818182
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 5,
+        &quot;mean_prediction&quot;: 0.43560872125227207,
+        &quot;risk_rate&quot;: 0.6
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ],
+    &quot;raw_tree&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1117,
+        &quot;mean_prediction&quot;: 0.07563308076463282,
+        &quot;risk_rate&quot;: 0.10474485228290063
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 51,
+        &quot;mean_prediction&quot;: 0.31217214158390627,
+        &quot;risk_rate&quot;: 0.3333333333333333
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 14,
+        &quot;mean_prediction&quot;: 0.4220183486238532,
+        &quot;risk_rate&quot;: 0.35714285714285715
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ],
+    &quot;hybrid_tree&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1117,
+        &quot;mean_prediction&quot;: 0.07532980781432079,
+        &quot;risk_rate&quot;: 0.10474485228290063
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 50,
+        &quot;mean_prediction&quot;: 0.3074925074925075,
+        &quot;risk_rate&quot;: 0.32
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 15,
+        &quot;mean_prediction&quot;: 0.45454545454545436,
+        &quot;risk_rate&quot;: 0.4
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ],
+    &quot;without_device_lr&quot;: [
+      {
+        &quot;lower&quot;: 0.0,
+        &quot;upper&quot;: 0.2,
+        &quot;n&quot;: 1161,
+        &quot;mean_prediction&quot;: 0.07332211195606574,
+        &quot;risk_rate&quot;: 0.11283376399655469
+      },
+      {
+        &quot;lower&quot;: 0.2,
+        &quot;upper&quot;: 0.4,
+        &quot;n&quot;: 21,
+        &quot;mean_prediction&quot;: 0.23406139435058715,
+        &quot;risk_rate&quot;: 0.38095238095238093
+      },
+      {
+        &quot;lower&quot;: 0.4,
+        &quot;upper&quot;: 0.6000000000000001,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.6000000000000001,
+        &quot;upper&quot;: 0.8,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      },
+      {
+        &quot;lower&quot;: 0.8,
+        &quot;upper&quot;: 1.0,
+        &quot;n&quot;: 0,
+        &quot;mean_prediction&quot;: null,
+        &quot;risk_rate&quot;: null
+      }
+    ]
+  }
+}</pre></details><h2>完整候选、缺失处理与成员核验</h2><p>以下路径从根节点到叶节点全部保留。谓词作用于训练中位数填补后、附加缺失标记的 float32 输入。每个窗口的全部叶节点回放集合均与模型 apply 成员逐行比较。保存完整精度阈值，不截断路径。</p><pre>{
+  &quot;candidate_model&quot;: &quot;raw_tree&quot;,
+  &quot;candidate&quot;: {
+    &quot;leaf_id&quot;: 19,
+    &quot;predicates&quot;: [
+      {
+        &quot;feature_index&quot;: 2,
+        &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+        &quot;threshold&quot;: 5.601138764177449e-05,
+        &quot;operator&quot;: &quot;&gt;&quot;
+      },
+      {
+        &quot;feature_index&quot;: 4,
+        &quot;transformed_feature&quot;: &quot;geo_distance&quot;,
+        &quot;threshold&quot;: 0.3566363751888275,
+        &quot;operator&quot;: &quot;&gt;&quot;
+      },
+      {
+        &quot;feature_index&quot;: 2,
+        &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+        &quot;threshold&quot;: 25.512813568115234,
+        &quot;operator&quot;: &quot;&lt;=&quot;
+      },
+      {
+        &quot;feature_index&quot;: 3,
+        &quot;transformed_feature&quot;: &quot;auth_strength&quot;,
+        &quot;threshold&quot;: 0.5,
+        &quot;operator&quot;: &quot;&gt;&quot;
+      }
+    ],
+    &quot;train_support&quot;: 294,
+    &quot;selection_status&quot;: &quot;selected_for_investigation&quot;
+  },
+  &quot;preprocessing&quot;: {
+    &quot;input_columns&quot;: [
+      &quot;amount&quot;,
+      &quot;account_age_days&quot;,
+      &quot;device_age_days&quot;,
+      &quot;auth_strength&quot;,
+      &quot;geo_distance&quot;,
+      &quot;attempts_24h&quot;,
+      &quot;declines_7d&quot;
+    ],
+    &quot;output_columns&quot;: [
+      &quot;amount&quot;,
+      &quot;account_age_days&quot;,
+      &quot;device_age_days&quot;,
+      &quot;auth_strength&quot;,
+      &quot;geo_distance&quot;,
+      &quot;attempts_24h&quot;,
+      &quot;declines_7d&quot;,
+      &quot;amount__missing&quot;,
+      &quot;account_age_days__missing&quot;,
+      &quot;device_age_days__missing&quot;,
+      &quot;auth_strength__missing&quot;,
+      &quot;geo_distance__missing&quot;,
+      &quot;attempts_24h__missing&quot;,
+      &quot;declines_7d__missing&quot;
+    ],
+    &quot;train_medians&quot;: {
+      &quot;amount&quot;: 28.509075947997893,
+      &quot;account_age_days&quot;: 36.20892939814814,
+      &quot;device_age_days&quot;: 18.040571159150872,
+      &quot;auth_strength&quot;: 1.0,
+      &quot;geo_distance&quot;: 0.2207514986568262,
+      &quot;attempts_24h&quot;: 0.0,
+      &quot;declines_7d&quot;: 0.0
+    },
+    &quot;missing&quot;: &quot;replace by train median and append a missing indicator per input&quot;,
+    &quot;dtype&quot;: &quot;float32&quot;,
+    &quot;fit_scope&quot;: &quot;train only&quot;
+  },
+  &quot;selected_model_by_selection_ap&quot;: &quot;hybrid_lr&quot;,
+  &quot;thresholds&quot;: {
+    &quot;score_lr&quot;: 0.13747549395867398,
+    &quot;raw_lr&quot;: 0.1665709801300202,
+    &quot;hybrid_lr&quot;: 0.16608279506902002,
+    &quot;raw_tree&quot;: 0.13945578231292516,
+    &quot;hybrid_tree&quot;: 0.13945578231292516,
+    &quot;without_device_lr&quot;: 0.13844128567593086
+  },
+  &quot;selection_boundary&quot;: &quot;no final labels used to select candidate, model, or thresholds&quot;,
+  &quot;candidate_policy&quot;: &quot;maximize selection risk rate among leaves with minimum support; rate/n/leaf deterministic tie break&quot;
+}</pre><div class="table-wrap"><table><thead><tr><th>窗口</th><th>覆盖</th><th>风险数</th><th>风险率</th><th>其余样本风险率</th><th>固定候选差值 95% 区间</th></tr></thead><tbody><tr><td>train</td><td>294</td><td>41</td><td>0.1395</td><td>0.0890</td><td>[0.010660551642302073, 0.08364851223536265]</td></tr><tr><td>select</td><td>88</td><td>10</td><td>0.1136</td><td>0.0979</td><td>[-0.04932392037338255, 0.08234275276589618]</td></tr><tr><td>test</td><td>101</td><td>17</td><td>0.1683</td><td>0.1129</td><td>[-0.01267468948678738, 0.13562630163613762]</td></tr></tbody></table></div><details><summary>完整路径成员一致性与删上游条件差集</summary><pre>{
+  &quot;membership&quot;: {
+    &quot;train&quot;: {
+      &quot;rows&quot;: 3574,
+      &quot;leaves&quot;: 12,
+      &quot;all_paths_equal&quot;: true
+    },
+    &quot;select&quot;: {
+      &quot;rows&quot;: 997,
+      &quot;leaves&quot;: 12,
+      &quot;all_paths_equal&quot;: true
+    },
+    &quot;test&quot;: {
+      &quot;rows&quot;: 1182,
+      &quot;leaves&quot;: 12,
+      &quot;all_paths_equal&quot;: true
+    }
+  },
+  &quot;simplification&quot;: {
+    &quot;new_candidate&quot;: {
+      &quot;leaf_id&quot;: 19,
+      &quot;predicates&quot;: [
+        {
+          &quot;feature_index&quot;: 4,
+          &quot;transformed_feature&quot;: &quot;geo_distance&quot;,
+          &quot;threshold&quot;: 0.3566363751888275,
+          &quot;operator&quot;: &quot;&gt;&quot;
+        },
+        {
+          &quot;feature_index&quot;: 2,
+          &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+          &quot;threshold&quot;: 25.512813568115234,
+          &quot;operator&quot;: &quot;&lt;=&quot;
+        },
+        {
+          &quot;feature_index&quot;: 3,
+          &quot;transformed_feature&quot;: &quot;auth_strength&quot;,
+          &quot;threshold&quot;: 0.5,
+          &quot;operator&quot;: &quot;&gt;&quot;
+        }
+      ],
+      &quot;train_support&quot;: 294,
+      &quot;selection_status&quot;: &quot;selected_for_investigation&quot;
+    },
+    &quot;evaluation&quot;: {
+      &quot;n&quot;: 131,
+      &quot;risk_count&quot;: 29,
+      &quot;coverage&quot;: 0.11082910321489002,
+      &quot;risk_rate&quot;: 0.22137404580152673,
+      &quot;complement_risk_rate&quot;: 0.10466222645099905,
+      &quot;enrichment_vs_all&quot;: 1.882475698830249,
+      &quot;difference&quot;: 0.11671181935052767,
+      &quot;difference_cluster_ci95&quot;: [
+        0.028621478757188915,
+        0.1908914844039979
+      ],
+      &quot;bootstrap_valid&quot;: 160,
+      &quot;uncertainty_scope&quot;: &quot;user-cluster bootstrap of fixed candidate; selection interval is descriptive after search&quot;
+    },
+    &quot;added_events&quot;: [
+      &quot;e0005729&quot;,
+      &quot;e0005731&quot;,
+      &quot;e0005775&quot;,
+      &quot;e0005894&quot;,
+      &quot;e0005996&quot;,
+      &quot;e0006051&quot;,
+      &quot;e0006057&quot;,
+      &quot;e0006064&quot;,
+      &quot;e0006095&quot;,
+      &quot;e0006139&quot;,
+      &quot;e0006143&quot;,
+      &quot;e0006217&quot;,
+      &quot;e0006242&quot;,
+      &quot;e0006255&quot;,
+      &quot;e0006280&quot;,
+      &quot;e0006290&quot;,
+      &quot;e0006314&quot;,
+      &quot;e0006320&quot;,
+      &quot;e0006372&quot;,
+      &quot;e0006415&quot;,
+      &quot;e0006546&quot;,
+      &quot;e0006625&quot;,
+      &quot;e0006665&quot;,
+      &quot;e0006690&quot;,
+      &quot;e0006691&quot;,
+      &quot;e0006692&quot;,
+      &quot;e0006718&quot;,
+      &quot;e0006755&quot;,
+      &quot;e0006802&quot;,
+      &quot;e0006848&quot;
+    ],
+    &quot;removed_events&quot;: [],
+    &quot;scope&quot;: &quot;post-evaluation diagnostic; not eligible for promotion without a new holdout&quot;
+  }
+}</pre></details><p>删掉首个条件得到新候选，其差集和指标已重新计算。这是测试后的说明性诊断，没有新留出窗口前不得升级该新候选。选择窗搜叶后区间只作描述；最终窗的区间针对已冻结候选，仍依赖用户簇可代表当前样本的假设。</p><h2>反证与稳定性边界</h2><p>分层反证在来源 × 预先定义金额带内比较候选与非候选。仅保留两侧至少 5 行的单元，按候选量加权并披露保留量；这不构成因果匹配。训练标签置乱使用选择窗评价；固定候选重采样与重新训练再发现的 Jaccard 分开记录。</p><details><summary>分层反证、标签置乱、重新发现及漂移明细</summary><pre>{
+  &quot;stratified&quot;: {
+    &quot;train&quot;: {
+      &quot;cells&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 55,
+          &quot;control_n&quot;: 561,
+          &quot;candidate_rate&quot;: 0.09090909090909091,
+          &quot;control_rate&quot;: 0.0748663101604278,
+          &quot;difference&quot;: 0.01604278074866311
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[150.0, inf)&quot;,
+          &quot;candidate_n&quot;: 5,
+          &quot;control_n&quot;: 61,
+          &quot;candidate_rate&quot;: 0.4,
+          &quot;control_rate&quot;: 0.11475409836065574,
+          &quot;difference&quot;: 0.28524590163934427
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 70,
+          &quot;control_n&quot;: 732,
+          &quot;candidate_rate&quot;: 0.11428571428571428,
+          &quot;control_rate&quot;: 0.08469945355191257,
+          &quot;difference&quot;: 0.029586260733801717
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[60.0, 150.0)&quot;,
+          &quot;candidate_n&quot;: 33,
+          &quot;control_n&quot;: 278,
+          &quot;candidate_rate&quot;: 0.15151515151515152,
+          &quot;control_rate&quot;: 0.10431654676258993,
+          &quot;difference&quot;: 0.04719860475256159
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 42,
+          &quot;control_n&quot;: 596,
+          &quot;candidate_rate&quot;: 0.07142857142857142,
+          &quot;control_rate&quot;: 0.07550335570469799,
+          &quot;difference&quot;: -0.004074784276126564
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[150.0, inf)&quot;,
+          &quot;candidate_n&quot;: 7,
+          &quot;control_n&quot;: 66,
+          &quot;candidate_rate&quot;: 0.2857142857142857,
+          &quot;control_rate&quot;: 0.15151515151515152,
+          &quot;difference&quot;: 0.13419913419913418
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 54,
+          &quot;control_n&quot;: 693,
+          &quot;candidate_rate&quot;: 0.16666666666666666,
+          &quot;control_rate&quot;: 0.10533910533910534,
+          &quot;difference&quot;: 0.061327561327561314
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[60.0, 150.0)&quot;,
+          &quot;candidate_n&quot;: 28,
+          &quot;control_n&quot;: 293,
+          &quot;candidate_rate&quot;: 0.25,
+          &quot;control_rate&quot;: 0.08191126279863481,
+          &quot;difference&quot;: 0.1680887372013652
+        }
+      ],
+      &quot;retained_candidate_n&quot;: 294,
+      &quot;total_candidate_n&quot;: 294,
+      &quot;weighted_difference&quot;: 0.05008027418604423,
+      &quot;scope&quot;: &quot;source and amount only; unmatched cells excluded; residual confounding remains&quot;
+    },
+    &quot;select&quot;: {
+      &quot;cells&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 14,
+          &quot;control_n&quot;: 154,
+          &quot;candidate_rate&quot;: 0.21428571428571427,
+          &quot;control_rate&quot;: 0.06493506493506493,
+          &quot;difference&quot;: 0.14935064935064934
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 29,
+          &quot;control_n&quot;: 194,
+          &quot;candidate_rate&quot;: 0.13793103448275862,
+          &quot;control_rate&quot;: 0.0979381443298969,
+          &quot;difference&quot;: 0.03999289015286171
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 10,
+          &quot;control_n&quot;: 158,
+          &quot;candidate_rate&quot;: 0.0,
+          &quot;control_rate&quot;: 0.08227848101265822,
+          &quot;difference&quot;: -0.08227848101265822
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 19,
+          &quot;control_n&quot;: 220,
+          &quot;candidate_rate&quot;: 0.0,
+          &quot;control_rate&quot;: 0.09090909090909091,
+          &quot;difference&quot;: -0.09090909090909091
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[60.0, 150.0)&quot;,
+          &quot;candidate_n&quot;: 9,
+          &quot;control_n&quot;: 68,
+          &quot;candidate_rate&quot;: 0.1111111111111111,
+          &quot;control_rate&quot;: 0.08823529411764706,
+          &quot;difference&quot;: 0.02287581699346404
+        }
+      ],
+      &quot;retained_candidate_n&quot;: 81,
+      &quot;total_candidate_n&quot;: 88,
+      &quot;weighted_difference&quot;: 0.011191700257826509,
+      &quot;scope&quot;: &quot;source and amount only; unmatched cells excluded; residual confounding remains&quot;
+    },
+    &quot;test&quot;: {
+      &quot;cells&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 27,
+          &quot;control_n&quot;: 185,
+          &quot;candidate_rate&quot;: 0.2222222222222222,
+          &quot;control_rate&quot;: 0.08108108108108109,
+          &quot;difference&quot;: 0.14114114114114112
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 16,
+          &quot;control_n&quot;: 230,
+          &quot;candidate_rate&quot;: 0.0625,
+          &quot;control_rate&quot;: 0.11304347826086956,
+          &quot;difference&quot;: -0.050543478260869565
+        },
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;amount_band&quot;: &quot;[60.0, 150.0)&quot;,
+          &quot;candidate_n&quot;: 7,
+          &quot;control_n&quot;: 99,
+          &quot;candidate_rate&quot;: 0.14285714285714285,
+          &quot;control_rate&quot;: 0.13131313131313133,
+          &quot;difference&quot;: 0.011544011544011523
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[0.0, 20.0)&quot;,
+          &quot;candidate_n&quot;: 10,
+          &quot;control_n&quot;: 194,
+          &quot;candidate_rate&quot;: 0.2,
+          &quot;control_rate&quot;: 0.11855670103092783,
+          &quot;difference&quot;: 0.08144329896907218
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[20.0, 60.0)&quot;,
+          &quot;candidate_n&quot;: 27,
+          &quot;control_n&quot;: 221,
+          &quot;candidate_rate&quot;: 0.18518518518518517,
+          &quot;control_rate&quot;: 0.10407239819004525,
+          &quot;difference&quot;: 0.08111278699513992
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;amount_band&quot;: &quot;[60.0, 150.0)&quot;,
+          &quot;candidate_n&quot;: 9,
+          &quot;control_n&quot;: 109,
+          &quot;candidate_rate&quot;: 0.1111111111111111,
+          &quot;control_rate&quot;: 0.11926605504587157,
+          &quot;difference&quot;: -0.008154943934760461
+        }
+      ],
+      &quot;retained_candidate_n&quot;: 96,
+      &quot;total_candidate_n&quot;: 101,
+      &quot;weighted_difference&quot;: 0.06264590606866284,
+      &quot;scope&quot;: &quot;source and amount only; unmatched cells excluded; residual confounding remains&quot;
+    }
+  },
+  &quot;permutation&quot;: [
+    {
+      &quot;n&quot;: 997,
+      &quot;positives&quot;: 99,
+      &quot;base_rate&quot;: 0.09929789368104312,
+      &quot;ap&quot;: 0.08406912617031578,
+      &quot;auc&quot;: 0.41235292794312833,
+      &quot;brier&quot;: 0.09002648392212226,
+      &quot;threshold&quot;: 0.5,
+      &quot;flagged&quot;: 0,
+      &quot;flagged_fraction&quot;: 0.0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;false_positive_rate&quot;: 0.0
+    },
+    {
+      &quot;n&quot;: 997,
+      &quot;positives&quot;: 99,
+      &quot;base_rate&quot;: 0.09929789368104312,
+      &quot;ap&quot;: 0.16205822753356883,
+      &quot;auc&quot;: 0.5913140311804008,
+      &quot;brier&quot;: 0.08864644387726207,
+      &quot;threshold&quot;: 0.5,
+      &quot;flagged&quot;: 0,
+      &quot;flagged_fraction&quot;: 0.0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;false_positive_rate&quot;: 0.0
+    },
+    {
+      &quot;n&quot;: 997,
+      &quot;positives&quot;: 99,
+      &quot;base_rate&quot;: 0.09929789368104312,
+      &quot;ap&quot;: 0.13631341847856965,
+      &quot;auc&quot;: 0.5610897392634586,
+      &quot;brier&quot;: 0.08930705281320366,
+      &quot;threshold&quot;: 0.5,
+      &quot;flagged&quot;: 0,
+      &quot;flagged_fraction&quot;: 0.0,
+      &quot;precision&quot;: null,
+      &quot;recall&quot;: 0.0,
+      &quot;false_positive_rate&quot;: 0.0
+    }
+  ],
+  &quot;rediscovery&quot;: {
+    &quot;scope&quot;: &quot;3 training user-bootstrap rediscoveries evaluated on fixed selection; not population stability proof&quot;,
+    &quot;runs&quot;: [
+      {
+        &quot;repetition&quot;: 0,
+        &quot;selection_jaccard&quot;: 0.029850746268656716,
+        &quot;selection_n&quot;: 188,
+        &quot;path&quot;: {
+          &quot;leaf_id&quot;: 14,
+          &quot;predicates&quot;: [
+            {
+              &quot;feature_index&quot;: 2,
+              &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+              &quot;threshold&quot;: 5.601138764177449e-05,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            },
+            {
+              &quot;feature_index&quot;: 4,
+              &quot;transformed_feature&quot;: &quot;geo_distance&quot;,
+              &quot;threshold&quot;: 0.3901129513978958,
+              &quot;operator&quot;: &quot;&lt;=&quot;
+            },
+            {
+              &quot;feature_index&quot;: 0,
+              &quot;transformed_feature&quot;: &quot;amount&quot;,
+              &quot;threshold&quot;: 36.45435905456543,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            },
+            {
+              &quot;feature_index&quot;: 2,
+              &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+              &quot;threshold&quot;: 35.82000541687012,
+              &quot;operator&quot;: &quot;&lt;=&quot;
+            }
+          ],
+          &quot;train_support&quot;: 696,
+          &quot;selection_status&quot;: &quot;selected_for_investigation&quot;
+        }
+      },
+      {
+        &quot;repetition&quot;: 1,
+        &quot;selection_jaccard&quot;: 0.5985401459854015,
+        &quot;selection_n&quot;: 131,
+        &quot;path&quot;: {
+          &quot;leaf_id&quot;: 19,
+          &quot;predicates&quot;: [
+            {
+              &quot;feature_index&quot;: 2,
+              &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+              &quot;threshold&quot;: 0.18441877514123917,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            },
+            {
+              &quot;feature_index&quot;: 4,
+              &quot;transformed_feature&quot;: &quot;geo_distance&quot;,
+              &quot;threshold&quot;: 0.29815244674682617,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            },
+            {
+              &quot;feature_index&quot;: 1,
+              &quot;transformed_feature&quot;: &quot;account_age_days&quot;,
+              &quot;threshold&quot;: 4.5810301303863525,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            },
+            {
+              &quot;feature_index&quot;: 2,
+              &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+              &quot;threshold&quot;: 25.54943084716797,
+              &quot;operator&quot;: &quot;&lt;=&quot;
+            }
+          ],
+          &quot;train_support&quot;: 497,
+          &quot;selection_status&quot;: &quot;selected_for_investigation&quot;
+        }
+      },
+      {
+        &quot;repetition&quot;: 2,
+        &quot;selection_jaccard&quot;: 0.0,
+        &quot;selection_n&quot;: 46,
+        &quot;path&quot;: {
+          &quot;leaf_id&quot;: 5,
+          &quot;predicates&quot;: [
+            {
+              &quot;feature_index&quot;: 2,
+              &quot;transformed_feature&quot;: &quot;device_age_days&quot;,
+              &quot;threshold&quot;: 0.06157139874994755,
+              &quot;operator&quot;: &quot;&lt;=&quot;
+            },
+            {
+              &quot;feature_index&quot;: 1,
+              &quot;transformed_feature&quot;: &quot;account_age_days&quot;,
+              &quot;threshold&quot;: 49.63517951965332,
+              &quot;operator&quot;: &quot;&gt;&quot;
+            }
+          ],
+          &quot;train_support&quot;: 92,
+          &quot;selection_status&quot;: &quot;selected_for_investigation&quot;
+        }
+      }
+    ]
+  },
+  &quot;drift&quot;: {
+    &quot;train&quot;: {
+      &quot;source_rates&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;size&quot;: 1795,
+          &quot;mean&quot;: 0.08913649025069638
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;size&quot;: 1779,
+          &quot;mean&quot;: 0.09724564362001124
+        }
+      ],
+      &quot;missingness&quot;: {
+        &quot;amount&quot;: 0.0,
+        &quot;account_age_days&quot;: 0.0,
+        &quot;device_age_days&quot;: 0.0,
+        &quot;auth_strength&quot;: 0.0,
+        &quot;geo_distance&quot;: 0.14157806379406826,
+        &quot;attempts_24h&quot;: 0.0,
+        &quot;declines_7d&quot;: 0.0
+      }
+    },
+    &quot;select&quot;: {
+      &quot;source_rates&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;size&quot;: 492,
+          &quot;mean&quot;: 0.11382113821138211
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;size&quot;: 505,
+          &quot;mean&quot;: 0.08514851485148515
+        }
+      ],
+      &quot;missingness&quot;: {
+        &quot;amount&quot;: 0.0,
+        &quot;account_age_days&quot;: 0.0,
+        &quot;device_age_days&quot;: 0.0,
+        &quot;auth_strength&quot;: 0.0,
+        &quot;geo_distance&quot;: 0.13440320962888666,
+        &quot;attempts_24h&quot;: 0.0,
+        &quot;declines_7d&quot;: 0.0
+      }
+    },
+    &quot;test&quot;: {
+      &quot;source_rates&quot;: [
+        {
+          &quot;source&quot;: &quot;stream_a&quot;,
+          &quot;size&quot;: 585,
+          &quot;mean&quot;: 0.1111111111111111
+        },
+        {
+          &quot;source&quot;: &quot;stream_b&quot;,
+          &quot;size&quot;: 597,
+          &quot;mean&quot;: 0.12395309882747069
+        }
+      ],
+      &quot;missingness&quot;: {
+        &quot;amount&quot;: 0.0,
+        &quot;account_age_days&quot;: 0.0,
+        &quot;device_age_days&quot;: 0.0,
+        &quot;auth_strength&quot;: 0.0,
+        &quot;geo_distance&quot;: 0.13874788494077833,
+        &quot;attempts_24h&quot;: 0.0,
+        &quot;declines_7d&quot;: 0.0
+      }
+    }
+  }
+}</pre></details><h2>模拟规则与拒绝后通过案例</h2><p>基线规则为同一次事件 amount &gt; 210 且 auth_strength = 0 时拒绝；否则 prior_score &gt; 0.58 时审核，再否则通过。规则条件和动作优先级分开。用户级配对选择窗口内最早的后续支付成功事件，可多对一，也可不同订单。这里只描述关系和窗口敏感度。</p><div class="table-wrap"><table><thead><tr><th>小时窗口</th><th>配对数</th><th>同订单</th><th>不同订单</th><th>不同后续成功事件数</th></tr></thead><tbody><tr><td>1</td><td>4</td><td>4</td><td>0</td><td>4</td></tr><tr><td>6</td><td>5</td><td>4</td><td>1</td><td>5</td></tr><tr><td>24</td><td>7</td><td>4</td><td>3</td><td>7</td></tr></tbody></table></div><details><summary>单事件联合条件与跨事件并集</summary><pre>{
+  &quot;single_event_joint_orders&quot;: 17,
+  &quot;cross_event_union_orders&quot;: 18,
+  &quot;union_only_orders&quot;: [
+    &quot;o0000754&quot;
+  ]
+}</pre></details><h2>策略回放只是一项假设实验</h2><p>候选拒绝优先于原审核动作。下列成本假设把风险通过视为全额损失、拒绝视为完全避损、审核视为无保护，且无行为响应。标签完全可见才允许这个模拟；数值不是生产收益，也没有上线授权。</p><pre>{
+  &quot;baseline&quot;: {
+    &quot;declines&quot;: 3,
+    &quot;risky_allowed&quot;: 139,
+    &quot;legitimate_declined&quot;: 3,
+    &quot;modeled_cost&quot;: 7440.355061272861
+  },
+  &quot;candidate_decline_first&quot;: {
+    &quot;declines&quot;: 104,
+    &quot;risky_allowed&quot;: 122,
+    &quot;legitimate_declined&quot;: 87,
+    &quot;modeled_cost&quot;: 7068.00354893354
+  },
+  &quot;assumptions&quot;: {
+    &quot;risk_loss_multiplier&quot;: 1.0,
+    &quot;legitimate_decline_cost&quot;: 4.0,
+    &quot;review_cost&quot;: 0.5
+  },
+  &quot;scope&quot;: &quot;all risky allowed attempts incur amount loss; declines prevent all loss; no behavioral response; review no protection; synthetic scenario only&quot;,
+  &quot;priority&quot;: &quot;candidate or baseline decline &gt; existing review &gt; approve&quot;,
+  &quot;authorization&quot;: &quot;NOT_GRANTED&quot;
+}</pre><h2>可追溯性与复现入口</h2><p>同目录 result.json 是本页指标的来源；predictions.csv 是逐行评价输入；samples.csv、pairs_*h.csv、all_tree_paths.json 和 frozen_selection.json 保留可复算证据。根目录 README 与 docs/learning.md 给出命令、能力映射和三项本人练习。</p><p>本次核心链路耗时 0.5210 秒（不含环境安装、测试及 HTML 写入）。生产外部有效性、真实标签缺失识别、行为响应和本人独立掌握未验证。</p><details><summary>配置、数据、代码、依赖指纹</summary><pre>{
+  &quot;config&quot;: {
+    &quot;seed&quot;: 731,
+    &quot;orders&quot;: 5000,
+    &quot;days&quot;: 90,
+    &quot;train_end_day&quot;: 48,
+    &quot;train_asof_day&quot;: 55,
+    &quot;select_start_day&quot;: 55,
+    &quot;select_end_day&quot;: 68,
+    &quot;select_asof_day&quot;: 75,
+    &quot;test_start_day&quot;: 75,
+    &quot;evaluation_asof_day&quot;: 97,
+    &quot;pair_window_hours&quot;: 24,
+    &quot;review_fraction&quot;: 0.1,
+    &quot;tree_depth&quot;: 4,
+    &quot;min_leaf&quot;: 70,
+    &quot;candidate_min_select&quot;: 45,
+    &quot;candidate_min_test&quot;: 45,
+    &quot;bootstrap_repeats&quot;: 160,
+    &quot;cost_assumptions&quot;: {
+      &quot;risk_loss_multiplier&quot;: 1.0,
+      &quot;legitimate_decline_cost&quot;: 4.0,
+      &quot;review_cost&quot;: 0.5
+    }
+  },
+  &quot;config_sha256&quot;: &quot;de52aefe9442659a2b692e7d81c09d129d2fff87f611898a24fda69f479e2f6f&quot;,
+  &quot;data_sha256&quot;: {
+    &quot;labels.csv&quot;: &quot;4f7ab5d903d68ca1a7eeb413dc1c5001e773a2cd9522b79a871f21761a424289&quot;,
+    &quot;events.csv&quot;: &quot;68d0384617948b0de736118b6972fb29b2aca6c1ac3b7f35b219167d11cf2bc4&quot;,
+    &quot;generation.json&quot;: &quot;743ce3b18229f5f7b2e2a586909ef9d184bc2db33dbbb2c95eb4203b2f97c521&quot;,
+    &quot;contract.json&quot;: &quot;5cb90104b11d3c34571c34214afc139a481ff1e12980d662a2240c2399d0916c&quot;
+  },
+  &quot;code_sha256&quot;: {
+    &quot;risklab/__init__.py&quot;: &quot;20770c59b47e0571b50270e6604adcbfdf1dad905f0fc1abf99ea415019fb105&quot;,
+    &quot;risklab/__main__.py&quot;: &quot;cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3&quot;,
+    &quot;risklab/cli.py&quot;: &quot;cbc1d70e302b61088d48b33845e44b6bfae273ac1175fd760e1819188a2b446e&quot;,
+    &quot;risklab/contracts.py&quot;: &quot;959cb386eb75a90a923b9ec003df3189091303eeedd0614f997c31a1670b6914&quot;,
+    &quot;risklab/data.py&quot;: &quot;c7ce02d0396cc164bbb4b3681509f4c37766efb7a9bf47dd46b62a302be2b486&quot;,
+    &quot;risklab/evidence.py&quot;: &quot;0983a97a6633c65c1ca3cd73bf79868fef480437dc8ad7beeaf7f3a7d51168db&quot;,
+    &quot;risklab/generate.py&quot;: &quot;bc9a0eb479608f349a9812364c26132ce36bb03ed86c094890bb235a5f97d80f&quot;,
+    &quot;risklab/models.py&quot;: &quot;5527cf9b7c9300ea6a92f83ee084ca1d0f03b7f588c8f3dfd9352ce3cc58d00a&quot;,
+    &quot;risklab/pipeline.py&quot;: &quot;ebd761414ae1ec99c022d2a6cb1d7a5968d919a7fb2cf73e5f7101ffebb0dcbb&quot;,
+    &quot;risklab/report.py&quot;: &quot;2e3b6d3a20bf9f54c6c52eee5d93cdb1718c987a8b83c53efe7933967a54e2ff&quot;,
+    &quot;risklab/sample.sql&quot;: &quot;cfc0270af9a64099bd288f5170718db086b6d360781a9549aa3b09013314b08e&quot;
+  },
+  &quot;python&quot;: &quot;3.9.6&quot;,
+  &quot;dependencies&quot;: {
+    &quot;numpy&quot;: &quot;2.0.2&quot;,
+    &quot;pandas&quot;: &quot;2.3.3&quot;,
+    &quot;scipy&quot;: &quot;1.13.1&quot;,
+    &quot;scikit-learn&quot;: &quot;1.6.1&quot;,
+    &quot;joblib&quot;: &quot;1.5.3&quot;,
+    &quot;threadpoolctl&quot;: &quot;3.6.0&quot;
+  },
+  &quot;sqlite_version&quot;: &quot;3.51.0&quot;,
+  &quot;injection&quot;: null,
+  &quot;execution_scope&quot;: &quot;local CPU, no external data or model service&quot;
+}</pre></details><p class="rail">Independent implementation · synthetic evidence only · deterministic field workflow, not an LLM Agent</p></main></body></html>

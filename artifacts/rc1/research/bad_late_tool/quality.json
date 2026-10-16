@@ -1,0 +1,4 @@
+{
+  "status": "BLOCKED",
+  "reason": "decision-time availability violated: tool_available_ts"
+}

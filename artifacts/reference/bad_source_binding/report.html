@@ -1,0 +1,61 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>坏输入被阻断，证据不准入</title><style>
+:root{--ink:#18324a;--blue:#185c92;--muted:#60758b;--line:#d7e2ec;--bg:#f4f8fb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.75 system-ui,-apple-system,"PingFang SC",sans-serif}main{max-width:1120px;margin:40px auto;padding:40px;background:#fff;border-top:6px solid var(--blue)}h1{font-size:32px;line-height:1.3;margin:12px 0 22px}h2{font-size:23px;margin:42px 0 12px;color:var(--blue)}h3{font-size:18px}p{max-width:88ch}small,.muted{color:var(--muted)}.tag{color:#185c92;letter-spacing:.08em;font-size:13px}.notice{padding:18px 22px;background:#eef5fb;border-left:4px solid #185c92}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}td,th{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{background:#f0f5fa}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f3f6f8;padding:20px;font:13px/1.6 ui-monospace,monospace}details{margin:16px 0;border-bottom:1px solid var(--line)}summary{cursor:pointer;padding:10px 0;color:var(--blue)}a{color:var(--blue)}.bars{margin:20px 0}.barrow{display:grid;grid-template-columns:165px 1fr 70px;align-items:center;gap:12px;margin:12px 0;font-size:14px}.track{background:#eaf0f6;height:19px}.fill{background:#2c78ae;height:19px}.rail{border-top:1px solid var(--line);margin-top:40px;padding-top:18px;font-size:13px}@media(max-width:720px){main{margin:0;padding:24px 16px}h1{font-size:26px}.barrow{grid-template-columns:125px 1fr 55px;font-size:12px}}@media print{main{padding:0;margin:0;max-width:none}pre{font-size:10px}.table-wrap{overflow:visible}}
+</style></head><body><main><div class="tag">RISK DECISION LAB / SYNTHETIC EXPERIMENT</div><h1>坏输入被阻断，证据不准入</h1><p class="notice">工程执行：SUCCESS · 证据准入：BLOCKED · 候选结论：NOT_EVALUATED · 生产授权：未授予</p><h2>输入触发预定义限制</h2><p>检查流程执行成功，模型比较和候选评估已停止。此页没有可解释为模型有效性的指标。修复输入后须重跑完整链路。</p><div class="table-wrap"><table><thead><tr><th>风险检查</th><th>状态</th><th>限制原因</th></tr></thead><tbody><tr><td>SOURCE_BINDING</td><td>BLOCKED</td><td>source risk-rate gap &gt; 0.60 with &gt;=30 events per source; business interpretation blocked</td></tr></tbody></table></div><details><summary>输入、配置与实现指纹</summary><pre>{
+  &quot;config&quot;: {
+    &quot;seed&quot;: 731,
+    &quot;orders&quot;: 5000,
+    &quot;days&quot;: 90,
+    &quot;train_end_day&quot;: 48,
+    &quot;train_asof_day&quot;: 55,
+    &quot;select_start_day&quot;: 55,
+    &quot;select_end_day&quot;: 68,
+    &quot;select_asof_day&quot;: 75,
+    &quot;test_start_day&quot;: 75,
+    &quot;evaluation_asof_day&quot;: 97,
+    &quot;pair_window_hours&quot;: 24,
+    &quot;review_fraction&quot;: 0.1,
+    &quot;tree_depth&quot;: 4,
+    &quot;min_leaf&quot;: 70,
+    &quot;candidate_min_select&quot;: 45,
+    &quot;candidate_min_test&quot;: 45,
+    &quot;bootstrap_repeats&quot;: 160,
+    &quot;cost_assumptions&quot;: {
+      &quot;risk_loss_multiplier&quot;: 1.0,
+      &quot;legitimate_decline_cost&quot;: 4.0,
+      &quot;review_cost&quot;: 0.5
+    }
+  },
+  &quot;config_sha256&quot;: &quot;de52aefe9442659a2b692e7d81c09d129d2fff87f611898a24fda69f479e2f6f&quot;,
+  &quot;data_sha256&quot;: {
+    &quot;labels.csv&quot;: &quot;4f7ab5d903d68ca1a7eeb413dc1c5001e773a2cd9522b79a871f21761a424289&quot;,
+    &quot;events.csv&quot;: &quot;68d0384617948b0de736118b6972fb29b2aca6c1ac3b7f35b219167d11cf2bc4&quot;,
+    &quot;generation.json&quot;: &quot;743ce3b18229f5f7b2e2a586909ef9d184bc2db33dbbb2c95eb4203b2f97c521&quot;,
+    &quot;contract.json&quot;: &quot;5cb90104b11d3c34571c34214afc139a481ff1e12980d662a2240c2399d0916c&quot;
+  },
+  &quot;code_sha256&quot;: {
+    &quot;risklab/__init__.py&quot;: &quot;20770c59b47e0571b50270e6604adcbfdf1dad905f0fc1abf99ea415019fb105&quot;,
+    &quot;risklab/__main__.py&quot;: &quot;cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3&quot;,
+    &quot;risklab/cli.py&quot;: &quot;cbc1d70e302b61088d48b33845e44b6bfae273ac1175fd760e1819188a2b446e&quot;,
+    &quot;risklab/contracts.py&quot;: &quot;959cb386eb75a90a923b9ec003df3189091303eeedd0614f997c31a1670b6914&quot;,
+    &quot;risklab/data.py&quot;: &quot;c7ce02d0396cc164bbb4b3681509f4c37766efb7a9bf47dd46b62a302be2b486&quot;,
+    &quot;risklab/evidence.py&quot;: &quot;0983a97a6633c65c1ca3cd73bf79868fef480437dc8ad7beeaf7f3a7d51168db&quot;,
+    &quot;risklab/generate.py&quot;: &quot;bc9a0eb479608f349a9812364c26132ce36bb03ed86c094890bb235a5f97d80f&quot;,
+    &quot;risklab/models.py&quot;: &quot;5527cf9b7c9300ea6a92f83ee084ca1d0f03b7f588c8f3dfd9352ce3cc58d00a&quot;,
+    &quot;risklab/pipeline.py&quot;: &quot;ebd761414ae1ec99c022d2a6cb1d7a5968d919a7fb2cf73e5f7101ffebb0dcbb&quot;,
+    &quot;risklab/report.py&quot;: &quot;2e3b6d3a20bf9f54c6c52eee5d93cdb1718c987a8b83c53efe7933967a54e2ff&quot;,
+    &quot;risklab/sample.sql&quot;: &quot;cfc0270af9a64099bd288f5170718db086b6d360781a9549aa3b09013314b08e&quot;
+  },
+  &quot;python&quot;: &quot;3.9.6&quot;,
+  &quot;dependencies&quot;: {
+    &quot;numpy&quot;: &quot;2.0.2&quot;,
+    &quot;pandas&quot;: &quot;2.3.3&quot;,
+    &quot;scipy&quot;: &quot;1.13.1&quot;,
+    &quot;scikit-learn&quot;: &quot;1.6.1&quot;,
+    &quot;joblib&quot;: &quot;1.5.3&quot;,
+    &quot;threadpoolctl&quot;: &quot;3.6.0&quot;
+  },
+  &quot;sqlite_version&quot;: &quot;3.51.0&quot;,
+  &quot;injection&quot;: &quot;source_binding&quot;,
+  &quot;execution_scope&quot;: &quot;local CPU, no external data or model service&quot;
+}</pre></details></main></body></html>

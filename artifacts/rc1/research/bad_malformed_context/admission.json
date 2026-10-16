@@ -1,0 +1,11 @@
+{
+  "evidence_admission": "BLOCKED",
+  "allow_model": false,
+  "findings": [
+    {
+      "severity": "BLOCKED",
+      "code": "ENRICHED_INPUT",
+      "message": "invalid structured context for event e0000000"
+    }
+  ]
+}

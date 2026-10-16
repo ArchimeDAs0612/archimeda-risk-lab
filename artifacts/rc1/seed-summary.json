@@ -1,0 +1,74 @@
+{
+  "runs": [
+    {
+      "seed": 20261016,
+      "selected": "raw_forest",
+      "selected_AP": 0.20442764608306316,
+      "score_AP": 0.12975127753283783,
+      "gain": {
+        "estimate": 0.07467636855022533,
+        "ci95": [
+          0.029685221470823354,
+          0.1315159283017899
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "pattern": "raw_tree:11",
+      "support": 90,
+      "positives": 18,
+      "pattern_interval": [
+        0.012743958456356553,
+        0.1984701545062216
+      ],
+      "verdict": "SUPPORTED_FOR_INVESTIGATION"
+    },
+    {
+      "seed": 20261017,
+      "selected": "hybrid_forest",
+      "selected_AP": 0.1875616313575903,
+      "score_AP": 0.1316680043770312,
+      "gain": {
+        "estimate": 0.05589362698055911,
+        "ci95": [
+          0.024701777142557294,
+          0.09111877163567554
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "pattern": "raw_tree:13",
+      "support": 65,
+      "positives": 17,
+      "pattern_interval": [
+        0.09435836696673482,
+        0.2890723853664223
+      ],
+      "verdict": "SUPPORTED_FOR_INVESTIGATION"
+    },
+    {
+      "seed": 20261018,
+      "selected": "enriched_forest",
+      "selected_AP": 0.2611469852545311,
+      "score_AP": 0.15886214524676623,
+      "gain": {
+        "estimate": 0.10228484000776489,
+        "ci95": [
+          0.040073769819892274,
+          0.15178893177024788
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "pattern": "enriched_tree:11",
+      "support": 89,
+      "positives": 12,
+      "pattern_interval": [
+        -0.00690454987744307,
+        0.13842681849201713
+      ],
+      "verdict": "INSUFFICIENT_SUPPORT"
+    }
+  ],
+  "interpretation": "predeclared same-mechanism sensitivity; not external population generalization"
+}

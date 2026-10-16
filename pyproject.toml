@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "risk-decision-lab"
+version = "0.3.0rc1"
+description = "An independently implemented synthetic payment risk experiment"
+requires-python = ">=3.9,<3.13"
+dependencies = ["numpy==2.0.2", "pandas==2.3.3", "scipy==1.13.1", "scikit-learn==1.6.1", "joblib==1.5.3", "threadpoolctl==3.6.0"]
+
+[project.scripts]
+risklab = "risklab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["risklab*"]
+
+[tool.setuptools.package-data]
+risklab = ["*.sql", "*.json", "config/*.json", "web/*.css", "web/*.js"]

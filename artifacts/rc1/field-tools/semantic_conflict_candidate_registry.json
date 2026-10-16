@@ -1,0 +1,999 @@
+{
+  "contract": {
+    "version": "2.0",
+    "domain": "fictional_wallet",
+    "sample_key": "event_id",
+    "timezone": "UTC",
+    "target": "risk_label",
+    "label_semantics": "Bernoulli attempted-risk outcome; mature independent audit, including declines",
+    "missing_label": "unobserved, never mapped to zero",
+    "idealization": "all attempts audited after 2-7 days",
+    "fields": {
+      "amount": {
+        "physical_type": "numeric",
+        "logical_type": "currency_unit",
+        "meaning": "current request amount",
+        "bounds": [
+          0,
+          2000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "other_domain",
+        "semantic_status": "pending_human_review",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "account_age_days": {
+        "physical_type": "numeric",
+        "logical_type": "days",
+        "meaning": "fictional account age at decision",
+        "bounds": [
+          0,
+          10000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "device_age_days": {
+        "physical_type": "numeric",
+        "logical_type": "days",
+        "meaning": "age of physical device_id at decision; linked_device_id is a separate graph relation",
+        "bounds": [
+          0,
+          10000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "device",
+        "nullable": false,
+        "parents": []
+      },
+      "auth_strength": {
+        "physical_type": "numeric",
+        "logical_type": "ordinal",
+        "meaning": "requested authentication level 0, 1, 2",
+        "bounds": [
+          0,
+          2
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "geo_distance": {
+        "physical_type": "numeric",
+        "logical_type": "unit_interval",
+        "meaning": "normalized fictional geographic discrepancy",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "device",
+        "nullable": true,
+        "parents": []
+      },
+      "attempts_24h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "same user attempts in [decision-24h, decision)",
+        "bounds": [
+          0,
+          1000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": [
+          "decision_ts"
+        ]
+      },
+      "declines_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "same user known declines in [decision-7d, decision)",
+        "bounds": [
+          0,
+          1000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": [
+          "action",
+          "decision_ts",
+          "result_ts"
+        ]
+      },
+      "prior_score": {
+        "physical_type": "numeric",
+        "logical_type": "unit_interval",
+        "meaning": "fixed noisy score from decision-time signals, no fitted labels",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "score",
+        "nullable": false,
+        "parents": []
+      },
+      "user_attempts_1h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 3600,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_attempts_24h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 86400,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_attempts_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_1h": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 3600,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_24h": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 86400,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_7d": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_devices_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "linked_device_id"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_tools_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "payment_tool_id"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "device_users_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "linked_device_id"
+        ],
+        "observation_object": "device",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "tool_users_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "payment_tool_id"
+        ],
+        "observation_object": "payment_tool",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "client_latency_ms": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "parsed client subfield at decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "payload",
+        "parents": [
+          "context_json"
+        ],
+        "observation_object": "payment_attempt",
+        "window": null
+      },
+      "client_emulator": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "parsed client subfield at decision",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "payload",
+        "parents": [
+          "context_json"
+        ],
+        "observation_object": "payment_attempt",
+        "window": null
+      }
+    },
+    "source_fields": {
+      "action": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "decision_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "result_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "available_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "context_json": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "linked_device_id": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "payment_tool_id": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      }
+    }
+  },
+  "last_valid_contract": {
+    "version": "2.0",
+    "domain": "fictional_wallet",
+    "sample_key": "event_id",
+    "timezone": "UTC",
+    "target": "risk_label",
+    "label_semantics": "Bernoulli attempted-risk outcome; mature independent audit, including declines",
+    "missing_label": "unobserved, never mapped to zero",
+    "idealization": "all attempts audited after 2-7 days",
+    "fields": {
+      "amount": {
+        "physical_type": "numeric",
+        "logical_type": "currency_unit",
+        "meaning": "current request amount",
+        "bounds": [
+          0,
+          2000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "account_age_days": {
+        "physical_type": "numeric",
+        "logical_type": "days",
+        "meaning": "fictional account age at decision",
+        "bounds": [
+          0,
+          10000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "device_age_days": {
+        "physical_type": "numeric",
+        "logical_type": "days",
+        "meaning": "age of physical device_id at decision; linked_device_id is a separate graph relation",
+        "bounds": [
+          0,
+          10000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "device",
+        "nullable": false,
+        "parents": []
+      },
+      "auth_strength": {
+        "physical_type": "numeric",
+        "logical_type": "ordinal",
+        "meaning": "requested authentication level 0, 1, 2",
+        "bounds": [
+          0,
+          2
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": []
+      },
+      "geo_distance": {
+        "physical_type": "numeric",
+        "logical_type": "unit_interval",
+        "meaning": "normalized fictional geographic discrepancy",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "device",
+        "nullable": true,
+        "parents": []
+      },
+      "attempts_24h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "same user attempts in [decision-24h, decision)",
+        "bounds": [
+          0,
+          1000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": [
+          "decision_ts"
+        ]
+      },
+      "declines_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "same user known declines in [decision-7d, decision)",
+        "bounds": [
+          0,
+          1000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "behavior",
+        "nullable": false,
+        "parents": [
+          "action",
+          "decision_ts",
+          "result_ts"
+        ]
+      },
+      "prior_score": {
+        "physical_type": "numeric",
+        "logical_type": "unit_interval",
+        "meaning": "fixed noisy score from decision-time signals, no fitted labels",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "domain": "fictional_wallet",
+        "semantic_status": "approved_for_synthetic",
+        "family": "score",
+        "nullable": false,
+        "parents": []
+      },
+      "user_attempts_1h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 3600,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_attempts_24h": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 86400,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_attempts_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_1h": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 3600,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_24h": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 86400,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_amount_7d": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "velocity",
+        "parents": [
+          "decision_ts",
+          "available_ts"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_devices_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "linked_device_id"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "user_tools_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "payment_tool_id"
+        ],
+        "observation_object": "user",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "device_users_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "linked_device_id"
+        ],
+        "observation_object": "device",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "tool_users_7d": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "strict historical aggregate [t-window,t); known by current decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "history",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "entity",
+        "parents": [
+          "decision_ts",
+          "available_ts",
+          "payment_tool_id"
+        ],
+        "observation_object": "payment_tool",
+        "window": {
+          "seconds": 604800,
+          "interval": "[t-window,t)"
+        }
+      },
+      "client_latency_ms": {
+        "physical_type": "numeric",
+        "logical_type": "continuous",
+        "meaning": "parsed client subfield at decision",
+        "bounds": [
+          0,
+          1000000000
+        ],
+        "availability": "current",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "payload",
+        "parents": [
+          "context_json"
+        ],
+        "observation_object": "payment_attempt",
+        "window": null
+      },
+      "client_emulator": {
+        "physical_type": "numeric",
+        "logical_type": "count",
+        "meaning": "parsed client subfield at decision",
+        "bounds": [
+          0,
+          1
+        ],
+        "availability": "current",
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "nullable": false,
+        "domain": "fictional_wallet",
+        "family": "payload",
+        "parents": [
+          "context_json"
+        ],
+        "observation_object": "payment_attempt",
+        "window": null
+      }
+    },
+    "source_fields": {
+      "action": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "decision_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "result_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "history",
+        "parents": []
+      },
+      "available_ts": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "context_json": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "linked_device_id": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      },
+      "payment_tool_id": {
+        "enabled": true,
+        "semantic_status": "approved_for_synthetic",
+        "domain": "fictional_wallet",
+        "availability": "current",
+        "parents": []
+      }
+    }
+  },
+  "manual_disabled": [],
+  "invalidated": [],
+  "evidence_sha256": "3ae9c8e8e3f366ee54b4d1eca03b994f970e9613e70c3af6156ee07b5c68ca1e",
+  "review_status": "PENDING_HUMAN_REVIEW",
+  "history": [
+    {
+      "operation": "modify",
+      "field": "amount",
+      "before_sha256": "64b9963f69b49299bdfd762a4bcd5f40518edcb845205cba644ca92a31397c58",
+      "hash_scope": "registry excluding append-only history",
+      "llm_used": false,
+      "review_status": "PENDING_HUMAN_REVIEW",
+      "status": "CANDIDATE_SAVED",
+      "diff": {
+        "domain": {
+          "before": "fictional_wallet",
+          "after": "other_domain"
+        },
+        "semantic_status": {
+          "before": "approved_for_synthetic",
+          "after": "pending_human_review"
+        }
+      },
+      "downstream": {
+        "amount": {
+          "allow_analysis": false,
+          "reasons": [
+            "DOMAIN_CONFLICT",
+            "UNREVIEWED_OR_INVALID_EVIDENCE"
+          ]
+        }
+      },
+      "after_sha256": "87d5330e81a3f8ad3632f9e162e5ba7f2daa6cbe1c32c3eec83bf9b1553163fa"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 长期使命：在不能带走企业数据、代码和项目成果的前提下，将允许公开的通用技术能力转化为独立实验，展示风险分析、机器学习、Pattern研究、策略模拟、字段治理和工具工程能力。完成一个版本或 N6—N10 不是完成这一使命；成长依据是新的可验证能力及对失败的理解。
 
-当前版本 **0.3.0rc1 / Release Candidate**。独立模拟数据和代码；不含企业资料。已创建 [GitHub私有RC](https://github.com/ArchimeDAs0612/risk-decision-lab)，尚未公开，访客暂不能直接访问；仓库发布状态见 [Release 记录](docs/RC1_RELEASE.md)。AI 协助开发，本人的独立掌握仍需练习确认。
+当前版本 **0.3.0rc1 / Release Candidate**。独立模拟数据和代码；不含企业资料。正式仓库：[risk-decision-lab](https://github.com/ArchimeDAs0612/risk-decision-lab)。本轮正在按用户长期授权执行公开转换及远程CI验收，最终状态见 [公开交付记录](docs/PUBLICATION_STATUS.md)。AI 协助开发，本人的独立掌握仍需练习确认。
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。GitHub 的源码预览不会执行 HTML；克隆或下载后自行打开 HTML，核心演示无需网络。
 
@@ -81,7 +81,7 @@ python3 -m venv .venv
 
 ## 方法、练习与长期演进
 
-[技术追问与本人练习](docs/INTERVIEW_GUIDE.md) · [详细方法](docs/RC1_METHODS.md) · [当前检查点](CHECKPOINT.md) · [测试与验证](docs/RC1_VERIFICATION.json) · [版本记录](CHANGELOG.md) · [许可](docs/licenses.md)。
+[技术追问与本人练习](docs/INTERVIEW_GUIDE.md) · [详细方法](docs/RC1_METHODS.md) · [当前检查点](CHECKPOINT.md) · [测试与验证](docs/RC1_VERIFICATION.json) · [版本记录](CHANGELOG.md) · [许可](docs/licenses.md) · [GitHub-First长期规范](docs/GITHUB_FIRST.md)。
 
 未来优先研究选择性标签下的训练偏差、时间滚动与外部验证、稳定Pattern选择，以及在明确授权的模型环境中开展真实LLM工具调用和评估。新实习Phase或Owner经历只提炼允许公开的通用技术：抽象→独立实现→实际实验→验证→发布准备；禁止复制企业项目。
 

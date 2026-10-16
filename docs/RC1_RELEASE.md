@@ -1,3 +1,5 @@
+> 历史私有RC阶段记录。2026-10-16新GitHub-First协议已明确公开授权；当前状态以 [PUBLICATION_STATUS.md](PUBLICATION_STATUS.md) 为准。
+
 # RC1 真实发布与复现记录
 
 - 仓库：[ArchimeDAs0612/risk-decision-lab](https://github.com/ArchimeDAs0612/risk-decision-lab)。原生GitHub CLI实际创建、提交、推送及网络克隆成功；API确认PRIVATE，默认分支main。

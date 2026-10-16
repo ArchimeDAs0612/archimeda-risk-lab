@@ -1,0 +1,10 @@
+{
+  "title": "Archimeda Risk Lab",
+  "creators": [{"name": "ArchimeDAs0612"}],
+  "description": "Independently implemented synthetic payment-risk research: time-aware data contracts, comparable models, complete-path pattern replay, selective-label analysis and deterministic field tools. Synthetic findings do not establish production or causal benefits. Cite the archived version and source commit.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "mit",
+  "keywords": ["risk modeling", "synthetic data", "reproducible research", "pattern discovery"],
+  "related_identifiers": [{"identifier": "https://github.com/ArchimeDAs0612/archimeda-risk-lab", "relation": "isSupplementTo", "resource_type": "software"}]
+}

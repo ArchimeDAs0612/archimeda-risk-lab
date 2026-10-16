@@ -1,0 +1,18 @@
+[run]
+branch = True
+source = risklab
+relative_files = True
+data_file = runs/quality/.coverage
+
+[report]
+show_missing = True
+skip_empty = False
+
+[xml]
+output = runs/quality/coverage.xml
+
+[json]
+output = runs/quality/coverage.json
+
+[html]
+directory = runs/quality/html

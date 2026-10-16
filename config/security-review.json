@@ -1,0 +1,89 @@
+{
+  "review_type": "Codex-assisted engineering review; not independent human security certification",
+  "findings": [
+    {
+      "file": "scripts/audit_release.py",
+      "test_id": "B404",
+      "line": 12,
+      "sha256": "795379d449a6918759346be99fb9f60d42bbaffad0803219f3532d9d7a711266",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/audit_release.py",
+      "test_id": "B607",
+      "line": 36,
+      "sha256": "795379d449a6918759346be99fb9f60d42bbaffad0803219f3532d9d7a711266",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/audit_release.py",
+      "test_id": "B603",
+      "line": 36,
+      "sha256": "795379d449a6918759346be99fb9f60d42bbaffad0803219f3532d9d7a711266",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/build_pages.py",
+      "test_id": "B404",
+      "line": 8,
+      "sha256": "7e024e6af0b14fa75476781c71d69ce70d2feff7df5d5dbbf0183ab1fe97ee5d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/build_pages.py",
+      "test_id": "B607",
+      "line": 40,
+      "sha256": "7e024e6af0b14fa75476781c71d69ce70d2feff7df5d5dbbf0183ab1fe97ee5d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/build_pages.py",
+      "test_id": "B603",
+      "line": 40,
+      "sha256": "7e024e6af0b14fa75476781c71d69ce70d2feff7df5d5dbbf0183ab1fe97ee5d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/check_scope.py",
+      "test_id": "B404",
+      "line": 7,
+      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/check_scope.py",
+      "test_id": "B607",
+      "line": 28,
+      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/check_scope.py",
+      "test_id": "B603",
+      "line": 28,
+      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/verify_publication.py",
+      "test_id": "B404",
+      "line": 6,
+      "sha256": "55484d056e558b2c09007a69a7da9e23c40cd6b803d4365fec2514eb250e9b51",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/verify_publication.py",
+      "test_id": "B607",
+      "line": 66,
+      "sha256": "55484d056e558b2c09007a69a7da9e23c40cd6b803d4365fec2514eb250e9b51",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    },
+    {
+      "file": "scripts/verify_publication.py",
+      "test_id": "B603",
+      "line": 66,
+      "sha256": "55484d056e558b2c09007a69a7da9e23c40cd6b803d4365fec2514eb250e9b51",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
+    }
+  ]
+}

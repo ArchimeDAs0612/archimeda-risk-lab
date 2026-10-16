@@ -4,11 +4,27 @@ import unittest
 from unittest.mock import patch
 from email.message import Message
 from urllib.error import HTTPError
-from scripts.verify_publication import judge,api_json
+from scripts.verify_publication import judge,api_json,fetch,HTTPSOnlyRedirect
+from urllib.request import Request
 from scripts.build_pages import build
 
 
 class PublicationTests(unittest.TestCase):
+    def test_public_fetch_rejects_local_plaintext_and_embedded_credentials(self):
+        for url in ['file:///etc/hosts', 'http://example.invalid',
+                    'https://user:password@example.invalid/', 'https:///missing-host']:
+            with patch('scripts.verify_publication.urllib.request.build_opener') as opener:
+                with self.assertRaises(ValueError):
+                    fetch(url)
+                opener.assert_not_called()
+
+    def test_https_redirect_cannot_downgrade_or_access_local_files(self):
+        handler = HTTPSOnlyRedirect()
+        for target in ['http://example.invalid/', 'file:///etc/hosts']:
+            with self.assertRaises(ValueError):
+                handler.redirect_request(Request('https://example.invalid/'), None,
+                                         302, 'Found', {}, target)
+
     def setUp(self):
         self.sha='a'*40
         self.repo=dict(private=False,full_name='Owner/Lab',default_branch='main',html_url='https://github.com/Owner/Lab')

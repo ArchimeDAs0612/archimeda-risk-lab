@@ -13,6 +13,10 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 [![reproducible-research](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ArchimeDAs0612/archimeda-risk-lab/badge)](https://scorecard.dev/viewer/?uri=github.com/ArchimeDAs0612/archimeda-risk-lab)
 
+[![Quality evidence](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml)
+
+[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff)。质量徽章链接实际自动检查；不代表已获得Sonar认证或OpenSSF Passing。
+
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
 ## 关键贡献

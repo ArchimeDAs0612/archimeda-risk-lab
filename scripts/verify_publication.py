@@ -6,6 +6,24 @@ import re
 import subprocess
 import urllib.error
 import urllib.request
+from urllib.parse import urlsplit
+
+
+def require_https(url):
+    parts = urlsplit(url)
+    if parts.scheme != 'https' or not parts.hostname or parts.username or bool(parts.password):
+        raise ValueError('Public verification requires HTTPS without embedded credentials')
+
+
+class HTTPSOnlyRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        require_https(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
+
+
+def open_https(request):
+    require_https(request.full_url)
+    return urllib.request.build_opener(HTTPSOnlyRedirect()).open(request, timeout=30)
 
 
 def judge(repo,head,runs,expected,repository,pages=None):
@@ -28,7 +46,7 @@ def judge(repo,head,runs,expected,repository,pages=None):
 
 def fetch(url):
     request=urllib.request.Request(url,headers={'User-Agent':'risk-decision-lab-publication-verifier','Cache-Control':'no-cache'})
-    with urllib.request.urlopen(request,timeout=30) as response:
+    with open_https(request) as response:
         return response.read(),response.headers.get('Content-Type','')
 
 
@@ -68,7 +86,7 @@ def main():
         # No Authorization/cookie/CLI credential is used for public HTML access.
         public_url='https://github.com/'+args.repository
         request=urllib.request.Request(public_url,headers={'User-Agent':'risk-decision-lab-public-access-check'})
-        with urllib.request.urlopen(request,timeout=30) as response:
+        with open_https(request) as response:
             public_http=response.status==200 and response.geturl().rstrip('/').lower()==public_url.lower()
         pages=None
         if args.pages_url:

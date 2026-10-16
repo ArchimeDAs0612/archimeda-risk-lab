@@ -51,6 +51,17 @@
 
 格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。本文件自行总结，不复制完整官方标准；官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
 
+## 新增验证接入：实际结果与账号边界
+
+用户已授权推进此前筛选的全部验证标识。本次隔离环境118项测试通过；全包Python行覆盖86.61%、分支覆盖74.75%，包括未执行CLI，不以删文件或改断言抬高覆盖率。Bandit扫描risklab和scripts全部Python源码，发现并修复HTTPS通用入口/跳转约束；12项LOW subprocess提示保留并绑定文件摘要，新增、漂移或更严重发现阻断。它不覆盖JS/SQL，不是独立人工审计。真实报告在Quality evidence工作流artifact中，当前新增工作流尚待公开运行验证。
+
+- **Codecov**：已准备官方固定Action与短期OIDC上传，不需要提交个人令牌；以平台接收报告、源码SHA和徽章实际HTTP结果验收，不能仅凭上传进程退出0声称取得。
+- **SonarQube Cloud**：已准备扫描与真实quality gate等待步骤，但尚无账号项目配置或secret，不展示未取得的徽章。作者在https://sonarcloud.io登录并创建公开项目后，将组织名/项目key设为仓库变量SONAR_ORGANIZATION、SONAR_PROJECT_KEY，把本人项目的扫描凭据直接存入GitHub仓库secret SONAR_TOKEN，再设置SONAR_ENABLED=true；无需在聊天发送凭据。执行通过后再公开徽章。
+- **GitHub构建来源证明**：工作流从公开白名单构建wheel，短期身份签名后验证仓库、源码SHA、签名工作流和GitHub托管runner。当前仍待实际运行，不声明SLSA等级或获奖。
+- **Zenodo DOI**：CITATION.cff及.zenodo.json已提供真实GitHub作者标识、MIT与来源链接，不虚构姓名、单位、ORCID、版本或DOI。作者须在https://zenodo.org/account/settings/github/接入同一仓库，或在https://zenodo.org/uploads/new上传经审查的源码归档；平台实际发布后才能增加DOI徽章。没有账号授权时不得从浏览器提取凭据。
+
+覆盖率/Bandit使用独立固定开发工具，保留Python3.9兼容，未改运行依赖。工具许可文本见[PUBLICATION_TOOL_LICENSES.txt](PUBLICATION_TOOL_LICENSES.txt)，英文用户接口见[PUBLICATION_ENGLISH_GUIDE.md](PUBLICATION_ENGLISH_GUIDE.md)。第三方免费方案不自动开通付费试用。
+
 ## 比赛/期刊：尚未报名
 
 目前未提交比赛预测或期刊申请。竞赛按具体赛题、数据许可、个人参赛资格与截止日期报名，不能将整个Lab上传后声称参赛获奖。IEEE-CIS Fraud Detection是历史2019赛事，晚提交不冒称正式奖项；JOSS当前要求持续六个月以上公开开发，现阶段不提交不合格申请。账号、本人声明及对应平台条款须实际完成，不能用占位链接或本地结果冒充登记。

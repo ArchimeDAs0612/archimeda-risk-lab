@@ -1,10 +1,10 @@
 # 阿基米达风险决策实验室 · 当前检查点与唯一主要待办
 
-长期使命：持续进行。当前授权范围：完成无需组队或邀请他人的公开自动评估，准备有证据的自评申请，实际核验第三方结果；不新增研究实验、版本或调度。
+长期使命：持续进行。当前授权范围：接手已创建的Best Practices项目15545，核对证据、预填可验证条目并在确认平台数据许可后保存；不新增研究实验、版本或调度。
 
 ## 当前状态与有效基线
 
-- 上次正式交付：main `d2912601f77e58e973efa3ec9c7b2977df3adb98`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38881597031)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 上次正式交付：main `3ea80e49d66045474c5efbcfd0d8f3ae9d8b216c`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38886320703)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
 - 当前交付：官方OpenSSF Scorecard首次真实评估4.5/10、18项检查，官方运行和公开API均验证；[原始证据与逐项不足](docs/PUBLICATION_ASSESSMENTS.md)及README官方动态徽章已接入。私密漏洞报告已启用，贡献/安全说明及Best Practices草案已公开。核心研究资产不变。
 - 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
@@ -14,7 +14,7 @@
 
 此前实际通过：114项行为测试、保存证据33项核验及475项独立复算。此次对应检查为公开候选/链接/品牌识别、行为测试、增量安全审查和更名后仓库身份/Pages来源一致；实际同提交CI为最终验收来源。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
-本次可执行部分已实际完成，正式交付仍以本提交同SHA CI、main/Pages一致及官方评估运行/公开API为准；全部通过后停止。尚未完成：Best Practices本人平台登录、创建项目及声明审核，未登记/未获Passing；比赛和期刊未报名。本人下一动作仅为按[申请说明](docs/PUBLICATION_ASSESSMENTS.md)登录并提供数字项目链接，无需邀请其他人。不自动新增账号、伪造声明或启动其他研究。
+工程证据草案已准备；页面预填核验与实际保存尚未完成。工程同步以本提交同SHA CI、main/Pages一致为准；平台填写以实际页面和公开JSON为准，不相互替代。当前核实：项目15545已创建，公开已保存进度0%，表单自动预填24%未提交。下一动作：用官方再分析加载扩展证据草案，确认页面草稿，然后取得CDLA-Permissive-2.0数据许可的保存确认。本人安全知识仍待真实声明；尚未获Passing，比赛和期刊未报名。不自动新增账号、伪造声明或启动其他研究。
 
 ## 尚未授权启动的研究待办
 

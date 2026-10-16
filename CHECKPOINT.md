@@ -1,10 +1,10 @@
 # 阿基米达风险决策实验室 · 当前检查点与唯一主要待办
 
-长期使命：持续进行。当前授权范围：用户要求取得已筛选的公开验证标识；推进Codecov覆盖率、Sonar质量门槛、GitHub构建来源证明、OpenSSF Passing补证和Zenodo存档。保留同一工程，不新增算法研究、付费服务或调度。
+长期使命：持续进行。当前授权范围：用户要求取得已筛选的公开验证标识；2026-10-17夜间明确允许后台浏览器操作作为本次例外，仅隐藏页面，不控制桌面、窗口或鼠标键盘；推进Codecov覆盖率、Sonar质量门槛、GitHub构建来源证明、OpenSSF Passing补证和Zenodo存档。保留同一工程，不新增算法研究、付费服务或调度。
 
 ## 当前状态与有效基线
 
-- 上次正式交付：main `bf545e0baf1b43f2a291a1f510cb0d339235b0ea`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38933893272)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 上次正式交付：main `1e1c47dbb6c7b9e9f7ba9dd15c3ac672bb9ba9bb`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38935285957)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
 - 当前交付：官方OpenSSF Scorecard首次真实评估4.5/10、18项检查，官方运行和公开API均验证；[原始证据与逐项不足](docs/PUBLICATION_ASSESSMENTS.md)及README官方动态徽章已接入。私密漏洞报告已启用，贡献/安全说明及Best Practices草案已公开。核心研究资产不变。
 - 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
@@ -14,11 +14,12 @@
 
 此前实际通过：114项行为测试、保存证据33项核验及475项独立复算。此次对应检查为公开候选/链接/品牌识别、行为测试、增量安全审查和更名后仓库身份/Pages来源一致；实际同提交CI为最终验收来源。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
-Best Practices项目15545的已核实草稿已保存。用户确认CDLA-Permissive-2.0资料许可后自行点击提交；后台读取https://www.bestpractices.dev/en/projects/15545.json确认badge_level=in_progress、badge_percentage_0=63、tiered_percentage=63，平台updated_at=2026-10-16T15:29:55.616Z（北京时间23:29:55）。仓库草案60项状态与保存记录全部一致：41项Met、1项N/A、18项未知；草案未列出的平台条目另计。此前0%公开记录和未保存63%仅是历史。
-
+Best Practices项目15545已真实保存76%，公开JSON确认updated_at=2026-10-16T18:43:24.110Z，static_analysis_fixed=?及新的Sonar证据说明持久化。此前63%与78%重新分析提议是历史；Save (and continue) 🤖重新分析会回填仓库旧草案，普通Submit (and exit)才保留此次修正，仓库草案已同步。本人安全知识继续未知，没有Passing。
 公开新增基线d8848a2753423c266bce93764c89d4f47bd8d3a4已通过原研究两环境验收。Quality evidence的measurement/provenance实际成功；签名wheel在本地独立验证源码SHA、身份和runner，安装后9577行预测、8465行保存对照误差0，证据见PUBLICATION_PROVENANCE.json。Codecov首次因未接入失败；用户确认启用后重跑上传成功，但平台仅识别9/19模块，已定位XML路径问题并本地修复，已经在bf545e0baf1b43f2a291a1f510cb0d339235b0ea的官方API核验complete、19模块/1748语句全量匹配，平台81.4%；与纯行86.61%统计口径不同。新增防漏测试后共119项通过，全包行覆盖86.61%、分支74.75%。12项LOW subprocess提示保留，新增/漂移/中高发现阻断。原始d8848a2报告作为历史基线，不冒充未来提交结果。
 
-当前下一动作：同步已取得的Codecov完整报告徽章与收据，并核验同SHA CI/Pages。Sonar仍在创建组织引导阶段，用户发来的链接含Team/Advanced Security选项，已指导改选Free；未将临时登录参数写入工程或转发请求，仍待真正公开项目链接/结果。Zenodo本人提交所需30MB归档和元数据已交付，361文件逐项绑定d8848a2。OpenSSF已保存仍为63%，仓库新草案62项（47 Met、5 N/A、10未知）尚未在平台保存，安全知识不能代填。没有DOI、Sonar门槛或Passing时不展示取得。自动续跑仍暂停，不新增调度、算法研究或版本。
+Codecov首页及来源证明已在main 1e1c47dbb6c7b9e9f7ba9dd15c3ac672bb9ba9bb完成公开验收。此次后台浏览器例外范围已获用户明确授权，不接管桌面/屏幕。Sonar入口点击、单Lab安装范围收窄、Free组织创建分别获得用户精确批准；已创建Free组织archimedas0612并启动自动扫描。首次扫描真实绑定1e1c47d：65项安全发现待复核、131项维护发现、门槛NONE/Not computed，未改变规则/排除/接受问题换绿，没有通过徽章；原始证据PUBLICATION_SONAR.json。没有新Sonar令牌，原CI扫描job仍关闭。
+
+Zenodo草稿23423965已保存软件、作者、MIT、来源与边界；原30MB ZIP上传至88%后刷新为0字节Pending，无校验值，没有DOI/发布。原361文件快照保留；替代tar.xz为13646112字节、SHA256 fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee，已逐文件核对与原ZIP完全一致。当前下一动作：等待用户批准仅删除失败空条目后，用同一草稿上传tar.xz；完成后核验实际大小/校验再发布。并审查Sonar真实发现；未知可利用性不冒称漏洞确认，也不冒称全修复。OpenSSF已保存76%；自动续跑仍暂停，不新增调度、算法研究、Goal或版本。
 
 ## 尚未授权启动的研究待办
 

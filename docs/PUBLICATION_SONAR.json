@@ -8699,5 +8699,88 @@
     "65 automated security findings are not 65 confirmed exploitable vulnerabilities. Review remains pending.",
     "Automatic analysis has no imported Python coverage report. Codecov is separately verified.",
     "No issues were accepted, excluded or suppressed to manufacture a badge. No gate thresholds changed."
-  ]
+  ],
+  "later_verified_gate": {
+    "retrieved_at": "2026-10-16T19:01:53.950504+00:00",
+    "analysis": {
+      "paging": {
+        "pageIndex": 1,
+        "pageSize": 1,
+        "total": 2
+      },
+      "analyses": [
+        {
+          "key": "896e35db-7d43-4dfe-bb1c-b18047673fa9",
+          "date": "2026-10-16T18:59:42+0000",
+          "events": [
+            {
+              "key": "AaFGFnHl8dHLJfnag2o3",
+              "category": "VERSION",
+              "name": "not provided"
+            }
+          ],
+          "projectVersion": "not provided",
+          "manualNewCodePeriodBaseline": false,
+          "revision": "cec86f6a9af2f3571c6805a5b5046d80d820d444"
+        }
+      ]
+    },
+    "quality_gate": {
+      "projectStatus": {
+        "status": "OK",
+        "conditions": [
+          {
+            "status": "OK",
+            "metricKey": "new_reliability_rating",
+            "comparator": "GT",
+            "periodIndex": 1,
+            "errorThreshold": "1",
+            "actualValue": "1"
+          },
+          {
+            "status": "OK",
+            "metricKey": "new_security_rating",
+            "comparator": "GT",
+            "periodIndex": 1,
+            "errorThreshold": "1",
+            "actualValue": "1"
+          },
+          {
+            "status": "OK",
+            "metricKey": "new_maintainability_rating",
+            "comparator": "GT",
+            "periodIndex": 1,
+            "errorThreshold": "1",
+            "actualValue": "1"
+          },
+          {
+            "status": "OK",
+            "metricKey": "new_duplicated_lines_density",
+            "comparator": "GT",
+            "periodIndex": 1,
+            "errorThreshold": "3",
+            "actualValue": "0.0"
+          },
+          {
+            "status": "OK",
+            "metricKey": "new_security_hotspots_reviewed",
+            "comparator": "LT",
+            "periodIndex": 1,
+            "errorThreshold": "100",
+            "actualValue": "100.0"
+          }
+        ],
+        "periods": [
+          {
+            "index": 1,
+            "mode": "previous_version",
+            "date": "2026-10-16T17:45:59+0000"
+          }
+        ],
+        "ignoredConditions": false
+      }
+    },
+    "badge": "https://sonarcloud.io/api/project_badges/measure?project=ArchimeDAs0612_archimeda-risk-lab&metric=alert_status",
+    "scope": "Default Sonar way new-code gate; no condition changed. Overall initial security E and 65 findings remain unresolved. Automatic analysis does not import coverage."
+  }
 }

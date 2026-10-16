@@ -17,7 +17,7 @@
 Best Practices项目15545已真实保存76%，公开JSON确认updated_at=2026-10-16T18:43:24.110Z，static_analysis_fixed=?及新的Sonar证据说明持久化。此前63%与78%重新分析提议是历史；Save (and continue) 🤖重新分析会回填仓库旧草案，普通Submit (and exit)才保留此次修正，仓库草案已同步。本人安全知识继续未知，没有Passing。
 公开新增基线d8848a2753423c266bce93764c89d4f47bd8d3a4已通过原研究两环境验收。Quality evidence的measurement/provenance实际成功；签名wheel在本地独立验证源码SHA、身份和runner，安装后9577行预测、8465行保存对照误差0，证据见PUBLICATION_PROVENANCE.json。Codecov首次因未接入失败；用户确认启用后重跑上传成功，但平台仅识别9/19模块，已定位XML路径问题并本地修复，已经在bf545e0baf1b43f2a291a1f510cb0d339235b0ea的官方API核验complete、19模块/1748语句全量匹配，平台81.4%；与纯行86.61%统计口径不同。新增防漏测试后共119项通过，全包行覆盖86.61%、分支74.75%。12项LOW subprocess提示保留，新增/漂移/中高发现阻断。原始d8848a2报告作为历史基线，不冒充未来提交结果。
 
-Codecov首页及来源证明已在main 1e1c47dbb6c7b9e9f7ba9dd15c3ac672bb9ba9bb完成公开验收。此次后台浏览器例外范围已获用户明确授权，不接管桌面/屏幕。Sonar入口点击、单Lab安装范围收窄、Free组织创建分别获得用户精确批准；已创建Free组织archimedas0612并启动自动扫描。首次扫描真实绑定1e1c47d：65项安全发现待复核、131项维护发现、门槛NONE/Not computed，未改变规则/排除/接受问题换绿，没有通过徽章；原始证据PUBLICATION_SONAR.json。没有新Sonar令牌，原CI扫描job仍关闭。
+Codecov首页及来源证明已在main 1e1c47dbb6c7b9e9f7ba9dd15c3ac672bb9ba9bb完成公开验收。此次后台浏览器例外范围已获用户明确授权，不接管桌面/屏幕。Sonar入口点击、单Lab安装范围收窄、Free组织创建分别获得用户精确批准；已创建Free组织archimedas0612并启动自动扫描。首次扫描真实绑定1e1c47d：65项安全发现待复核、131项维护发现、门槛NONE/Not computed；第二次main扫描绑定cec86f6，默认新增代码门槛OK且官方SVG返回passed，首页接入真实徽章，整体安全E及65项发现仍未复核。未改变规则/排除/接受问题换绿；原始证据PUBLICATION_SONAR.json。没有新Sonar令牌，原CI扫描job仍关闭。
 
 Zenodo草稿23423965已保存软件、作者、MIT、来源与边界；原30MB ZIP上传至88%后刷新为0字节Pending，无校验值，没有DOI/发布。原361文件快照保留；替代tar.xz为13646112字节、SHA256 fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee，已逐文件核对与原ZIP完全一致。当前下一动作：等待用户批准仅删除失败空条目后，用同一草稿上传tar.xz；完成后核验实际大小/校验再发布。并审查Sonar真实发现；未知可利用性不冒称漏洞确认，也不冒称全修复。OpenSSF已保存76%；自动续跑仍暂停，不新增调度、算法研究、Goal或版本。
 

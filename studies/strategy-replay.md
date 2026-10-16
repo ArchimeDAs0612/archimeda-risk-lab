@@ -12,7 +12,7 @@
 
 `raw_tree:11`完整条件见[结果](../docs/RC1_RESULTS.md)：设备年龄下界/上界、地理距离和认证强度四项AND。最终命中90次、18个风险。OR拒绝使拒绝9→99，风险零拒绝7→79；完整90个动作变更ID保存在[主结果strategies](../artifacts/rc1/research/normal/result.json)。AND拒绝为0，OR审核保持9个拒绝并产生166个审核；这些是不同动作，不能仅对比规则覆盖率。
 
-[在线工作台](https://archimedas0612.github.io/risk-decision-lab/artifacts/rc1/research/normal/index.html)允许修改条件/组合、查看事件与导出结果。浏览器重算是已保存样本上的JavaScript操作；新训练及Python实验需要本地命令。
+[在线工作台](https://archimedas0612.github.io/archimeda-risk-lab/artifacts/rc1/research/normal/index.html)允许修改条件/组合、查看事件与导出结果。浏览器重算是已保存样本上的JavaScript操作；新训练及Python实验需要本地命令。
 
 ## 反证与局限
 

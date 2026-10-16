@@ -41,15 +41,15 @@
 
 这些差距保留：不刷历史、不用假账号增加贡献者、不用机器人审批冒充独立审查、不为了分数假签名或隐藏失败。可独立改进的分支保护、依赖更新、应用静态分析和发布证明须作为明确后续维护处理；需要外部独立贡献的条目不伪造。
 
-## OpenSSF Best Practices：项目15545已保存63%，未获徽章
+## OpenSSF Best Practices：已保存76%，未获徽章
 
-用户已创建[项目15545](https://www.bestpractices.dev/en/projects/15545)，并明确确认按CDLA-Permissive-2.0公开自评资料。用户在现有浏览器中自行提交后，后台读取[平台公开JSON](https://www.bestpractices.dev/en/projects/15545.json)，确认badge_level=in_progress、badge_percentage_0=63、tiered_percentage=63，平台保存时间为2026-10-16T15:29:55.616Z（北京时间23:29:55）。这是实际已保存进度，替代此前未保存的63%预填及最初0%记录；尚未获得Passing。
+[项目15545](https://www.bestpractices.dev/en/projects/15545)公开JSON已核验：`badge_percentage_0=76`，`updated_at=2026-10-16T18:43:24.110Z`。此前63%是历史；本次重新分析曾提议78%，但Sonar新增安全发现尚未完成复核，因此把`static_analysis_fixed`改为未知并使用普通“Submit (and exit)”保存。公开JSON确认状态和解释均持久化，未将78%提议冒称最终进度。
 
-[官方自动填表草案](../.bestpractices.json)中的全部60项状态已逐项与保存记录比较一致：41项Met、1项N/A、18项未知。平台还有草案未列出的条目及更高等级条目，因此18项不代表所有剩余要求。已核实的证据覆盖文档、Git、构建、CI、测试、警告、交付和哈希。未测覆盖率、英文完整性、响应历史、安全知识、应用静态/动态安全分析等继续未知；不因希望拿徽章而全部填Met。N/A仅用于项目自身没有内存不安全语言的专项要求。
+用户已确认同一CDLA-Permissive-2.0资料许可，本次明确允许夜间隐藏浏览器操作；没有控制桌面、用户窗口或提取会话凭据。源码MIT许可不变。`Save (and continue) 🤖`会重新分析并带回仓库草案，人工修正使用普通提交，并同步修改[仓库草案](../.bestpractices.json)避免未来回填旧结论。
 
-使用官方`reanalyze=1`可重新读取仓库草案并提出答案，提议本身不是已保存事实。本次资料许可已经用户确认，不改变源码MIT许可，也不代表本人已声明安全知识。遵守当前禁止操纵浏览器的约定，由用户执行网页提交，助手仅通过公开接口核验；没有提取Cookie或绕过认证。Best Practices是可公开核查的自评，不是算法竞赛奖项或独立人工技术评审。
+新增证据包括英文接口、真实覆盖/静态扫描及有明确理由的N/A；本人安全知识、响应历史和未完成的安全复核继续未知，不冒称Passing。自评不是算法竞赛奖项或独立人工评审。[本人练习](PUBLICATION_SECURITY_PRACTICE.md)尚未完成能力认证。
 
-格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。本文件自行总结，不复制完整官方标准；官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
+格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
 
 ## 新增验证接入：真实来源证明、完整覆盖与待办
 
@@ -58,9 +58,9 @@
 **安装包签名已经取得并独立验证。** [来源收据](PUBLICATION_PROVENANCE.json)记录真实wheel摘要、GitHub/Sigstore证书、透明日志时间及精确源码SHA。本地另行验证仓库、源码提交、签名工作流和托管runner；从源码目录之外安装wheel并预测9577行，其中8465行可与原保存概率按事件一对一比较，最大误差0；另外1112行不在原标签合格预测表中，不冒称也有已保存对照。没有声明SLSA等级或算法获奖。原run artifacts保留7天，本地已保存原wheel及完整验签输出。
 
 - **Codecov**：作者已完成账号接入。第一次OIDC上传因Repository not found失败，接入后原失败job重跑成功，平台commit API已返回同一源码SHA和complete。首次平台报告仅识别9/19个模块，85.17%为不完整范围，因此没有将它作为全包覆盖率挂到首页。修复XML为仓库相对路径并增加防漏检查后，提交bf545e0baf1b43f2a291a1f510cb0d339235b0ea的官方API返回complete，完整19模块、1748条语句，覆盖率81.4%，已逐文件核对且没有遗漏。首页接入真实动态徽章；[公开收据](PUBLICATION_CODECOV.json)保留首次不完整结果。Codecov将未完整执行分支的行计为partial，其81.4%不是Coverage.py纯行覆盖86.61%的同一口径。
-- **SonarQube Cloud**：扫描/真实quality gate步骤已准备；作者尚待提供公开项目链接，当前仓库无SONAR_TOKEN、组织或project key，不展示未取得的徽章。可先在https://sonarcloud.io登录并创建Free公开项目；若使用自动扫描，先核验公开门槛，不能把未执行的CI扫描写成已执行。CI扫描需要仓库变量SONAR_ORGANIZATION、SONAR_PROJECT_KEY及本人直接存入GitHub secret的SONAR_TOKEN，再设SONAR_ENABLED=true；无需在聊天发送凭据。
-- **Zenodo DOI**：[归档收据](PUBLICATION_ARCHIVE.json)确认公开提交d8848a2的361个白名单文件逐个匹配，源码ZIP为30813931字节。归档和签名wheel已保存在本地runs/verification-d8848a2；CITATION.cff与.zenodo.json使用真实公开作者名和MIT，不虚构单位、ORCID或DOI。作者须在https://zenodo.org/uploads/new用本人账号实际提交归档，或接入https://zenodo.org/account/settings/github/；目前未取得DOI。这个归档是明确提交的研究快照，不是新的软件版本。
-- **OpenSSF Passing**：平台最后已保存仍为63%。仓库新增提议包含英文接口、实际静态分析及有明确适用理由的N/A；当前草案62项：47 Met、5 N/A、10未知，另外平台未列入草案的条目仍需审核。提议不是已保存状态，未知安全知识/响应历史等不自动改成Met。用户已确认同一CDLA资料许可，不重复索要许可；需在平台重新分析后自行核对保存。[本人安全知识练习](PUBLICATION_SECURITY_PRACTICE.md)提供真实讲解/改动/反例入口，尚未认定本人掌握。
+- **SonarQube Cloud**：已真实创建Free组织`archimedas0612`，仅导入Lab。原GitHub App所有仓库安装范围经用户精确确认收窄为单Lab，自动导入新仓库关闭。首次自动扫描绑定main `1e1c47dbb6c7b9e9f7ba9dd15c3ac672bb9ba9bb`；[公开项目](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)与[原始收据](PUBLICATION_SONAR.json)可核查。65项安全发现、131项维护发现、页面2项可靠性发现；旧API bugs=0与现代可靠性分类口径不同。安全评级E、质量门槛NONE/Not computed，未获得通过徽章。扫描含历史/生成产物，313780 ncloc不代表当前Python包体量；未通过排除或接受问题换绿。未导入覆盖报告，Codecov独立保留；无需新Sonar令牌，CI Sonar job仍未启用。
+- **Zenodo DOI**：登录后已保存草稿23423965，软件类型、公开作者、MIT、完整源码提交、研究边界与仓库URL均实际填写。30MB ZIP上传失败，刷新后为0字节Pending、无校验；未发布、没有DOI。原361文件逐项核验快照保留；已准备13.6MB tar.xz并逐文件验证相同内容，清理失败空条目待用户具体批准。[草稿执行收据](PUBLICATION_ZENODO.json)与[原快照收据](PUBLICATION_ARCHIVE.json)明确区分；不创建重复记录或新软件版本。
+- **OpenSSF Passing**：已保存76%，新增Sonar结果使静态分析修复结论保持未知；公开记录与仓库草案均如实保留。安全知识和响应历史不得代填，未取得Passing。
 
 修复后的本地验证增加了上传XML完整性反例，共119项测试；XML使用defusedxml安全解析，不通过屏蔽安全发现换绿。开发依赖与运行依赖分开；许可文本见[PUBLICATION_TOOL_LICENSES.txt](PUBLICATION_TOOL_LICENSES.txt)，英文接口见[PUBLICATION_ENGLISH_GUIDE.md](PUBLICATION_ENGLISH_GUIDE.md)。平台免费方案不自动开通付费试用，账号接入和本人声明不代填。
 

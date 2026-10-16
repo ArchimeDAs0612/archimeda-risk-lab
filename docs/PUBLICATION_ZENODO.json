@@ -1,0 +1,25 @@
+{
+  "draft_id": 23423965,
+  "published": false,
+  "doi": null,
+  "source_commit": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+  "title": "Archimeda Risk Lab — source snapshot d8848a2",
+  "creator": "ArchimeDAs0612",
+  "license": "MIT",
+  "saved_metadata": true,
+  "original_upload": {
+    "filename": "archimeda-risk-lab-d8848a2.zip",
+    "status": "Pending, zero bytes, no checksum after refresh",
+    "last_progress_before_refresh": "88%",
+    "page_error": "AxiosError HTTP 400 observed in page console; failed request not independently mapped to an endpoint"
+  },
+  "prepared_alternative": {
+    "source_commit": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "files": 361,
+    "bytes": 13646112,
+    "sha256": "fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee",
+    "all_entries_match_verified_zip": true
+  },
+  "next_action": "Await exact confirmation to remove failed zero-byte draft entry, then upload identical-content tar.xz; verify completed checksum before publishing.",
+  "publication_status": "Saved draft only; no DOI badge."
+}

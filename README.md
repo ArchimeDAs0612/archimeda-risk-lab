@@ -16,7 +16,7 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 [![Codecov](https://codecov.io/gh/ArchimeDAs0612/archimeda-risk-lab/graph/badge.svg)](https://app.codecov.io/gh/ArchimeDAs0612/archimeda-risk-lab)
 [![Quality evidence](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/quality.yml)
 
-[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。Codecov完整覆盖19个Python模块，首次路径丢失已修复；平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；Sonar与OpenSSF Passing仍待各自验收。
+[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。Codecov完整覆盖19个Python模块，首次路径丢失已修复；平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；[Sonar首次真实扫描](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)发现65项待复核安全问题，尚无门槛通过结论；[OpenSSF自评](https://www.bestpractices.dev/en/projects/15545)已保存76%，尚未Passing。
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
@@ -145,7 +145,7 @@ python3 -m venv .venv
 
 已真实运行官方OpenSSF Scorecard并在公开API核验，首次基线**4.5/10（18项检查）**。上方徽章链接到官方最新结果；[原始报告及逐项不足](docs/PUBLICATION_ASSESSMENTS.md)保留首次来源提交。它评估开源仓库安全/维护实践，不是算法效果、基金会人工认证或比赛奖项。新仓库、独立审查、分支保护、应用静态分析等缺口如实显示。
 
-[贡献流程](CONTRIBUTING.md) · [私密漏洞报告](SECURITY.md)。Best Practices项目[15545](https://www.bestpractices.dev/en/projects/15545)已创建，自评已保存并经公开记录核验为63%（41项Met、1项N/A），资料按已确认的CDLA-Permissive-2.0许可提交；未获得Passing徽章，本人知识声明仍须真实审核；比赛/期刊尚未报名，不用占位登记或晚提交冒充奖项。
+[贡献流程](CONTRIBUTING.md) · [私密漏洞报告](SECURITY.md)。Best Practices项目[15545](https://www.bestpractices.dev/en/projects/15545)已创建，自评已保存并经公开记录核验为76%（新增静态分析发现待复核），资料按已确认的CDLA-Permissive-2.0许可提交；未获得Passing徽章，本人知识声明仍须真实审核；比赛/期刊尚未报名，不用占位登记或晚提交冒充奖项。
 
 ## 长期路线与联系
 

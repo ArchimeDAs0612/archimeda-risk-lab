@@ -15,7 +15,9 @@ TEXT={'.py','.sql','.json','.csv','.html','.md','.txt','.js','.cjs','.css','.yml
 def candidate_files(root):
     root=Path(root)
     names={'.gitignore','AGENTS.md','README.md','CHECKPOINT.md','CHANGELOG.md','LICENSE','pyproject.toml',
-           'requirements.txt','requirements-lock.txt','package.json','SECURITY.md','CONTRIBUTING.md','.bestpractices.json'}
+           'requirements.txt','requirements-lock.txt','requirements-quality.txt','package.json',
+           'SECURITY.md','CONTRIBUTING.md','.bestpractices.json','.coveragerc',
+           'CITATION.cff','.zenodo.json','sonar-project.properties'}
     for directory in ['risklab','config','examples','scripts','tests','.github','studies',
                       'artifacts/rc1','artifacts/reference','artifacts/baseline-v0.1.1']:
         for path in (root/directory).rglob('*'):

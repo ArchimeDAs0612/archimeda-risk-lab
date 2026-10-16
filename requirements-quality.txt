@@ -1,0 +1,11 @@
+# Separate verification tools; not runtime dependencies. Python >=3.9.
+coverage==7.10.7
+bandit==1.8.6
+PyYAML==6.0.3
+stevedore==5.5.0
+rich==15.0.0
+markdown-it-py==3.0.0
+mdurl==0.1.2
+pygments==2.21.0
+setuptools==80.9.0
+wheel==0.45.1

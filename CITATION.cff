@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite the exact commit or archived version used for your experiments. No DOI has been assigned yet."
+type: software
+title: "Archimeda Risk Lab"
+authors:
+  - name: "ArchimeDAs0612"
+    website: "https://github.com/ArchimeDAs0612"
+repository-code: "https://github.com/ArchimeDAs0612/archimeda-risk-lab"
+url: "https://archimedas0612.github.io/archimeda-risk-lab/"
+license: MIT
+abstract: >-
+  Independently implemented synthetic payment-risk research with time-aware
+  data contracts, comparable models, complete-path pattern replay, selective
+  label analysis and deterministic field tools. Synthetic findings are not
+  production outcomes or causal business benefits.
+keywords:
+  - risk modeling
+  - reproducible research
+  - synthetic data
+  - pattern discovery

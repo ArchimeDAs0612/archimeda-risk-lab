@@ -254,5 +254,13 @@
     "other OS/Python versions"
   ],
   "audit_scope": "source and saved data/results, independent metric/path/policy calculations, affected regression and two sampled visual states; not exhaustive formal verification",
-  "updated_at": "2026-10-16T06:56:23.579201+00:00"
+  "updated_at": "2026-10-16T06:56:23.579201+00:00",
+  "remote_reproduction": {
+    "status": "PASS",
+    "receipt": "RC1_REMOTE_REPRODUCTION.json",
+    "tested_code_commit": "df2b166f8d032c0bd56ee4337c2eaf393e41043b",
+    "commands": 11,
+    "visibility": "PRIVATE",
+    "remote_ci": "NOT_RUN"
+  }
 }

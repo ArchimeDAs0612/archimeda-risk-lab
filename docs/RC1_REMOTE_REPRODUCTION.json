@@ -1,0 +1,169 @@
+{
+  "status": "PASS",
+  "repository": "https://github.com/ArchimeDAs0612/risk-decision-lab",
+  "visibility": "PRIVATE",
+  "commit": "df2b166f8d032c0bd56ee4337c2eaf393e41043b",
+  "steps": [
+    {
+      "arguments": [
+        "-m",
+        "pip",
+        "install",
+        "."
+      ],
+      "exit_code": 0,
+      "seconds": 2.704565209,
+      "log_sha256": "6319cc4b7cd6811e5d9671ad0752eea89da4721546b70ff80bc6ace0e58f993f"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "seconds": 10.439427167,
+      "log_sha256": "2efed91285f7d2e07781e1c007973c71b5e6977ecd5ab29affad86151303c73a"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "generate",
+        "--out",
+        "runs/data"
+      ],
+      "exit_code": 0,
+      "seconds": 0.9316393329999997,
+      "log_sha256": "1de1e0f15878a02b9ca157951de5f1062ed5556b1f4727d58a38038b705cf182"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "run",
+        "--data",
+        "runs/data",
+        "--out",
+        "runs/legacy"
+      ],
+      "exit_code": 0,
+      "seconds": 1.2055090419999992,
+      "log_sha256": "f725b8dd61c83794faf172dfcc3d5f210933e5ecded3cf029977d386b0bff74b"
+    },
+    {
+      "arguments": [
+        "-W",
+        "error",
+        "-m",
+        "risklab",
+        "research-demo",
+        "--out",
+        "runs/research"
+      ],
+      "exit_code": 0,
+      "seconds": 17.134427625,
+      "log_sha256": "58a95022af7d411d23cc67e0d4d710fa832c09101d6550f84e9a4ce3c8afd192"
+    },
+    {
+      "arguments": [
+        "scripts/verify_rc1.py",
+        "runs/research/normal"
+      ],
+      "exit_code": 0,
+      "seconds": 1.0749123749999967,
+      "log_sha256": "43a9b95e6d20a120e1a3cac25b9dd86f73f1823c50b6bbdbc2fe6326c15316f3"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "label-study",
+        "--data",
+        "runs/research/normal",
+        "--out",
+        "runs/visibility"
+      ],
+      "exit_code": 0,
+      "seconds": 0.8406420419999989,
+      "log_sha256": "cb0f598533f51ba521e50f84c2cb6efdf129a4e1253ebcfc2cef77a7aef19a07"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "field-workflow",
+        "--data",
+        "runs/research/normal",
+        "--out",
+        "runs/field-tools"
+      ],
+      "exit_code": 0,
+      "seconds": 4.253063625000003,
+      "log_sha256": "589e211a74d5601c7ba54b6f003e74679387af7606a719adb4dc813c4b5685e5"
+    },
+    {
+      "arguments": [
+        "-m",
+        "risklab",
+        "predict",
+        "--model",
+        "runs/research/normal/models/raw_forest.json",
+        "--data",
+        "runs/research/normal/samples.csv",
+        "--out",
+        "runs/inference"
+      ],
+      "exit_code": 0,
+      "seconds": 0.7970945419999964,
+      "log_sha256": "3c896fd0aa3c4a765cf06d1fd09f413e846aa6c74b0ef79fcf56627a3be2cf0b"
+    },
+    {
+      "arguments": [
+        "scripts/verify_artifacts.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.05052879099999785,
+      "log_sha256": "6bc48dad6e5d8e743c2e8e0b84b0339f94d15cc3eb9b26db08772a028cb55699"
+    },
+    {
+      "arguments": [
+        "scripts/audit_release.py"
+      ],
+      "exit_code": 0,
+      "seconds": 13.459751583,
+      "log_sha256": "6fe62b6d5569491fb4c14759ea9abb9e315028402dc3d143551556b1ff8043e0"
+    }
+  ],
+  "actual_output_comparison": {
+    "frozen_selection": true,
+    "models": true,
+    "patterns": true,
+    "strategies": true,
+    "case_analysis": true,
+    "saved_model_validation": true
+  },
+  "full_reachable_history_scan": {
+    "files_checked": 326,
+    "findings": [],
+    "git_scope": "1 reachable commits scanned; unreferenced objects/reflogs not audited",
+    "git_commits_checked": 1,
+    "binary_reviews": [],
+    "binary_review_required": [],
+    "release_ready": true,
+    "status": "SCAN_CLEAR",
+    "scope": "heuristic current-tree scan excluding private/generated local directories; all reachable Git commit trees scanned without those exclusions; binary hash/provenance claims only; not an exhaustive security, authorship or licensing proof"
+  },
+  "environment": "freshly created dependency environment; actual network remote clone; macOS arm64 CPython3.9.6",
+  "remote_ci_run": false,
+  "public_deployment": false
+}

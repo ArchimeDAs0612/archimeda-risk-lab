@@ -1,11 +1,11 @@
 # 阿基米达风险决策实验室 · 当前检查点与唯一主要待办
 
-长期使命：持续进行。当前授权范围：个人品牌更名为阿基米达风险决策实验室 / Archimeda Risk Lab，同步原仓库、README、Demo及链接并验收；不新增研究实验、版本或调度。
+长期使命：持续进行。当前授权范围：完成无需组队或邀请他人的公开自动评估，准备有证据的自评申请，实际核验第三方结果；不新增研究实验、版本或调度。
 
 ## 当前状态与有效基线
 
-- 上次正式交付：main `5ab81b344e21321422a4f6182b45b9c64ccf6553`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38880188741)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
-- 本次变更：对外品牌、仓库地址及静态Demo链接统一更名。仓库ID仍应为`1421775237`，沿用原Git历史/Issues/Release；保留技术包名和历史产物，不重新训练。规则、专题、指标和失败案例继续有效。
+- 上次正式交付：main `d2912601f77e58e973efa3ec9c7b2977df3adb98`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38881597031)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 当前执行：接入官方OpenSSF Scorecard并发布真实自动评估；补贡献/安全说明及Best Practices基础事实草案。[申请与评估证据](docs/PUBLICATION_ASSESSMENTS.md)区分自动扫描、自评、人工认证与算法比赛。首次评估结果未取得前不称已获徽章。Best Practices尚缺本人平台登录，其他工程工作继续。
 - 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
 - 历史V0.2和私有阶段记录保留，不再作为当前状态副本。自动续跑任务仍暂停，自动写入式续跑未启用；本次不新建Goal或绝对截止时间，不重置旧任务时间。
@@ -14,7 +14,7 @@
 
 此前实际通过：114项行为测试、保存证据33项核验及475项独立复算。此次对应检查为公开候选/链接/品牌识别、行为测试、增量安全审查和更名后仓库身份/Pages来源一致；实际同提交CI为最终验收来源。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
-本次工程待办已实现。正式接受状态由**本提交同SHA CI + main一致 + Pages来源一致**判定；成功即本次COMPLETED，停止执行。下一动作仅在相关检查失败时从失败处修复，不自动开启下列研究。后续自然语言需求默认在现有专题增量修改。
+下一动作：推送/核验main CI，执行官方Scorecard，获取公开API结果及原始报告，更新真实评分和未完成项。Best Practices须本人独立登录并审核声明，未登记不能声称Passing；不因此阻断无需该登录的自动评估。所有当前可执行交付核验后停止，不自动开启下列研究。
 
 ## 尚未授权启动的研究待办
 

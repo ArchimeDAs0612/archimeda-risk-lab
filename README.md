@@ -139,7 +139,7 @@ python3 -m venv .venv
 
 已真实运行官方OpenSSF Scorecard并在公开API核验，首次基线**4.5/10（18项检查）**。上方徽章链接到官方最新结果；[原始报告及逐项不足](docs/PUBLICATION_ASSESSMENTS.md)保留首次来源提交。它评估开源仓库安全/维护实践，不是算法效果、基金会人工认证或比赛奖项。新仓库、独立审查、分支保护、应用静态分析等缺口如实显示。
 
-[贡献流程](CONTRIBUTING.md) · [私密漏洞报告](SECURITY.md)。Best Practices自动填表草案已准备，但尚未登记或获Passing徽章，须本人登录独立平台并审核声明；比赛/期刊尚未报名，不用占位登记或晚提交冒充奖项。
+[贡献流程](CONTRIBUTING.md) · [私密漏洞报告](SECURITY.md)。Best Practices项目[15545](https://www.bestpractices.dev/en/projects/15545)已创建，自评已保存并经公开记录核验为63%（41项Met、1项N/A），资料按已确认的CDLA-Permissive-2.0许可提交；未获得Passing徽章，本人知识声明仍须真实审核；比赛/期刊尚未报名，不用占位登记或晚提交冒充奖项。
 
 ## 长期路线与联系
 

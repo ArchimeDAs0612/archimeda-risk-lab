@@ -41,13 +41,13 @@
 
 这些差距保留：不刷历史、不用假账号增加贡献者、不用机器人审批冒充独立审查、不为了分数假签名或隐藏失败。可独立改进的分支保护、依赖更新、应用静态分析和发布证明须作为明确后续维护处理；需要外部独立贡献的条目不伪造。
 
-## OpenSSF Best Practices：已创建项目15545，待审核保存/未获徽章
+## OpenSSF Best Practices：项目15545已保存63%，未获徽章
 
-用户已创建[项目15545](https://www.bestpractices.dev/en/projects/15545)。本次读取公开JSON确认仓库归属正确、badge_level=in_progress、badge_percentage_0=0；编辑表单的24%是自动预填进度，尚未保存，不能写成已获24%认证。后续实际保存状态以平台公开JSON为准。
+用户已创建[项目15545](https://www.bestpractices.dev/en/projects/15545)，并明确确认按CDLA-Permissive-2.0公开自评资料。用户在现有浏览器中自行提交后，后台读取[平台公开JSON](https://www.bestpractices.dev/en/projects/15545.json)，确认badge_level=in_progress、badge_percentage_0=63、tiered_percentage=63，平台保存时间为2026-10-16T15:29:55.616Z（北京时间23:29:55）。这是实际已保存进度，替代此前未保存的63%预填及最初0%记录；尚未获得Passing。
 
-[官方自动填表草案](../.bestpractices.json)已扩展到可直接核验的文档、Git、构建、CI、测试、警告、交付和哈希证据。未测覆盖率、英文完整性、响应历史、安全知识、应用静态/动态安全分析等继续未知；不因希望拿徽章而全部填Met。N/A仅用于项目自身没有内存不安全语言的专项要求。
+[官方自动填表草案](../.bestpractices.json)中的全部60项状态已逐项与保存记录比较一致：41项Met、1项N/A、18项未知。平台还有草案未列出的条目及更高等级条目，因此18项不代表所有剩余要求。已核实的证据覆盖文档、Git、构建、CI、测试、警告、交付和哈希。未测覆盖率、英文完整性、响应历史、安全知识、应用静态/动态安全分析等继续未知；不因希望拿徽章而全部填Met。N/A仅用于项目自身没有内存不安全语言的专项要求。
 
-使用官方`reanalyze=1`可重新读取仓库草案并提出答案，提议不是已保存事实。保存按钮声明按CDLA-Permissive-2.0公开提交的自评资料，因此在实际点击保存前须确认这项数据许可；不改变源码MIT许可。未取得该确认不点击保存，不提取浏览器Cookie或绕过认证。
+使用官方`reanalyze=1`可重新读取仓库草案并提出答案，提议本身不是已保存事实。本次资料许可已经用户确认，不改变源码MIT许可，也不代表本人已声明安全知识。遵守当前禁止操纵浏览器的约定，由用户执行网页提交，助手仅通过公开接口核验；没有提取Cookie或绕过认证。Best Practices是可公开核查的自评，不是算法竞赛奖项或独立人工技术评审。
 
 格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。本文件自行总结，不复制完整官方标准；官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
 

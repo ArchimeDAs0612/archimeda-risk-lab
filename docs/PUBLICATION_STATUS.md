@@ -1,6 +1,6 @@
 # GitHub-First 正式公开交付
 
-**DELIVERED / PUBLISHED — Risk Decision Lab 0.3.0rc1 / GitHub-First V1.0**。Lab长期职业使命仍为ONGOING。本文件记录已发生的公开验收；主分支最新状态以真实CI徽章和精确提交核验为准，文档不自证尚未完成的CI。
+**DELIVERED / PUBLISHED — Risk Decision Lab 0.3.0rc1 / GitHub-First V1.0**。Lab长期职业使命仍为ONGOING。本文件记录历史首次公开验收；当前进度与研究待办统一见[CHECKPOINT](../CHECKPOINT.md)，日常增量不另建发布版本。主分支最新状态以真实CI徽章和精确提交核验为准，文档不自证尚未完成的CI。
 
 | 项目 | 实际结果 |
 | --- | --- |
@@ -26,8 +26,8 @@ Pages启用最初被自动审批拒绝。补充用户附件第九节的静态Pag
 
 Pages只展示保存结果和浏览器规则回放，不训练模型、不执行Python服务或动态Agent。真实数据、稳定迁移、因果收益、实际LLM和本人独立掌握仍未建立。
 
-## 下轮与恢复
+## 历史交付后的维护
 
-优先研究选择性标签下训练/选择偏差和获准公开数据盲测。未来实质更新遵守AGENTS.md和GITHUB_FIRST.md；读取远程状态，保留失败证据，不强推、不重复初始化，验收包含公开GitHub一致性与复现。
+最新规则见[AGENTS](../AGENTS.md)与[交付操作](GITHUB_FIRST.md)；研究待办只维护于[CHECKPOINT](../CHECKPOINT.md)。首次全历史审查与干净克隆证据继续有效，日常按改动增量审查和验证，不重训有效实验或自动升版。
 
 最新commit可用 `git rev-parse origin/main` 查看；部署来源为在线 `site-provenance.json`。运行 `python scripts/verify_publication.py --expected-commit <完整SHA> --pages-url https://archimedas0612.github.io/risk-decision-lab/` 核验指定交付。首次接受收据是历史事实，最新HEAD必须重新核验，不能拿旧绿色CI冒充新提交。

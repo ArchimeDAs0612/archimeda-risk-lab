@@ -47,21 +47,21 @@
       "file": "scripts/check_scope.py",
       "test_id": "B404",
       "line": 7,
-      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "sha256": "f0825f8a4737419bc50828744fce434a7cb33a3b37a3632d7c14cda48b962a44",
       "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
     },
     {
       "file": "scripts/check_scope.py",
       "test_id": "B607",
-      "line": 28,
-      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "line": 33,
+      "sha256": "f0825f8a4737419bc50828744fce434a7cb33a3b37a3632d7c14cda48b962a44",
       "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
     },
     {
       "file": "scripts/check_scope.py",
       "test_id": "B603",
-      "line": 28,
-      "sha256": "9e1469cfb2cb6e55a7aee189aae674afc08ff90cd71b7d7dcb8ebbe6940c12ad",
+      "line": 33,
+      "sha256": "f0825f8a4737419bc50828744fce434a7cb33a3b37a3632d7c14cda48b962a44",
       "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety."
     },
     {

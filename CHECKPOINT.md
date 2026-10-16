@@ -16,9 +16,9 @@
 
 Best Practices项目15545的已核实草稿已保存。用户确认CDLA-Permissive-2.0资料许可后自行点击提交；后台读取https://www.bestpractices.dev/en/projects/15545.json确认badge_level=in_progress、badge_percentage_0=63、tiered_percentage=63，平台updated_at=2026-10-16T15:29:55.616Z（北京时间23:29:55）。仓库草案60项状态与保存记录全部一致：41项Met、1项N/A、18项未知；草案未列出的平台条目另计。此前0%公开记录和未保存63%仅是历史。
 
-本次新增落实（尚待公开CI验收）：隔离环境118项行为测试通过；全包Python行覆盖86.61%、分支覆盖74.75%，未执行CLI仍在分母内；Bandit扫描Python应用和交付代码，修复HTTPS入口/重定向限制，保留12项LOW subprocess提示及源文件摘要绑定说明，无MEDIUM/HIGH。新增覆盖/扫描/真实wheel签名验证工作流、Sonar接入配置、英文接口说明和CITATION/Zenodo元数据。来源签名、Codecov上传及Sonar门槛必须实际运行后才能认定取得，不以配置存在替代。
+公开新增基线d8848a2753423c266bce93764c89d4f47bd8d3a4已通过原研究两环境验收。Quality evidence的measurement/provenance实际成功；签名wheel在本地独立验证源码SHA、身份和runner，安装后9577行预测、8465行保存对照误差0，证据见PUBLICATION_PROVENANCE.json。Codecov首次因未接入失败；用户确认启用后重跑上传成功，但平台仅识别9/19模块，已定位XML路径问题并本地修复，尚待重新上传完整性验收。新增防漏测试后共119项通过，全包行覆盖86.61%、分支74.75%。12项LOW subprocess提示保留，新增/漂移/中高发现阻断。原始d8848a2报告作为历史基线，不冒充未来提交结果。
 
-当前下一动作：发布并运行Quality evidence工作流，独立下载wheel验证签名/源码SHA；通过OIDC尝试Codecov上传并读取真实平台结果。Sonar与Zenodo账号接入已向用户集中询问，当前仓库没有配置secret；不读取密码或令牌、不操纵浏览器。随后按真实证据更新自评草案；用户本人安全知识与平台保存不能代填。未获得Passing或DOI，不生成占位奖章。
+当前下一动作：发布路径修复与真实证据收据，重新上传Codecov并核实完整19模块及公开徽章，再同步首页。Sonar公开项目链接已向用户询问，当前尚无账号项目/secret；Zenodo本人提交所需30MB归档和元数据已交付，361文件逐项绑定d8848a2。OpenSSF已保存仍为63%，仓库新草案62项（47 Met、5 N/A、10未知）尚未在平台保存，安全知识不能代填。没有DOI、Sonar门槛或Passing时不展示取得。自动续跑仍暂停，不新增调度、算法研究或版本。
 
 ## 尚未授权启动的研究待办
 

@@ -4,10 +4,21 @@ from pathlib import Path
 import tempfile
 import unittest
 
-from scripts.quality_evidence import summarize
+from scripts.quality_evidence import summarize, validate_xml
 
 
 class QualityEvidenceTests(unittest.TestCase):
+    def test_upload_xml_cannot_drop_unexecuted_modules_or_strip_repository_paths(self):
+        coverage = {'files':{'risklab/a.py':{},'risklab/cli.py':{}},
+                    'totals':{'num_statements':3}}
+        complete = b'<coverage lines-valid="3"><class filename="risklab/a.py"/><class filename="risklab/cli.py"/></coverage>'
+        validate_xml(complete,coverage)
+        for raw in [complete.replace(b'<class filename="risklab/cli.py"/>',b''),
+                    complete.replace(b'risklab/',b''),
+                    complete.replace(b'lines-valid="3"',b'lines-valid="2"'),
+                    b'<!DOCTYPE coverage [<!ENTITY x "bad">]>'+complete]:
+            with self.assertRaises(ValueError): validate_xml(raw,coverage)
+
     def fixture(self, root):
         (root/'risklab').mkdir(); (root/'scripts').mkdir()
         (root/'risklab/a.py').write_text('value = 1\n')

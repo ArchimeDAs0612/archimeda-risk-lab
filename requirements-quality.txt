@@ -1,6 +1,7 @@
 # Separate verification tools; not runtime dependencies. Python >=3.9.
 coverage==7.10.7
 bandit==1.8.6
+defusedxml==0.7.1
 PyYAML==6.0.3
 stevedore==5.5.0
 rich==15.0.0

@@ -1,0 +1,54 @@
+{
+  "commitid": "bf545e0baf1b43f2a291a1f510cb0d339235b0ea",
+  "timestamp": "2026-10-16T16:41:09Z",
+  "branch": "main",
+  "state": "complete",
+  "totals": {
+    "files": 19,
+    "lines": 1748,
+    "hits": 1423,
+    "misses": 234,
+    "partials": 91,
+    "coverage": 81.4,
+    "branches": 303,
+    "methods": 0,
+    "sessions": 1,
+    "complexity": 0.0,
+    "complexity_total": 0.0,
+    "complexity_ratio": 0,
+    "diff": 0
+  },
+  "files": [
+    "risklab/__init__.py",
+    "risklab/__main__.py",
+    "risklab/cli.py",
+    "risklab/contracts.py",
+    "risklab/data.py",
+    "risklab/entities.py",
+    "risklab/evidence.py",
+    "risklab/field_intelligence.py",
+    "risklab/field_workflow.py",
+    "risklab/generate.py",
+    "risklab/label_visibility.py",
+    "risklab/model_artifact.py",
+    "risklab/models.py",
+    "risklab/patterns.py",
+    "risklab/pipeline.py",
+    "risklab/report.py",
+    "risklab/research.py",
+    "risklab/research_models.py",
+    "risklab/workbench.py"
+  ],
+  "api_url": "https://api.codecov.io/api/v2/github/ArchimeDAs0612/repos/archimeda-risk-lab/commits/bf545e0baf1b43f2a291a1f510cb0d339235b0ea/",
+  "complete_python_package_scope_verified": true,
+  "limits": [
+    "Codecov hit/miss/partial processing differs from Coverage.py line and branch percentages.",
+    "Coverage is execution evidence, not proof of correctness."
+  ],
+  "previous_incomplete_upload": {
+    "commitid": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "files": 9,
+    "coverage": 85.17,
+    "not_full_package": true
+  }
+}

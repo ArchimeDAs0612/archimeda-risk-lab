@@ -1,0 +1,66 @@
+{
+  "source_commit": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+  "run_url": "https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38929772719",
+  "wheel_name": "risk_decision_lab-0.3.0rc1-py3-none-any.whl",
+  "wheel_sha256": "89cf442c3811da5247823874ad1dd4c6daf1af9a79a5d97dac85c191948eb468",
+  "certificate": {
+    "certificateIssuer": "CN=sigstore-intermediate,O=sigstore.dev",
+    "subjectAlternativeName": "https://github.com/ArchimeDAs0612/archimeda-risk-lab/.github/workflows/quality.yml@refs/heads/main",
+    "issuer": "https://token.actions.githubusercontent.com",
+    "githubWorkflowTrigger": "push",
+    "githubWorkflowSHA": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "githubWorkflowName": "Quality evidence",
+    "githubWorkflowRepository": "ArchimeDAs0612/archimeda-risk-lab",
+    "githubWorkflowRef": "refs/heads/main",
+    "buildSignerURI": "https://github.com/ArchimeDAs0612/archimeda-risk-lab/.github/workflows/quality.yml@refs/heads/main",
+    "buildSignerDigest": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "runnerEnvironment": "github-hosted",
+    "sourceRepositoryURI": "https://github.com/ArchimeDAs0612/archimeda-risk-lab",
+    "sourceRepositoryDigest": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "sourceRepositoryRef": "refs/heads/main",
+    "sourceRepositoryIdentifier": "1421775237",
+    "sourceRepositoryOwnerURI": "https://github.com/ArchimeDAs0612",
+    "sourceRepositoryOwnerIdentifier": "246947452",
+    "buildConfigURI": "https://github.com/ArchimeDAs0612/archimeda-risk-lab/.github/workflows/quality.yml@refs/heads/main",
+    "buildConfigDigest": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "buildTrigger": "push",
+    "runInvocationURI": "https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38929772719/attempts/1",
+    "sourceRepositoryVisibilityAtSigning": "public"
+  },
+  "verified_timestamps": [
+    {
+      "type": "Tlog",
+      "uri": "https://rekor.sigstore.dev",
+      "timestamp": "2026-10-17T00:11:39+08:00"
+    }
+  ],
+  "subject": [
+    {
+      "name": "risk_decision_lab-0.3.0rc1-py3-none-any.whl",
+      "digest": {
+        "sha256": "89cf442c3811da5247823874ad1dd4c6daf1af9a79a5d97dac85c191948eb468"
+      }
+    }
+  ],
+  "predicate_type": "https://slsa.dev/provenance/v1",
+  "independent_verification": true,
+  "original_verification_sha256": "b8831dc4f05ac1aef21240fb2664856d1b584398bab74cf478ac6c8360048637",
+  "verification_flags": [
+    "--repo ArchimeDAs0612/archimeda-risk-lab",
+    "--source-digest d8848a2753423c266bce93764c89d4f47bd8d3a4",
+    "--signer-workflow ArchimeDAs0612/archimeda-risk-lab/.github/workflows/quality.yml",
+    "--deny-self-hosted-runners"
+  ],
+  "limits": [
+    "Build provenance verifies origin and digest, not algorithm correctness or SLSA level.",
+    "The original run failed only its separate Codecov job: Repository not found. Measurement/provenance succeeded; Sonar was not configured.",
+    "GitHub run artifacts have seven-day retention. Preserve the downloaded wheel and bundle for long-term independent verification."
+  ],
+  "installed_wheel_inference": {
+    "rows": 9577,
+    "compared_saved_rows": 8465,
+    "additional_rows_without_saved_label_eligible_predictions": 1112,
+    "max_abs_error_against_saved_raw_forest": 0.0,
+    "outside_source_tree": true
+  }
+}

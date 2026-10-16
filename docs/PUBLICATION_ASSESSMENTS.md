@@ -51,16 +51,18 @@
 
 格式依据：[官方JSON自动提议](https://github.com/ossf/best-practices-badge/blob/main/docs/bestpractices-json.md)、[认证/API说明](https://github.com/ossf/best-practices-badge/blob/main/docs/api.md)。本文件自行总结，不复制完整官方标准；官方标准及网站内容归OpenSSF Best Practices badge contributors，按其CC-BY许可提供。
 
-## 新增验证接入：实际结果与账号边界
+## 新增验证接入：真实来源证明、完整覆盖与待办
 
-用户已授权推进此前筛选的全部验证标识。本次隔离环境118项测试通过；全包Python行覆盖86.61%、分支覆盖74.75%，包括未执行CLI，不以删文件或改断言抬高覆盖率。Bandit扫描risklab和scripts全部Python源码，发现并修复HTTPS通用入口/跳转约束；12项LOW subprocess提示保留并绑定文件摘要，新增、漂移或更严重发现阻断。它不覆盖JS/SQL，不是独立人工审计。真实报告在Quality evidence工作流artifact中，当前新增工作流尚待公开运行验证。
+首次公开验证基线为`d8848a2753423c266bce93764c89d4f47bd8d3a4`。[真实运行](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38929772719)中measurement与provenance均成功；[原始覆盖/安全摘要](PUBLICATION_QUALITY.json)记录118项测试对应全包Python行覆盖86.61%、分支覆盖74.75%，包括未执行CLI。Bandit扫描全部Python应用/交付源码，HTTPS入口与降级跳转约束已修复，12项LOW subprocess提示保留并绑定源文件摘要，无MEDIUM/HIGH。它不覆盖JS/SQL，也不证明算法正确或没有漏洞。
 
-- **Codecov**：已准备官方固定Action与短期OIDC上传，不需要提交个人令牌；以平台接收报告、源码SHA和徽章实际HTTP结果验收，不能仅凭上传进程退出0声称取得。
-- **SonarQube Cloud**：已准备扫描与真实quality gate等待步骤，但尚无账号项目配置或secret，不展示未取得的徽章。作者在https://sonarcloud.io登录并创建公开项目后，将组织名/项目key设为仓库变量SONAR_ORGANIZATION、SONAR_PROJECT_KEY，把本人项目的扫描凭据直接存入GitHub仓库secret SONAR_TOKEN，再设置SONAR_ENABLED=true；无需在聊天发送凭据。执行通过后再公开徽章。
-- **GitHub构建来源证明**：工作流从公开白名单构建wheel，短期身份签名后验证仓库、源码SHA、签名工作流和GitHub托管runner。当前仍待实际运行，不声明SLSA等级或获奖。
-- **Zenodo DOI**：CITATION.cff及.zenodo.json已提供真实GitHub作者标识、MIT与来源链接，不虚构姓名、单位、ORCID、版本或DOI。作者须在https://zenodo.org/account/settings/github/接入同一仓库，或在https://zenodo.org/uploads/new上传经审查的源码归档；平台实际发布后才能增加DOI徽章。没有账号授权时不得从浏览器提取凭据。
+**安装包签名已经取得并独立验证。** [来源收据](PUBLICATION_PROVENANCE.json)记录真实wheel摘要、GitHub/Sigstore证书、透明日志时间及精确源码SHA。本地另行验证仓库、源码提交、签名工作流和托管runner；从源码目录之外安装wheel并预测9577行，其中8465行可与原保存概率按事件一对一比较，最大误差0；另外1112行不在原标签合格预测表中，不冒称也有已保存对照。没有声明SLSA等级或算法获奖。原run artifacts保留7天，本地已保存原wheel及完整验签输出。
 
-覆盖率/Bandit使用独立固定开发工具，保留Python3.9兼容，未改运行依赖。工具许可文本见[PUBLICATION_TOOL_LICENSES.txt](PUBLICATION_TOOL_LICENSES.txt)，英文用户接口见[PUBLICATION_ENGLISH_GUIDE.md](PUBLICATION_ENGLISH_GUIDE.md)。第三方免费方案不自动开通付费试用。
+- **Codecov**：作者已完成账号接入。第一次OIDC上传因Repository not found失败，接入后原失败job重跑成功，平台commit API已返回同一源码SHA和complete。首次平台报告仅识别9/19个模块，85.17%为不完整范围，因此没有将它作为全包覆盖率挂到首页。现已修复XML为仓库相对路径，并增加全部模块/分母一致的防漏检查；须重新上传后核实平台完整19模块，不能只看进程退出0。
+- **SonarQube Cloud**：扫描/真实quality gate步骤已准备；作者尚待提供公开项目链接，当前仓库无SONAR_TOKEN、组织或project key，不展示未取得的徽章。可先在https://sonarcloud.io登录并创建Free公开项目；若使用自动扫描，先核验公开门槛，不能把未执行的CI扫描写成已执行。CI扫描需要仓库变量SONAR_ORGANIZATION、SONAR_PROJECT_KEY及本人直接存入GitHub secret的SONAR_TOKEN，再设SONAR_ENABLED=true；无需在聊天发送凭据。
+- **Zenodo DOI**：[归档收据](PUBLICATION_ARCHIVE.json)确认公开提交d8848a2的361个白名单文件逐个匹配，源码ZIP为30813931字节。归档和签名wheel已保存在本地runs/verification-d8848a2；CITATION.cff与.zenodo.json使用真实公开作者名和MIT，不虚构单位、ORCID或DOI。作者须在https://zenodo.org/uploads/new用本人账号实际提交归档，或接入https://zenodo.org/account/settings/github/；目前未取得DOI。这个归档是明确提交的研究快照，不是新的软件版本。
+- **OpenSSF Passing**：平台最后已保存仍为63%。仓库新增提议包含英文接口、实际静态分析及有明确适用理由的N/A；当前草案62项：47 Met、5 N/A、10未知，另外平台未列入草案的条目仍需审核。提议不是已保存状态，未知安全知识/响应历史等不自动改成Met。用户已确认同一CDLA资料许可，不重复索要许可；需在平台重新分析后自行核对保存。
+
+修复后的本地验证增加了上传XML完整性反例，共119项测试；XML使用defusedxml安全解析，不通过屏蔽安全发现换绿。开发依赖与运行依赖分开；许可文本见[PUBLICATION_TOOL_LICENSES.txt](PUBLICATION_TOOL_LICENSES.txt)，英文接口见[PUBLICATION_ENGLISH_GUIDE.md](PUBLICATION_ENGLISH_GUIDE.md)。平台免费方案不自动开通付费试用，账号接入和本人声明不代填。
 
 ## 比赛/期刊：尚未报名
 

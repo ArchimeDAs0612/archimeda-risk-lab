@@ -9,6 +9,7 @@
 较大研究先开Issue说明问题、输入许可、冻结/评价设计及兼容影响；小修复可直接PR。Fork并创建分支，保留失败证据，按README安装依赖。代码用Python标准风格和明确异常，SQL说明粒度及as-of边界；测试验证行为与反例，不镜像实现。文档链接到实际源码/结果，不把规划写成能力。
 
 ```sh
+python -m pip install -r requirements-quality.txt
 python -W error -m unittest discover -s tests -v
 ```
 

@@ -1,0 +1,12 @@
+{
+  "source_commit": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
+  "files": 361,
+  "bytes": 30813931,
+  "sha256": "5ff5a0631af3589e60075adb0cae02c7d345d5d497152d03f951a2af2f38a899",
+  "all_entries_match_git": true,
+  "doi": null,
+  "zenodo_published": false,
+  "creator": "ArchimeDAs0612",
+  "license": "MIT",
+  "note": "Manual Zenodo upload requires account access. No DOI has been reserved or published."
+}

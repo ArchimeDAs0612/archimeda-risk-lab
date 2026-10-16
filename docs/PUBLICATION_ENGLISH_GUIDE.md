@@ -18,6 +18,7 @@ source .venv/bin/activate
 python -m pip install -r requirements-lock.txt
 python -m pip install .
 python -m risklab --help
+python -m pip install -r requirements-quality.txt
 python -W error -m unittest discover -s tests -v
 ```
 

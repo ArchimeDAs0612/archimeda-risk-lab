@@ -1,10 +1,12 @@
 [run]
 branch = True
-source = risklab
+source = .
 relative_files = True
 data_file = runs/quality/.coverage
 
 [report]
+# Keep the complete package denominator while emitting repository-relative XML paths.
+include = risklab/*
 show_missing = True
 skip_empty = False
 

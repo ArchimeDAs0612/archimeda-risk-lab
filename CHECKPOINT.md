@@ -4,7 +4,7 @@
 
 ## 当前状态与有效基线
 
-- 上次正式交付：main `19c83211e486d73772d019c44cbe60bb749acd62`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38920979805)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 上次正式交付：main `bf545e0baf1b43f2a291a1f510cb0d339235b0ea`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38933893272)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
 - 当前交付：官方OpenSSF Scorecard首次真实评估4.5/10、18项检查，官方运行和公开API均验证；[原始证据与逐项不足](docs/PUBLICATION_ASSESSMENTS.md)及README官方动态徽章已接入。私密漏洞报告已启用，贡献/安全说明及Best Practices草案已公开。核心研究资产不变。
 - 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
@@ -16,9 +16,9 @@
 
 Best Practices项目15545的已核实草稿已保存。用户确认CDLA-Permissive-2.0资料许可后自行点击提交；后台读取https://www.bestpractices.dev/en/projects/15545.json确认badge_level=in_progress、badge_percentage_0=63、tiered_percentage=63，平台updated_at=2026-10-16T15:29:55.616Z（北京时间23:29:55）。仓库草案60项状态与保存记录全部一致：41项Met、1项N/A、18项未知；草案未列出的平台条目另计。此前0%公开记录和未保存63%仅是历史。
 
-公开新增基线d8848a2753423c266bce93764c89d4f47bd8d3a4已通过原研究两环境验收。Quality evidence的measurement/provenance实际成功；签名wheel在本地独立验证源码SHA、身份和runner，安装后9577行预测、8465行保存对照误差0，证据见PUBLICATION_PROVENANCE.json。Codecov首次因未接入失败；用户确认启用后重跑上传成功，但平台仅识别9/19模块，已定位XML路径问题并本地修复，尚待重新上传完整性验收。新增防漏测试后共119项通过，全包行覆盖86.61%、分支74.75%。12项LOW subprocess提示保留，新增/漂移/中高发现阻断。原始d8848a2报告作为历史基线，不冒充未来提交结果。
+公开新增基线d8848a2753423c266bce93764c89d4f47bd8d3a4已通过原研究两环境验收。Quality evidence的measurement/provenance实际成功；签名wheel在本地独立验证源码SHA、身份和runner，安装后9577行预测、8465行保存对照误差0，证据见PUBLICATION_PROVENANCE.json。Codecov首次因未接入失败；用户确认启用后重跑上传成功，但平台仅识别9/19模块，已定位XML路径问题并本地修复，已经在bf545e0baf1b43f2a291a1f510cb0d339235b0ea的官方API核验complete、19模块/1748语句全量匹配，平台81.4%；与纯行86.61%统计口径不同。新增防漏测试后共119项通过，全包行覆盖86.61%、分支74.75%。12项LOW subprocess提示保留，新增/漂移/中高发现阻断。原始d8848a2报告作为历史基线，不冒充未来提交结果。
 
-当前下一动作：发布路径修复与真实证据收据，重新上传Codecov并核实完整19模块及公开徽章，再同步首页。Sonar公开项目链接已向用户询问，当前尚无账号项目/secret；Zenodo本人提交所需30MB归档和元数据已交付，361文件逐项绑定d8848a2。OpenSSF已保存仍为63%，仓库新草案62项（47 Met、5 N/A、10未知）尚未在平台保存，安全知识不能代填。没有DOI、Sonar门槛或Passing时不展示取得。自动续跑仍暂停，不新增调度、算法研究或版本。
+当前下一动作：同步已取得的Codecov完整报告徽章与收据，并核验同SHA CI/Pages。Sonar仍在创建组织引导阶段，用户发来的链接含Team/Advanced Security选项，已指导改选Free；未将临时登录参数写入工程或转发请求，仍待真正公开项目链接/结果。Zenodo本人提交所需30MB归档和元数据已交付，361文件逐项绑定d8848a2。OpenSSF已保存仍为63%，仓库新草案62项（47 Met、5 N/A、10未知）尚未在平台保存，安全知识不能代填。没有DOI、Sonar门槛或Passing时不展示取得。自动续跑仍暂停，不新增调度、算法研究或版本。
 
 ## 尚未授权启动的研究待办
 

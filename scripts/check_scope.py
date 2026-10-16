@@ -16,6 +16,8 @@ MAINTENANCE = {
     'config/security-review.json', 'scripts/quality_evidence.py',
     'tests/test_quality_evidence.py', 'docs/PUBLICATION_QUALITY.json',
     'docs/PUBLICATION_PROVENANCE.json', 'docs/PUBLICATION_ARCHIVE.json',
+    'docs/PUBLICATION_CODECOV.json', 'docs/PUBLICATION_SONAR.json',
+    'docs/PUBLICATION_ZENODO.json',
     'demo/index.html', '.github/workflows/check.yml',
     'scripts/audit_release.py', 'scripts/check_scope.py',
     'scripts/prepare_release.py', 'scripts/build_pages.py',

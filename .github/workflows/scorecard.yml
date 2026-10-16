@@ -1,0 +1,37 @@
+name: OpenSSF Scorecard
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: scorecard-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  analysis:
+    name: Public repository security assessment
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      # Short-lived OIDC proves result provenance to the public Scorecard API.
+      # No repository write, personal token, cloud account or paid runner.
+      id-token: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Run official OpenSSF Scorecard and publish actual results
+        uses: ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e # v2.5.0
+        with:
+          results_file: scorecard-results.json
+          results_format: json
+          publish_results: true
+      - name: Keep inspectable raw assessment
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: openssf-scorecard-results
+          path: scorecard-results.json
+          if-no-files-found: error
+          retention-days: 7

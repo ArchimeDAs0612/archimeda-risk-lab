@@ -9,6 +9,7 @@ import subprocess
 # Explicit maintenance exceptions, not a broad scripts/tests exemption.
 MAINTENANCE = {
     'AGENTS.md', 'README.md', 'CHECKPOINT.md', 'CHANGELOG.md',
+    'SECURITY.md', 'CONTRIBUTING.md', '.bestpractices.json', '.github/workflows/scorecard.yml',
     'demo/index.html', '.github/workflows/check.yml',
     'scripts/audit_release.py', 'scripts/check_scope.py',
     'scripts/prepare_release.py', 'scripts/build_pages.py',

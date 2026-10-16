@@ -8781,6 +8781,10 @@
       }
     },
     "badge": "https://sonarcloud.io/api/project_badges/measure?project=ArchimeDAs0612_archimeda-risk-lab&metric=alert_status",
-    "scope": "Default Sonar way new-code gate; no condition changed. Overall initial security E and 65 findings remain unresolved. Automatic analysis does not import coverage."
+    "scope": "Default Sonar way new-code gate; no condition changed. Overall initial security E and 65 findings remain unresolved. Automatic analysis does not import coverage.",
+    "analysis_warnings": [
+      "Automatic analysis defaults to Python 3.10 through 3.14; it did not use sonar.python.version=3.9,3.11 from the prepared CI sonar-project.properties.",
+      "sonar.tests is not configured for automatic analysis. SonarPython heuristically detected test-like files and skipped production rules on them; explicit test classification remains pending."
+    ]
   }
 }

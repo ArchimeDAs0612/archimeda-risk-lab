@@ -14,7 +14,7 @@ TEXT={'.py','.sql','.json','.csv','.html','.md','.txt','.js','.cjs','.css','.yml
 
 def candidate_files(root):
     root=Path(root)
-    names={'.gitignore','README.md','CHECKPOINT.md','CHANGELOG.md','LICENSE','pyproject.toml',
+    names={'.gitignore','AGENTS.md','README.md','CHECKPOINT.md','CHANGELOG.md','LICENSE','pyproject.toml',
            'requirements.txt','requirements-lock.txt','package.json'}
     for directory in ['risklab','config','examples','scripts','tests','.github',
                       'artifacts/rc1','artifacts/reference','artifacts/baseline-v0.1.1']:
@@ -25,7 +25,7 @@ def candidate_files(root):
                 if directory=='artifacts/rc1' and 'data' in relative.parts and any(p.startswith('bad_') or p=='disabled_downstream' for p in relative.parts):
                     continue
                 names.add(relative.as_posix())
-    for pattern in ['RC1_*','INTERVIEW_GUIDE.md','licenses.md','third-party-licenses.txt','playwright-dev-licenses.txt']:
+    for pattern in ['RC1_*','GITHUB_FIRST.md','PUBLICATION_*','INTERVIEW_GUIDE.md','licenses.md','third-party-licenses.txt','playwright-dev-licenses.txt']:
         names.update(p.relative_to(root).as_posix() for p in (root/'docs').glob(pattern) if p.is_file())
     names.add('demo/index.html')
     for name in names:

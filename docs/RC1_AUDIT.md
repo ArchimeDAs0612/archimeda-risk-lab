@@ -1,3 +1,5 @@
+> 本审计产生于私有候选阶段；公开交付状态随后按 [GitHub-First记录](PUBLICATION_STATUS.md) 更新。原技术审计证据和失败结果保留。
+
 # 独立审计与修复 · 0.3.0rc1
 
 **Share with caveats / Partial**：已具备可复现的合成风险研究工程，可展示算法方法、反例和工程修复；尚非真实业务验证或LLM Agent作品。Lab长期职业使命持续进行。以下 VERIFIED 始终有范围限定，不用文件或测试数量替代技术成熟度。

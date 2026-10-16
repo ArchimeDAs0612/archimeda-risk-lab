@@ -1,3 +1,10 @@
+# GitHub-First Continuous Delivery Protocol V1.0 · 2026-10-16
+
+- 将GitHub公开提交、同SHA CI、远程复现和安全/许可纳入每轮正式交付；长期规则写入AGENTS和项目规范。
+- 增加真实公共Linux CI、静态Lab Pages构建与来源指纹、匿名公开交付核验和防假通过测试。
+- 复用0.3.0rc1的风险研究代码和真实实验，算法版本/定义不变；未新增付费服务、未修改个人门户。
+- 实际发布、CI和Pages状态以PUBLICATION_STATUS及GitHub运行结果为准，不在配置时冒称成功。
+
 # 0.3.0rc1 · Mission audit and release candidate · 2026-10-16
 
 - 校准长期使命，版本验收不等于职业资产使命完成；入口按真实证据陈述。

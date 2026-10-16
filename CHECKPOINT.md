@@ -5,10 +5,12 @@ Long-term mission: ONGOING. A completed version or N6—N10 does not complete th
 Current authorized round: Mission Correction & Public Release, 0.3.0rc1.
 Audit and fixes implemented; corrected simulator/ablations/time bounds, saved inference, label identification and deterministic field tool evaluation passed. See docs/RC1_AUDIT.md and docs/RC1_VERIFICATION.json.
 
-Private GitHub Release Candidate staging and real remote clone verification: PASSED. Current work: awaiting explicit conversion of the new repository to PUBLIC. See docs/RC1_RELEASE.md for actual repository visibility and remaining publication authorization.
+Private RC and remote clone verification: PASSED. Standing public authorization received via GitHub-First V1.0. Current work: branch CI, safe PUBLIC conversion, Pages and anonymous remote delivery verification. See docs/RC1_RELEASE.md for actual repository visibility and remaining publication authorization.
 
 Original V0.2 artifacts and release ZIP remain historical evidence. Current source no longer has V0.2 hashes; do not present the old checkpoint as a current source verification. Earlier automatic check exists but is PAUSED; automatic engineering resume remains NOT_ENABLED.
 
 Private authorized-round ledger: .lab-run/mission-release-20261016/run-state.json. Old V0.2 start/deadline were not changed. No new scheduler or paid service. No other project edits.
 
 Owner exercises remain unverified. Next research: selective-label training/selection bias and authorized blind external/time-rolling validation. Actual LLM Agent remains missing.
+
+Permanent delivery rules: AGENTS.md and docs/GITHUB_FIRST.md. Current publication evidence: docs/PUBLICATION_STATUS.md. Never report formal delivery before public remote/CI/reproduction verification.

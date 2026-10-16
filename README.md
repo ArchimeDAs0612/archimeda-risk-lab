@@ -1,4 +1,6 @@
-# Risk Decision Lab
+# 阿基米达风险决策实验室
+
+**Archimeda Risk Lab**
 
 **用独立合成支付实验，研究风险信号、完整规则与决策证据。**
 
@@ -6,9 +8,9 @@ Independent risk decision research, with reproducible synthetic evidence and exp
 
 Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段治理能力重新实现为可复核的公开实验：帮助作者深化方法，让招聘者看懂贡献，让面试官能运行代码、改变输入并质疑结论。研究围绕同一长期问题链增量积累。
 
-独立模拟数据和代码；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[risk-decision-lab](https://github.com/ArchimeDAs0612/risk-decision-lab) · **[在线静态 Demo](https://archimedas0612.github.io/risk-decision-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
+独立模拟数据和代码；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[archimeda-risk-lab](https://github.com/ArchimeDAs0612/archimeda-risk-lab) · **[在线静态 Demo](https://archimedas0612.github.io/archimeda-risk-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
 
-[![reproducible-research](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml)
+[![reproducible-research](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml)
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
@@ -87,7 +89,7 @@ OR拒绝回放使模拟拒绝从9变为99，额外拒绝72个风险零事件；�
 
 ## Demo、五分钟演示与复现
 
-[在线静态Demo](https://archimedas0612.github.io/risk-decision-lab/)提供预生成真实结果；[交互工作台](https://archimedas0612.github.io/risk-decision-lab/artifacts/rc1/research/normal/index.html)可检索事件、比较模型、修改规则并在浏览器重算覆盖/动作。它没有在线训练、Python后端或实时Agent。
+[在线静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)提供预生成真实结果；[交互工作台](https://archimedas0612.github.io/archimeda-risk-lab/artifacts/rc1/research/normal/index.html)可检索事件、比较模型、修改规则并在浏览器重算覆盖/动作。它没有在线训练、Python后端或实时Agent。
 
 五分钟顺序：**0–1分**看支付案例和as-of窗口；**1–2分**比较基线及负增益；**2–3分**查看完整候选和失败种子；**3–4分**改变OR/AND/审核并核对事件；**4–5分**查看字段失败恢复与标签识别边界。[详细路线与追问](docs/INTERVIEW_GUIDE.md)。新实验和字段工具执行使用下面的本地Python命令。
 
@@ -124,6 +126,8 @@ python3 -m venv .venv
 
 ## 来源、贡献与适用边界
 
+项目原名Risk Decision Lab，现使用作者个人标识Archimeda（阿基米达）。仓库更名沿用同一Git历史、研究与Release；Python包名`risk-decision-lab`、模块/命令`risklab`及历史实验名称保留兼容。历史收据中的旧仓库链接不冒充新实验。
+
 [技术追问与本人练习](docs/INTERVIEW_GUIDE.md) · [详细方法](docs/RC1_METHODS.md) · [当前检查点](CHECKPOINT.md) · [测试与验证](docs/RC1_VERIFICATION.json) · [版本记录](CHANGELOG.md) · [许可](docs/licenses.md) · [GitHub交付说明](docs/GITHUB_FIRST.md)。
 
 本项目由作者定义研究问题并借助AI实现与修订工程；公开价值由可检查的代码、实际实验和失败证据支持。工程验收不代表本人已独立掌握，专题提供解释设计、修改核心逻辑、验证失败反例的练习，尚无本人完成记录。实习经验只作为问题意识来源，Lab成果不倒填为企业贡献。
@@ -136,4 +140,4 @@ python3 -m venv .venv
 
 未来新经验先深化原专题，有独立问题与成果再增专题；持续执行“通用能力抽象→独立实现→实际实验→验证→公开交付”。日常修改形成提交，不按聊天次数创建版本。
 
-作者：[ArchimeDAs0612](https://github.com/ArchimeDAs0612) · 讨论、复现问题及贡献：[GitHub Issues](https://github.com/ArchimeDAs0612/risk-decision-lab/issues)。提交复现问题请附配置、输入生成方式和失败行为，勿上传企业、私人或未获许可材料。
+作者：[ArchimeDAs0612](https://github.com/ArchimeDAs0612) · 讨论、复现问题及贡献：[GitHub Issues](https://github.com/ArchimeDAs0612/archimeda-risk-lab/issues)。提交复现问题请附配置、输入生成方式和失败行为，勿上传企业、私人或未获许可材料。

@@ -52,7 +52,7 @@ def api_json(path,sources):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--repository',default='ArchimeDAs0612/risk-decision-lab')
+    parser.add_argument('--repository',default='ArchimeDAs0612/archimeda-risk-lab')
     parser.add_argument('--expected-commit',required=True)
     parser.add_argument('--pages-url')
     parser.add_argument('--out',type=Path)
@@ -77,7 +77,7 @@ def main():
             url=args.pages_url.rstrip('/')
             pages=load(url+'/site-provenance.json')
             body,kind=fetch(url+'/')
-            pages['http_verified']='text/html' in kind and b'risk decision lab' in body.lower()
+            pages['http_verified']='text/html' in kind and b'archimeda risk lab' in body.lower()
         result=judge(repo,head,runs,args.expected_commit,args.repository,pages)
         result['checks']['anonymous_public_repository_http']=public_http
         result['status']='DELIVERED / PUBLISHED' if all(result['checks'].values()) else 'LOCAL COMPLETE / PUBLICATION BLOCKED'

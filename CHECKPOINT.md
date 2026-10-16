@@ -1,18 +1,18 @@
-# Risk Decision Lab · 当前检查点与唯一主要待办
+# 阿基米达风险决策实验室 · 当前检查点与唯一主要待办
 
-长期使命：持续进行。当前授权范围：收敛长期规范、中文研究专题与README，完成对应验证和GitHub同步；不新增研究实验、版本或调度。
+长期使命：持续进行。当前授权范围：个人品牌更名为阿基米达风险决策实验室 / Archimeda Risk Lab，同步原仓库、README、Demo及链接并验收；不新增研究实验、版本或调度。
 
 ## 当前状态与有效基线
 
-- 上次正式交付：main `5f6ffad3c197c35fe8412d20a2eae74c123d5cb5`，[同提交CI成功](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/runs/38870739796)，[公开仓库](https://github.com/ArchimeDAs0612/risk-decision-lab)与[静态Demo](https://archimedas0612.github.io/risk-decision-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
-- 本次实现：长期规则已合并到[AGENTS](AGENTS.md)，[专题入口](studies/README.md)连接现有代码/证据；README补足贡献、专题和阅读路线；CI按变化范围复用有效实验，支持增量历史审查。
-- 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/risk-decision-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
+- 上次正式交付：main `5ab81b344e21321422a4f6182b45b9c64ccf6553`，[同提交CI成功](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/runs/38880188741)，[公开仓库](https://github.com/ArchimeDAs0612/archimeda-risk-lab)与[静态Demo](https://archimedas0612.github.io/archimeda-risk-lab/)可访问。原公开收据保留为历史，不把旧绿色CI当本提交验收。
+- 本次变更：对外品牌、仓库地址及静态Demo链接统一更名。仓库ID仍应为`1421775237`，沿用原Git历史/Issues/Release；保留技术包名和历史产物，不重新训练。规则、专题、指标和失败案例继续有效。
+- 本提交的正式接受条件：相关测试、安全/许可、远程内容、同SHA CI和Pages来源一致。最新验收事实以[GitHub main检查](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)及在线`site-provenance.json`为准；本文件不预先宣称未来CI成功。
 - 核心有效产物及验证：[结果](docs/RC1_RESULTS.md)、[方法](docs/RC1_METHODS.md)、[研究验证](docs/RC1_VERIFICATION.json)、[干净环境复现](docs/RC1_REPRODUCTION.json)、[公开克隆复现](docs/PUBLICATION_REPRODUCTION.json)。本次不改训练、配置、模型、预测、标签或失败结果，不重新训练。
 - 历史V0.2和私有阶段记录保留，不再作为当前状态副本。自动续跑任务仍暂停，自动写入式续跑未启用；本次不新建Goal或绝对截止时间，不重置旧任务时间。
 
 ## 验证与当前下一动作
 
-本地实际通过：114项行为测试；保存证据33项核验及475项独立指标/路径/动作复算；公开候选、静态站点扫描与专题链接检查。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
+此前实际通过：114项行为测试、保存证据33项核验及475项独立复算。此次对应检查为公开候选/链接/品牌识别、行为测试、增量安全审查和更名后仓库身份/Pages来源一致；实际同提交CI为最终验收来源。研究产物及核心算法相对有效基线无变化，未重训有效实验；依赖未变，原许可与干净环境复现继续有效。
 
 本次工程待办已实现。正式接受状态由**本提交同SHA CI + main一致 + Pages来源一致**判定；成功即本次COMPLETED，停止执行。下一动作仅在相关检查失败时从失败处修复，不自动开启下列研究。后续自然语言需求默认在现有专题增量修改。
 

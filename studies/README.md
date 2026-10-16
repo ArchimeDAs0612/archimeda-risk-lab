@@ -10,6 +10,6 @@
 | [支付风控字段资产治理](field-governance.md) | 字段结构、语义、时点和版本变化如何约束下游？ | 盘点、冲突、禁用、依赖失效及人工审核 |
 | [字段智能工作流与 Agent 研究](field-workflow.md) | 工具是否真正执行？失败如何恢复？ | 18次确定性工具调用、28项检查；实际LLM尚未实现 |
 
-[真实结果的统一来源](../docs/RC1_RESULTS.md) · [方法与统计边界](../docs/RC1_METHODS.md) · [可操作Demo](https://archimedas0612.github.io/risk-decision-lab/) · [五分钟技术路线](../docs/INTERVIEW_GUIDE.md) · [当前待办](../CHECKPOINT.md)。专题中的少量代表数值只是阅读摘要，完整精度及过程以链接的JSON/CSV为准。
+[真实结果的统一来源](../docs/RC1_RESULTS.md) · [方法与统计边界](../docs/RC1_METHODS.md) · [可操作Demo](https://archimedas0612.github.io/archimeda-risk-lab/) · [五分钟技术路线](../docs/INTERVIEW_GUIDE.md) · [当前待办](../CHECKPOINT.md)。专题中的少量代表数值只是阅读摘要，完整精度及过程以链接的JSON/CSV为准。
 
 每篇末尾有三项本人练习：解释设计、修改逻辑、验证失败。它们尚未由本人验收；工程可运行不能替代独立掌握。

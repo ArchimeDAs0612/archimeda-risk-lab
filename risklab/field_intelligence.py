@@ -62,6 +62,12 @@ def inventory(frame,metadata=None,domain='fictional_wallet'):
         available=contract.get('availability_ts')
         if name.startswith('context_json.'):parent='context_json'
         else:parent=None
+        source = parent if parent else name
+        path_parts = name.split('.')[1:] if parent else []
+        field_domain = contract.get('domain', domain)
+        identity = {'id':digest([field_domain,source,path_parts]), 'domain':field_domain,
+                    'source':source, 'json_pointer':''.join('/'+key.replace('~','~0').replace('/','~1') for key in path_parts),
+                    'parent_id':digest([field_domain,source,path_parts[:-1]]) if path_parts else None}
         time_status='UNKNOWN_REQUIRES_CONTRACT'
         if available:
             if available not in frame or frame[available].isna().any():time_status='MISSING_AVAILABILITY'
@@ -74,7 +80,7 @@ def inventory(frame,metadata=None,domain='fictional_wallet'):
         outside=int(np.sum((finite<bounds[0])|(finite>bounds[1]))) if isinstance(bounds,list) and len(bounds)==2 and len(finite) else 0
         if outside:conflicts.append('OUTSIDE_DECLARED_BOUNDS')
         if nonfinite:conflicts.append('NONFINITE_NUMERIC')
-        records.append({'field':name,'physical_type_observed':physical,'logical_type_candidate':logical,'n':n,
+        records.append({'field':name,'identity':identity,'physical_type_observed':physical,'logical_type_candidate':logical,'n':n,
           'coverage':len(observed)/n if n else 0,'unique_values':int(serialized.nunique()),'repeated_value_rows':int(serialized.duplicated().sum()),
           'nonfinite_values':nonfinite,'non_integer_numeric_values':int(np.sum(finite!=np.floor(finite))),'outside_declared_bounds':outside,'min':float(finite.min()) if len(finite) else None,'max':float(finite.max()) if len(finite) else None,
           'domain':contract.get('domain',domain),'observation_object':contract.get('observation_object','payment_attempt_candidate'),

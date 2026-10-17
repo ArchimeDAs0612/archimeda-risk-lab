@@ -45,3 +45,15 @@ python -m risklab selection-study --config config/label_protocol.json --out runs
 ```
 
 [真实结果与失败机制](../artifacts/rc1/selective-maturity/result.json) · [选择器展示](../artifacts/rc1/selective-maturity/index.html)。练习：手算联合概率与有效样本量；解释为什么一次IPW会离oracle更远；改变成本但不改风险状态，复算策略反转。
+
+## 补充反证：权重总量与错误的成熟假设
+
+第一轮IPW使用原始逆概率权重，因此不仅改变各样本相对重要性，也改变损失与固定L2正则的相对尺度。为排查这个替代解释，在[新冻结协议](../config/label_sensitivity_protocol.json)和独立种子918733上加入权重归一到观测训练样本数的第三臂，不重挑上一轮结果。实际最终AP：观测0.149696、原始IPW 0.149504、归一IPW 0.149507；归一化未带来明显改善，选择窗仍选观测臂。权重总量13256.70→12691；预处理完全相同。固定总量仍不意味着三者的最优正则强度相同。
+
+进一步只在隔离评价器中让风险标签延迟10—25天、其他标签2—15天，保留未知结局。80次可见机制抽样下，直接观测风险率均值0.053119，错误套用独立成熟假设后0.052744；完整总体真值0.066641。评价器知道真实联合概率时为0.066606，作为机制诊断参照。该概率依赖隐藏结局，不能交给真实学习者；实际不知道观测机制时仍是不可识别。没有把“能写出权重”当作识别条件成立。
+
+```bash
+python -m risklab label-sensitivity --config config/label_sensitivity_protocol.json --out runs/label-sensitivity
+```
+
+[三臂与延迟反证交互](../artifacts/rc1/label-sensitivity/index.html) · [实际结果](../artifacts/rc1/label-sensitivity/result.json) · [实现](../risklab/label_sensitivity.py) · [手算概率与等价正则测试](../tests/test_label_sensitivity.py)。

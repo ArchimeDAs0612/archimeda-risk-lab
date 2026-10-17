@@ -1,0 +1,229 @@
+{
+  "sizes": [
+    {
+      "rows": 300,
+      "event_rows": 422,
+      "field_full": {
+        "median": 0.015471583999999927,
+        "measurements": [
+          0.017157958000000084,
+          0.015376749999999939,
+          0.015678625000000057,
+          0.015471583999999927,
+          0.015468833000000126
+        ]
+      },
+      "field_incremental": {
+        "median": 0.012247541999999889,
+        "measurements": [
+          0.012247541999999889,
+          0.012267625000000004,
+          0.012134166999999918,
+          0.012589458000000109,
+          0.01189862499999994
+        ]
+      },
+      "field_python_peak_bytes": 690892,
+      "recomputed": [
+        "amount"
+      ],
+      "reused": [
+        "account_age_days",
+        "attempts_24h",
+        "auth_strength",
+        "client_emulator",
+        "client_latency_ms",
+        "declines_7d",
+        "device_age_days",
+        "device_users_7d",
+        "geo_distance",
+        "prior_score",
+        "tool_users_7d",
+        "user_amount_1h",
+        "user_amount_24h",
+        "user_amount_7d",
+        "user_attempts_1h",
+        "user_attempts_24h",
+        "user_attempts_7d",
+        "user_devices_7d",
+        "user_tools_7d"
+      ],
+      "equal_field_results": true,
+      "data_construction": {
+        "median": 0.009775082999999851,
+        "measurements": [
+          0.01509379200000005,
+          0.009655124999999876,
+          0.009775082999999851
+        ]
+      },
+      "data_python_peak_bytes": 1034018,
+      "pattern_100_batches": {
+        "median": 0.0692117080000001,
+        "measurements": [
+          0.06935220799999997,
+          0.0692117080000001,
+          0.06746624999999984
+        ]
+      },
+      "pattern_count": 8,
+      "membership": {
+        "rows": 300,
+        "leaves": 8,
+        "all_paths_equal": true
+      }
+    },
+    {
+      "rows": 1500,
+      "event_rows": 2079,
+      "field_full": {
+        "median": 0.059001542000000295,
+        "measurements": [
+          0.05985708299999981,
+          0.059001542000000295,
+          0.06094579099999997,
+          0.05872645899999984,
+          0.058413959000000126
+        ]
+      },
+      "field_incremental": {
+        "median": 0.04321804099999982,
+        "measurements": [
+          0.043158166999999636,
+          0.04321804099999982,
+          0.04361058299999998,
+          0.0428801670000003,
+          0.043246832999999985
+        ]
+      },
+      "field_python_peak_bytes": 2839038,
+      "recomputed": [
+        "amount"
+      ],
+      "reused": [
+        "account_age_days",
+        "attempts_24h",
+        "auth_strength",
+        "client_emulator",
+        "client_latency_ms",
+        "declines_7d",
+        "device_age_days",
+        "device_users_7d",
+        "geo_distance",
+        "prior_score",
+        "tool_users_7d",
+        "user_amount_1h",
+        "user_amount_24h",
+        "user_amount_7d",
+        "user_attempts_1h",
+        "user_attempts_24h",
+        "user_attempts_7d",
+        "user_devices_7d",
+        "user_tools_7d"
+      ],
+      "equal_field_results": true,
+      "data_construction": {
+        "median": 0.03341616699999994,
+        "measurements": [
+          0.03458324999999984,
+          0.03341616699999994,
+          0.033132417000000025
+        ]
+      },
+      "data_python_peak_bytes": 4731609,
+      "pattern_100_batches": {
+        "median": 0.08414662499999981,
+        "measurements": [
+          0.08414116699999985,
+          0.08414662499999981,
+          0.08425458299999988
+        ]
+      },
+      "pattern_count": 8,
+      "membership": {
+        "rows": 1500,
+        "leaves": 8,
+        "all_paths_equal": true
+      }
+    },
+    {
+      "rows": 6000,
+      "event_rows": 8260,
+      "field_full": {
+        "median": 0.22549312499999985,
+        "measurements": [
+          0.23080345800000046,
+          0.22623450000000034,
+          0.22549312499999985,
+          0.22507312499999976,
+          0.22457266600000025
+        ]
+      },
+      "field_incremental": {
+        "median": 0.15865237499999996,
+        "measurements": [
+          0.16069966700000027,
+          0.15865237499999996,
+          0.15920624999999955,
+          0.15841533300000066,
+          0.15641966600000057
+        ]
+      },
+      "field_python_peak_bytes": 7698759,
+      "recomputed": [
+        "amount"
+      ],
+      "reused": [
+        "account_age_days",
+        "attempts_24h",
+        "auth_strength",
+        "client_emulator",
+        "client_latency_ms",
+        "declines_7d",
+        "device_age_days",
+        "device_users_7d",
+        "geo_distance",
+        "prior_score",
+        "tool_users_7d",
+        "user_amount_1h",
+        "user_amount_24h",
+        "user_amount_7d",
+        "user_attempts_1h",
+        "user_attempts_24h",
+        "user_attempts_7d",
+        "user_devices_7d",
+        "user_tools_7d"
+      ],
+      "equal_field_results": true,
+      "data_construction": {
+        "median": 0.13727074999999989,
+        "measurements": [
+          0.14026149999999937,
+          0.13727074999999989,
+          0.13684654200000068
+        ]
+      },
+      "data_python_peak_bytes": 18771958,
+      "pattern_100_batches": {
+        "median": 0.1400865420000006,
+        "measurements": [
+          0.1400865420000006,
+          0.137503959,
+          0.1411352499999996
+        ]
+      },
+      "pattern_count": 8,
+      "membership": {
+        "rows": 6000,
+        "leaves": 8,
+        "all_paths_equal": true
+      }
+    }
+  ],
+  "python": "3.9.6",
+  "platform": "Darwin",
+  "source_sha256": "9ae78a3e6a72846667a6ff0743be6abb61b6e7ced1b2275f120b3fee325ab567",
+  "field_source_sha256": "85280fac9205aefc2959ea58ff1723f187b88bb0edc48d9a56e375cca414d0dd",
+  "scope": "fixed serial workloads, no timeout claims; tracemalloc excludes native allocations and total RSS; timings vary by host",
+  "before_commit": "d2a31d0c5c82779b2d18b04de546916819bb6fa4"
+}

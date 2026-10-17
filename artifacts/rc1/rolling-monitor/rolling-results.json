@@ -1,0 +1,2252 @@
+{
+  "windows": [
+    {
+      "train_end": 40,
+      "select_interval": [
+        47,
+        62
+      ],
+      "test_interval": [
+        69,
+        84
+      ],
+      "splits": {
+        "train": 7290,
+        "select": 2819,
+        "test": 2825
+      },
+      "frozen": {
+        "winner": "forest",
+        "thresholds": {
+          "lr": 0.11463503614697626,
+          "forest": 0.113674079708124,
+          "hist_gradient": 0.11797834763639847
+        },
+        "selection": {
+          "lr": {
+            "n": 2819,
+            "positives": 171,
+            "base_rate": 0.060659808442710184,
+            "ap": 0.1507492243591846,
+            "auc": 0.6606067030617834,
+            "brier": 0.05578499217006276,
+            "threshold": 0.11463503614697626,
+            "flagged": 282,
+            "flagged_fraction": 0.10003547357218871,
+            "precision": 0.1276595744680851,
+            "recall": 0.21052631578947367,
+            "false_positive_rate": 0.09290030211480363,
+            "ks": 0.27526677973887387,
+            "pr_auc_trapezoid": 0.14677019887070736,
+            "lift_top_decile": 2.104516610675625,
+            "top_decile_coverage": 0.10003547357218871
+          },
+          "forest": {
+            "n": 2819,
+            "positives": 171,
+            "base_rate": 0.060659808442710184,
+            "ap": 0.15581147824887281,
+            "auc": 0.6701935478171763,
+            "brier": 0.05510019886976211,
+            "threshold": 0.113674079708124,
+            "flagged": 282,
+            "flagged_fraction": 0.10003547357218871,
+            "precision": 0.13120567375886524,
+            "recall": 0.21637426900584794,
+            "false_positive_rate": 0.09252265861027191,
+            "ks": 0.2597723538453384,
+            "pr_auc_trapezoid": 0.15395093336373228,
+            "lift_top_decile": 2.162975405416615,
+            "top_decile_coverage": 0.10003547357218871
+          },
+          "hist_gradient": {
+            "n": 2819,
+            "positives": 171,
+            "base_rate": 0.060659808442710184,
+            "ap": 0.14533313873312828,
+            "auc": 0.6621713838978109,
+            "brier": 0.05606986862366342,
+            "threshold": 0.11797834763639847,
+            "flagged": 282,
+            "flagged_fraction": 0.10003547357218871,
+            "precision": 0.14893617021276595,
+            "recall": 0.24561403508771928,
+            "false_positive_rate": 0.09063444108761329,
+            "ks": 0.23816275330824543,
+            "pr_auc_trapezoid": 0.14257239483297027,
+            "lift_top_decile": 2.4552693791215625,
+            "top_decile_coverage": 0.10003547357218871
+          }
+        },
+        "rule": {
+          "leaf_id": 14,
+          "predicates": [
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 0.6521786153316498,
+              "operator": ">"
+            },
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 18.685702323913574,
+              "operator": "<="
+            },
+            {
+              "feature_index": 4,
+              "transformed_feature": "geo_distance",
+              "threshold": 0.2051173597574234,
+              "operator": ">"
+            },
+            {
+              "feature_index": 3,
+              "transformed_feature": "auth_strength",
+              "threshold": 0.5,
+              "operator": "<="
+            }
+          ],
+          "train_support": 256
+        },
+        "candidates": [
+          {
+            "path": {
+              "leaf_id": 3,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.37129826843738556,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 50
+            },
+            "selection_n": 6,
+            "selection_positives": 3,
+            "wilson_lower": 0.1876128068994087,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 4,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.37129826843738556,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 94
+            },
+            "selection_n": 16,
+            "selection_positives": 7,
+            "wilson_lower": 0.2309836333518552,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 6,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 51
+            },
+            "selection_n": 1,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 7,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 66
+            },
+            "selection_n": 0,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 11,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2051173597574234,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 3.900954842567444,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 58
+            },
+            "selection_n": 14,
+            "selection_positives": 1,
+            "wilson_lower": 0.012721886112291648,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 12,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2051173597574234,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 3.900954842567444,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 721
+            },
+            "selection_n": 85,
+            "selection_positives": 8,
+            "wilson_lower": 0.04846448154841264,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 14,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2051173597574234,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 256
+            },
+            "selection_n": 39,
+            "selection_positives": 8,
+            "wilson_lower": 0.10779590197911117,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 15,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2051173597574234,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 897
+            },
+            "selection_n": 137,
+            "selection_positives": 12,
+            "wilson_lower": 0.0508150094192758,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 18,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.35703346133232117,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 439
+            },
+            "selection_n": 226,
+            "selection_positives": 19,
+            "wilson_lower": 0.054480048481347174,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 19,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.35703346133232117,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 3414
+            },
+            "selection_n": 1703,
+            "selection_positives": 74,
+            "wilson_lower": 0.03475374483157566,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 21,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.35703346133232117,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.27822117507457733,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 854
+            },
+            "selection_n": 396,
+            "selection_positives": 17,
+            "wilson_lower": 0.02697289870993019,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 22,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.685702323913574,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.35703346133232117,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.27822117507457733,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 390
+            },
+            "selection_n": 196,
+            "selection_positives": 22,
+            "wilson_lower": 0.07530197986635534,
+            "eligible": true
+          }
+        ],
+        "preprocessing": {
+          "input_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score"
+          ],
+          "output_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score",
+            "amount__missing",
+            "account_age_days__missing",
+            "device_age_days__missing",
+            "auth_strength__missing",
+            "geo_distance__missing",
+            "attempts_24h__missing",
+            "declines_7d__missing",
+            "prior_score__missing"
+          ],
+          "train_medians": {
+            "amount": 29.841208160336617,
+            "account_age_days": 40.577418981481486,
+            "device_age_days": 30.464650237547854,
+            "auth_strength": 1.0,
+            "geo_distance": 0.22444034376845842,
+            "attempts_24h": 1.0,
+            "declines_7d": 0.0,
+            "prior_score": 0.25837961631142914
+          },
+          "missing": "replace by train median and append a missing indicator per input",
+          "dtype": "float32",
+          "fit_scope": "train only"
+        },
+        "split_ids": {
+          "train": "832f5536c11d06ad11217466d2037efb77575cbb1df4d2a7bb28bf8e85af5640",
+          "select": "d2f4e08dbfef850c0cbd127829cd9f360044b924b16d49cfa662b42213a285a7",
+          "test": "05af4f41f032da2ac0e0ef3995396a831b7c6bbd0a8b1f2b98bc6df3f59e10b9"
+        }
+      },
+      "models": {
+        "lr": {
+          "n": 2825,
+          "positives": 177,
+          "base_rate": 0.06265486725663717,
+          "ap": 0.12194660793867929,
+          "auc": 0.6179741239524127,
+          "brier": 0.05867735188364684,
+          "threshold": 0.11463503614697626,
+          "flagged": 268,
+          "flagged_fraction": 0.09486725663716813,
+          "precision": 0.16044776119402984,
+          "recall": 0.24293785310734464,
+          "false_positive_rate": 0.08496978851963746,
+          "ks": 0.1747678665915647,
+          "pr_auc_trapezoid": 0.11975867649135408,
+          "lift_top_decile": 2.4814836996666063,
+          "top_decile_coverage": 0.10017699115044248
+        },
+        "forest": {
+          "n": 2825,
+          "positives": 177,
+          "base_rate": 0.06265486725663717,
+          "ap": 0.13998628019049758,
+          "auc": 0.6507992387389694,
+          "brier": 0.0570609473687443,
+          "threshold": 0.113674079708124,
+          "flagged": 289,
+          "flagged_fraction": 0.10230088495575221,
+          "precision": 0.14878892733564014,
+          "recall": 0.24293785310734464,
+          "false_positive_rate": 0.09290030211480363,
+          "ks": 0.2309556727601687,
+          "pr_auc_trapezoid": 0.13605726746018515,
+          "lift_top_decile": 2.368688986045397,
+          "top_decile_coverage": 0.10017699115044248
+        },
+        "hist_gradient": {
+          "n": 2825,
+          "positives": 177,
+          "base_rate": 0.06265486725663717,
+          "ap": 0.12287829327599681,
+          "auc": 0.6214817280284022,
+          "brier": 0.058957885230716156,
+          "threshold": 0.11797834763639847,
+          "flagged": 272,
+          "flagged_fraction": 0.09628318584070797,
+          "precision": 0.13970588235294118,
+          "recall": 0.21468926553672316,
+          "false_positive_rate": 0.08836858006042296,
+          "ks": 0.16715525628552408,
+          "pr_auc_trapezoid": 0.11935264341583735,
+          "lift_top_decile": 2.199496915613583,
+          "top_decile_coverage": 0.10017699115044248
+        }
+      },
+      "paired_hgb_minus_lr": {
+        "estimate": 0.0009316853373175227,
+        "ci95": [
+          -0.024973358941996256,
+          0.03263241170389093
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "refit_rule": {
+        "n": 22,
+        "positives": 5,
+        "coverage": 0.007787610619469027,
+        "rate": 0.22727272727272727,
+        "enrichment": 3.6273754494093473
+      },
+      "original_rule_transfer": {
+        "n": 22,
+        "positives": 5,
+        "coverage": 0.007787610619469027,
+        "rate": 0.22727272727272727,
+        "enrichment": 3.6273754494093473
+      },
+      "new_vs_original_membership": {
+        "n": 22,
+        "positives": 5,
+        "coverage": 0.007787610619469027,
+        "rate": 0.22727272727272727,
+        "enrichment": 3.6273754494093473,
+        "overlap": 22,
+        "added": 0,
+        "removed": 0,
+        "jaccard": 1.0
+      },
+      "exact_membership": {
+        "rows": 2825,
+        "leaves": 12,
+        "all_paths_equal": true
+      },
+      "cold_start": {
+        "seen": {
+          "n": 1951,
+          "positives": 107,
+          "base_rate": 0.0548436699128652,
+          "ap": 0.08642738789502585,
+          "auc": 0.6186064427189977,
+          "brier": 0.051523511518181846,
+          "threshold": 0.113674079708124,
+          "flagged": 32,
+          "flagged_fraction": 0.016401845207585853,
+          "precision": 0.09375,
+          "recall": 0.028037383177570093,
+          "false_positive_rate": 0.015726681127982648
+        },
+        "unseen": {
+          "n": 874,
+          "positives": 70,
+          "base_rate": 0.08009153318077804,
+          "ap": 0.21305957787789062,
+          "auc": 0.7089907604832978,
+          "brier": 0.06942197407863827,
+          "threshold": 0.113674079708124,
+          "flagged": 257,
+          "flagged_fraction": 0.2940503432494279,
+          "precision": 0.1556420233463035,
+          "recall": 0.5714285714285714,
+          "false_positive_rate": 0.26990049751243783
+        }
+      }
+    },
+    {
+      "train_end": 70,
+      "select_interval": [
+        77,
+        92
+      ],
+      "test_interval": [
+        99,
+        114
+      ],
+      "splits": {
+        "train": 12975,
+        "select": 2885,
+        "test": 2933
+      },
+      "frozen": {
+        "winner": "forest",
+        "thresholds": {
+          "lr": 0.10765725489399483,
+          "forest": 0.11395103499557216,
+          "hist_gradient": 0.11242064592876218
+        },
+        "selection": {
+          "lr": {
+            "n": 2885,
+            "positives": 206,
+            "base_rate": 0.07140381282495667,
+            "ap": 0.13660356262292042,
+            "auc": 0.6486879251423332,
+            "brier": 0.06527928498593606,
+            "threshold": 0.10765725489399483,
+            "flagged": 289,
+            "flagged_fraction": 0.10017331022530329,
+            "precision": 0.17993079584775087,
+            "recall": 0.2524271844660194,
+            "false_positive_rate": 0.08846584546472565,
+            "ks": 0.2263813841565285,
+            "pr_auc_trapezoid": 0.1343828357122727,
+            "lift_top_decile": 2.5199045923337926,
+            "top_decile_coverage": 0.10017331022530329
+          },
+          "forest": {
+            "n": 2885,
+            "positives": 206,
+            "base_rate": 0.07140381282495667,
+            "ap": 0.15741243923003145,
+            "auc": 0.6570050410057368,
+            "brier": 0.06413830374867062,
+            "threshold": 0.11395103499557216,
+            "flagged": 289,
+            "flagged_fraction": 0.10017331022530329,
+            "precision": 0.1903114186851211,
+            "recall": 0.2669902912621359,
+            "false_positive_rate": 0.08734602463605823,
+            "ks": 0.23979205398333675,
+            "pr_auc_trapezoid": 0.15476518092946967,
+            "lift_top_decile": 2.665283703429973,
+            "top_decile_coverage": 0.10017331022530329
+          },
+          "hist_gradient": {
+            "n": 2885,
+            "positives": 206,
+            "base_rate": 0.07140381282495667,
+            "ap": 0.1554321169122503,
+            "auc": 0.647360629419034,
+            "brier": 0.06476464734175352,
+            "threshold": 0.11242064592876218,
+            "flagged": 289,
+            "flagged_fraction": 0.10017331022530329,
+            "precision": 0.18339100346020762,
+            "recall": 0.25728155339805825,
+            "false_positive_rate": 0.08809257185516985,
+            "ks": 0.23233564183128755,
+            "pr_auc_trapezoid": 0.15262373391560327,
+            "lift_top_decile": 2.5683642960325193,
+            "top_decile_coverage": 0.10017331022530329
+          }
+        },
+        "rule": {
+          "leaf_id": 23,
+          "predicates": [
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 0.6521786153316498,
+              "operator": ">"
+            },
+            {
+              "feature_index": 4,
+              "transformed_feature": "geo_distance",
+              "threshold": 0.2885179668664932,
+              "operator": ">"
+            },
+            {
+              "feature_index": 7,
+              "transformed_feature": "prior_score",
+              "threshold": 0.323607474565506,
+              "operator": ">"
+            },
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 55.1715030670166,
+              "operator": "<="
+            }
+          ],
+          "train_support": 948
+        },
+        "candidates": [
+          {
+            "path": {
+              "leaf_id": 3,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 0,
+                  "transformed_feature": "amount",
+                  "threshold": 22.028456687927246,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 74
+            },
+            "selection_n": 9,
+            "selection_positives": 5,
+            "wilson_lower": 0.26664734574402965,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 5,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 0,
+                  "transformed_feature": "amount",
+                  "threshold": 22.028456687927246,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.3163529336452484,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 80
+            },
+            "selection_n": 16,
+            "selection_positives": 4,
+            "wilson_lower": 0.10181901984237347,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 6,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 0,
+                  "transformed_feature": "amount",
+                  "threshold": 22.028456687927246,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.3163529336452484,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 59
+            },
+            "selection_n": 7,
+            "selection_positives": 1,
+            "wilson_lower": 0.02567895594897479,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 8,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 53
+            },
+            "selection_n": 1,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 9,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 66
+            },
+            "selection_n": 1,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 13,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 19.27322006225586,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 13.980155944824219,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 482
+            },
+            "selection_n": 101,
+            "selection_positives": 15,
+            "wilson_lower": 0.092115201386504,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 14,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 19.27322006225586,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 13.980155944824219,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 1210
+            },
+            "selection_n": 80,
+            "selection_positives": 8,
+            "wilson_lower": 0.051546999177685536,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 16,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 19.27322006225586,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 1368
+            },
+            "selection_n": 366,
+            "selection_positives": 28,
+            "wilson_lower": 0.05345711102132439,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 17,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 19.27322006225586,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 5556
+            },
+            "selection_n": 1430,
+            "selection_positives": 70,
+            "wilson_lower": 0.038926002997899986,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 20,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.323607474565506,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.699822425842285,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 445
+            },
+            "selection_n": 28,
+            "selection_positives": 3,
+            "wilson_lower": 0.0371176920547995,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 21,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.323607474565506,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.699822425842285,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 2272
+            },
+            "selection_n": 559,
+            "selection_positives": 39,
+            "wilson_lower": 0.0514533155506123,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 23,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.323607474565506,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 55.1715030670166,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 948
+            },
+            "selection_n": 109,
+            "selection_positives": 17,
+            "wilson_lower": 0.09971462165945089,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 24,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.2885179668664932,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.323607474565506,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 55.1715030670166,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 362
+            },
+            "selection_n": 178,
+            "selection_positives": 16,
+            "wilson_lower": 0.056085894482741976,
+            "eligible": true
+          }
+        ],
+        "preprocessing": {
+          "input_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score"
+          ],
+          "output_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score",
+            "amount__missing",
+            "account_age_days__missing",
+            "device_age_days__missing",
+            "auth_strength__missing",
+            "geo_distance__missing",
+            "attempts_24h__missing",
+            "declines_7d__missing",
+            "prior_score__missing"
+          ],
+          "train_medians": {
+            "amount": 29.477404984562494,
+            "account_age_days": 45.335092592592595,
+            "device_age_days": 41.609910381014146,
+            "auth_strength": 1.0,
+            "geo_distance": 0.2222096181789932,
+            "attempts_24h": 1.0,
+            "declines_7d": 0.0,
+            "prior_score": 0.25181541569155014
+          },
+          "missing": "replace by train median and append a missing indicator per input",
+          "dtype": "float32",
+          "fit_scope": "train only"
+        },
+        "split_ids": {
+          "train": "1d40be0b4898fff713720e6c06e74b668e9f9590631dd6e4487d2273105d840a",
+          "select": "3f3fd154a762e25a667099371b173b6b6e67da17dabcc7bdb45bf01062561b3a",
+          "test": "ebd3dfa90b5ff6579800b54105bd9b5b698e6aa562d88570dc29eeb5191ecf8c"
+        }
+      },
+      "models": {
+        "lr": {
+          "n": 2933,
+          "positives": 195,
+          "base_rate": 0.06648482782134334,
+          "ap": 0.15532187911846748,
+          "auc": 0.6634676256297878,
+          "brier": 0.060639594557035166,
+          "threshold": 0.10765725489399483,
+          "flagged": 235,
+          "flagged_fraction": 0.08012274122059325,
+          "precision": 0.19148936170212766,
+          "recall": 0.23076923076923078,
+          "false_positive_rate": 0.06939371804236669,
+          "ks": 0.24424153883613345,
+          "pr_auc_trapezoid": 0.15320426846965177,
+          "lift_top_decile": 2.66031746031746,
+          "top_decile_coverage": 0.10023866348448687
+        },
+        "forest": {
+          "n": 2933,
+          "positives": 195,
+          "base_rate": 0.06648482782134334,
+          "ap": 0.1618238913130945,
+          "auc": 0.6799123447772096,
+          "brier": 0.05988779454160585,
+          "threshold": 0.11395103499557216,
+          "flagged": 216,
+          "flagged_fraction": 0.07364473235594954,
+          "precision": 0.18055555555555555,
+          "recall": 0.2,
+          "false_positive_rate": 0.06464572680788896,
+          "ks": 0.258794553389148,
+          "pr_auc_trapezoid": 0.1592686296250968,
+          "lift_top_decile": 2.4556776556776554,
+          "top_decile_coverage": 0.10023866348448687
+        },
+        "hist_gradient": {
+          "n": 2933,
+          "positives": 195,
+          "base_rate": 0.06648482782134334,
+          "ap": 0.1371431822109782,
+          "auc": 0.6454093386525819,
+          "brier": 0.061340614475462824,
+          "threshold": 0.11242064592876218,
+          "flagged": 212,
+          "flagged_fraction": 0.07228094101602454,
+          "precision": 0.1650943396226415,
+          "recall": 0.1794871794871795,
+          "false_positive_rate": 0.06464572680788896,
+          "ks": 0.24586166207787835,
+          "pr_auc_trapezoid": 0.13349396686198345,
+          "lift_top_decile": 2.1487179487179486,
+          "top_decile_coverage": 0.10023866348448687
+        }
+      },
+      "paired_hgb_minus_lr": {
+        "estimate": -0.018178696907489272,
+        "ci95": [
+          -0.04648007442556385,
+          0.007963373533621343
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "refit_rule": {
+        "n": 80,
+        "positives": 16,
+        "coverage": 0.02727582679849983,
+        "rate": 0.2,
+        "enrichment": 3.008205128205128
+      },
+      "original_rule_transfer": {
+        "n": 21,
+        "positives": 3,
+        "coverage": 0.007159904534606206,
+        "rate": 0.14285714285714285,
+        "enrichment": 2.1487179487179486
+      },
+      "new_vs_original_membership": {
+        "n": 80,
+        "positives": 16,
+        "coverage": 0.02727582679849983,
+        "rate": 0.2,
+        "enrichment": 3.008205128205128,
+        "overlap": 7,
+        "added": 73,
+        "removed": 14,
+        "jaccard": 0.07446808510638298
+      },
+      "exact_membership": {
+        "rows": 2933,
+        "leaves": 13,
+        "all_paths_equal": true
+      },
+      "cold_start": {
+        "seen": {
+          "n": 2266,
+          "positives": 137,
+          "base_rate": 0.06045895851721095,
+          "ap": 0.10584760381420556,
+          "auc": 0.6566874547866961,
+          "brier": 0.05599714775353245,
+          "threshold": 0.11395103499557216,
+          "flagged": 75,
+          "flagged_fraction": 0.03309796999117388,
+          "precision": 0.14666666666666667,
+          "recall": 0.08029197080291971,
+          "false_positive_rate": 0.030061061531235323
+        },
+        "unseen": {
+          "n": 667,
+          "positives": 58,
+          "base_rate": 0.08695652173913043,
+          "ap": 0.2790806507443491,
+          "auc": 0.7405299813147614,
+          "brier": 0.07310549412447587,
+          "threshold": 0.11395103499557216,
+          "flagged": 141,
+          "flagged_fraction": 0.21139430284857572,
+          "precision": 0.19858156028368795,
+          "recall": 0.4827586206896552,
+          "false_positive_rate": 0.18555008210180624
+        }
+      }
+    },
+    {
+      "train_end": 100,
+      "select_interval": [
+        107,
+        122
+      ],
+      "test_interval": [
+        129,
+        144
+      ],
+      "splits": {
+        "train": 18625,
+        "select": 2965,
+        "test": 2901
+      },
+      "frozen": {
+        "winner": "forest",
+        "thresholds": {
+          "lr": 0.09987246910479243,
+          "forest": 0.1022770452662581,
+          "hist_gradient": 0.1121056266818336
+        },
+        "selection": {
+          "lr": {
+            "n": 2965,
+            "positives": 227,
+            "base_rate": 0.07655986509274873,
+            "ap": 0.16097490393425615,
+            "auc": 0.6593304222188613,
+            "brier": 0.06914810615647733,
+            "threshold": 0.09987246910479243,
+            "flagged": 297,
+            "flagged_fraction": 0.10016863406408094,
+            "precision": 0.18855218855218855,
+            "recall": 0.24669603524229075,
+            "false_positive_rate": 0.08802045288531775,
+            "ks": 0.2685583547590929,
+            "pr_auc_trapezoid": 0.15756498259665508,
+            "lift_top_decile": 2.462807220516472,
+            "top_decile_coverage": 0.10016863406408094
+          },
+          "forest": {
+            "n": 2965,
+            "positives": 227,
+            "base_rate": 0.07655986509274873,
+            "ap": 0.1685023590585556,
+            "auc": 0.6780665651959854,
+            "brier": 0.06862166163844956,
+            "threshold": 0.1022770452662581,
+            "flagged": 297,
+            "flagged_fraction": 0.10016863406408094,
+            "precision": 0.1750841750841751,
+            "recall": 0.2290748898678414,
+            "false_positive_rate": 0.08948137326515705,
+            "ks": 0.26769757017405543,
+            "pr_auc_trapezoid": 0.16659186964064177,
+            "lift_top_decile": 2.28689241905101,
+            "top_decile_coverage": 0.10016863406408094
+          },
+          "hist_gradient": {
+            "n": 2965,
+            "positives": 227,
+            "base_rate": 0.07655986509274873,
+            "ap": 0.1524955423202196,
+            "auc": 0.671425652346,
+            "brier": 0.0691924867056021,
+            "threshold": 0.1121056266818336,
+            "flagged": 297,
+            "flagged_fraction": 0.10016863406408094,
+            "precision": 0.15824915824915825,
+            "recall": 0.20704845814977973,
+            "false_positive_rate": 0.09130752373995617,
+            "ks": 0.2686436287460219,
+            "pr_auc_trapezoid": 0.14924319891298887,
+            "lift_top_decile": 2.066998917219182,
+            "top_decile_coverage": 0.10016863406408094
+          }
+        },
+        "rule": {
+          "leaf_id": 19,
+          "predicates": [
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 0.6521786153316498,
+              "operator": ">"
+            },
+            {
+              "feature_index": 2,
+              "transformed_feature": "device_age_days",
+              "threshold": 18.707938194274902,
+              "operator": "<="
+            },
+            {
+              "feature_index": 4,
+              "transformed_feature": "geo_distance",
+              "threshold": 0.20511022955179214,
+              "operator": ">"
+            },
+            {
+              "feature_index": 3,
+              "transformed_feature": "auth_strength",
+              "threshold": 0.5,
+              "operator": ">"
+            }
+          ],
+          "train_support": 1396
+        },
+        "candidates": [
+          {
+            "path": {
+              "leaf_id": 4,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.3730396330356598,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 8.028483867645264,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 50
+            },
+            "selection_n": 0,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 5,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.3730396330356598,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 8.028483867645264,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 57
+            },
+            "selection_n": 5,
+            "selection_positives": 1,
+            "wilson_lower": 0.036223160969787456,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 7,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.3730396330356598,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 0,
+                  "transformed_feature": "amount",
+                  "threshold": 21.989130973815918,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 52
+            },
+            "selection_n": 5,
+            "selection_positives": 1,
+            "wilson_lower": 0.036223160969787456,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 8,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.3730396330356598,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 0,
+                  "transformed_feature": "amount",
+                  "threshold": 21.989130973815918,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 134
+            },
+            "selection_n": 3,
+            "selection_positives": 3,
+            "wilson_lower": 0.4384939195509822,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 10,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 58
+            },
+            "selection_n": 0,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 11,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 32.139427185058594,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 7,
+                  "transformed_feature": "prior_score",
+                  "threshold": 0.32598723471164703,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 74
+            },
+            "selection_n": 3,
+            "selection_positives": 0,
+            "wilson_lower": 0.0,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 15,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.20511022955179214,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 13.125683307647705,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 365
+            },
+            "selection_n": 25,
+            "selection_positives": 2,
+            "wilson_lower": 0.02221993369109194,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 16,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.20511022955179214,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 1,
+                  "transformed_feature": "account_age_days",
+                  "threshold": 13.125683307647705,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 800
+            },
+            "selection_n": 55,
+            "selection_positives": 5,
+            "wilson_lower": 0.039457573336373924,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 18,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.20511022955179214,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 375
+            },
+            "selection_n": 19,
+            "selection_positives": 3,
+            "wilson_lower": 0.05520371039927826,
+            "eligible": false
+          },
+          {
+            "path": {
+              "leaf_id": 19,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.20511022955179214,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 1396
+            },
+            "selection_n": 85,
+            "selection_positives": 16,
+            "wilson_lower": 0.1193204211030341,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 22,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.30588680505752563,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 2161
+            },
+            "selection_n": 419,
+            "selection_positives": 40,
+            "wilson_lower": 0.07089123747364649,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 23,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.30588680505752563,
+                  "operator": "<="
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 8764
+            },
+            "selection_n": 1548,
+            "selection_positives": 75,
+            "wilson_lower": 0.03882610293390383,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 25,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.30588680505752563,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": "<="
+                }
+              ],
+              "train_support": 869
+            },
+            "selection_n": 171,
+            "selection_positives": 25,
+            "wilson_lower": 0.10102852924009678,
+            "eligible": true
+          },
+          {
+            "path": {
+              "leaf_id": 26,
+              "predicates": [
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 0.6521786153316498,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 2,
+                  "transformed_feature": "device_age_days",
+                  "threshold": 18.707938194274902,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 4,
+                  "transformed_feature": "geo_distance",
+                  "threshold": 0.30588680505752563,
+                  "operator": ">"
+                },
+                {
+                  "feature_index": 3,
+                  "transformed_feature": "auth_strength",
+                  "threshold": 0.5,
+                  "operator": ">"
+                }
+              ],
+              "train_support": 3470
+            },
+            "selection_n": 627,
+            "selection_positives": 56,
+            "wilson_lower": 0.0694193892089413,
+            "eligible": true
+          }
+        ],
+        "preprocessing": {
+          "input_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score"
+          ],
+          "output_columns": [
+            "amount",
+            "account_age_days",
+            "device_age_days",
+            "auth_strength",
+            "geo_distance",
+            "attempts_24h",
+            "declines_7d",
+            "prior_score",
+            "amount__missing",
+            "account_age_days__missing",
+            "device_age_days__missing",
+            "auth_strength__missing",
+            "geo_distance__missing",
+            "attempts_24h__missing",
+            "declines_7d__missing",
+            "prior_score__missing"
+          ],
+          "train_medians": {
+            "amount": 29.838185305739657,
+            "account_age_days": 50.46195601851852,
+            "device_age_days": 50.570381855575576,
+            "auth_strength": 1.0,
+            "geo_distance": 0.2205256759102451,
+            "attempts_24h": 1.0,
+            "declines_7d": 0.0,
+            "prior_score": 0.24916325716913068
+          },
+          "missing": "replace by train median and append a missing indicator per input",
+          "dtype": "float32",
+          "fit_scope": "train only"
+        },
+        "split_ids": {
+          "train": "b1defd6912b36b82d0b1f8da6e0b3fcf64abf900132ba091cf656d615c6bf800",
+          "select": "7ebd4792eaf3a8b895b3dd9bf70bf2dc01371b1dc7fd9cda2e3901937f7ae05d",
+          "test": "1dcb3f871d78bd3f96f2d340eb432c162986859404a6cedf196e1c07b122c7e4"
+        }
+      },
+      "models": {
+        "lr": {
+          "n": 2901,
+          "positives": 208,
+          "base_rate": 0.07169941399517407,
+          "ap": 0.12462375590730136,
+          "auc": 0.610991102287983,
+          "brier": 0.06629307676002698,
+          "threshold": 0.09987246910479243,
+          "flagged": 255,
+          "flagged_fraction": 0.08790072388831438,
+          "precision": 0.1607843137254902,
+          "recall": 0.1971153846153846,
+          "false_positive_rate": 0.07946528035647976,
+          "ks": 0.17107386671998626,
+          "pr_auc_trapezoid": 0.12148260484063231,
+          "lift_top_decile": 2.108842188739096,
+          "top_decile_coverage": 0.10031023784901758
+        },
+        "forest": {
+          "n": 2901,
+          "positives": 208,
+          "base_rate": 0.07169941399517407,
+          "ap": 0.14280118168055386,
+          "auc": 0.6468863363706474,
+          "brier": 0.06499896114332113,
+          "threshold": 0.1022770452662581,
+          "flagged": 259,
+          "flagged_fraction": 0.08927955877283696,
+          "precision": 0.17374517374517376,
+          "recall": 0.21634615384615385,
+          "false_positive_rate": 0.07946528035647976,
+          "ks": 0.20779478134194063,
+          "pr_auc_trapezoid": 0.13927814182491027,
+          "lift_top_decile": 2.348483346550357,
+          "top_decile_coverage": 0.10031023784901758
+        },
+        "hist_gradient": {
+          "n": 2901,
+          "positives": 208,
+          "base_rate": 0.07169941399517407,
+          "ap": 0.14268746422804499,
+          "auc": 0.6471817961095719,
+          "brier": 0.06526768786396181,
+          "threshold": 0.1121056266818336,
+          "flagged": 286,
+          "flagged_fraction": 0.09858669424336436,
+          "precision": 0.16783216783216784,
+          "recall": 0.23076923076923078,
+          "false_positive_rate": 0.08837727441515039,
+          "ks": 0.24016145848210457,
+          "pr_auc_trapezoid": 0.13957161608234273,
+          "lift_top_decile": 2.3964115781126094,
+          "top_decile_coverage": 0.10031023784901758
+        }
+      },
+      "paired_hgb_minus_lr": {
+        "estimate": 0.018063708320743624,
+        "ci95": [
+          -0.0031587517176072397,
+          0.03649378293383532
+        ],
+        "valid_repeats": 160,
+        "resampling": "paired user clusters"
+      },
+      "refit_rule": {
+        "n": 93,
+        "positives": 11,
+        "coverage": 0.03205791106514995,
+        "rate": 0.11827956989247312,
+        "enrichment": 1.6496588089330027
+      },
+      "original_rule_transfer": {
+        "n": 20,
+        "positives": 5,
+        "coverage": 0.006894174422612892,
+        "rate": 0.25,
+        "enrichment": 3.4867788461538463
+      },
+      "new_vs_original_membership": {
+        "n": 93,
+        "positives": 11,
+        "coverage": 0.03205791106514995,
+        "rate": 0.11827956989247312,
+        "enrichment": 1.6496588089330027,
+        "overlap": 0,
+        "added": 93,
+        "removed": 20,
+        "jaccard": 0.0
+      },
+      "exact_membership": {
+        "rows": 2901,
+        "leaves": 14,
+        "all_paths_equal": true
+      },
+      "cold_start": {
+        "seen": {
+          "n": 2431,
+          "positives": 165,
+          "base_rate": 0.06787330316742081,
+          "ap": 0.10555781474626924,
+          "auc": 0.6319572601567306,
+          "brier": 0.06272749107424092,
+          "threshold": 0.1022770452662581,
+          "flagged": 124,
+          "flagged_fraction": 0.051007815713698064,
+          "precision": 0.13709677419354838,
+          "recall": 0.10303030303030303,
+          "false_positive_rate": 0.047219770520741396
+        },
+        "unseen": {
+          "n": 470,
+          "positives": 43,
+          "base_rate": 0.09148936170212765,
+          "ap": 0.2602966364297701,
+          "auc": 0.7289363324437667,
+          "brier": 0.07674777760701042,
+          "threshold": 0.1022770452662581,
+          "flagged": 135,
+          "flagged_fraction": 0.2872340425531915,
+          "precision": 0.2074074074074074,
+          "recall": 0.6511627906976745,
+          "false_positive_rate": 0.2505854800936768
+        }
+      }
+    }
+  ],
+  "protocol": {
+    "seed": 2026101803,
+    "orders": 22000,
+    "days": 160,
+    "train_ends": [
+      40,
+      70,
+      100
+    ],
+    "maturity_gap": 7,
+    "selection_days": 15,
+    "test_days": 15,
+    "models": [
+      "lr",
+      "forest",
+      "hist_gradient"
+    ],
+    "review_fraction": 0.1,
+    "tree_depth": 4,
+    "min_leaf": 50,
+    "candidate_min_select": 30,
+    "bootstrap_repeats": 160,
+    "scope": "predeclared expanding-train rolling-origin synthetic validation; overlapping training histories; three test intervals do not overlap; all risk truth is independent mature simulator audit",
+    "monitor": {
+      "seed": 84117,
+      "null_calibration_repeats": 120,
+      "evaluation_repeats": 80,
+      "subjects_per_batch": 60,
+      "alpha": 0.05,
+      "features": [
+        "amount",
+        "prior_score",
+        "account_age_days"
+      ],
+      "scenarios": [
+        "null",
+        "population_mix",
+        "label_prior",
+        "conditional_relationship"
+      ],
+      "scope": "user-cluster resampling of a fixed isolated synthetic final pool; empirical alarm response, not production safety certification"
+    }
+  }
+}

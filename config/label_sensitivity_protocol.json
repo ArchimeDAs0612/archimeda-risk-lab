@@ -1,0 +1,25 @@
+{
+  "seed": 918733,
+  "orders": 18000,
+  "days": 120,
+  "train_end_day": 64,
+  "train_asof_day": 71,
+  "select_start_day": 71,
+  "select_end_day": 88,
+  "select_asof_day": 95,
+  "test_start_day": 95,
+  "evaluation_asof_day": 127,
+  "audit_probability": 0.25,
+  "audit_repeats": 80,
+  "delay_min_days": 2,
+  "delay_max_days": 15,
+  "review_fraction": 0.1,
+  "costs": [4, 25, 100],
+  "hypotheses": [
+    "Raw IPW weight totals also change the loss/regularization scale; normalize weights to observed n to separate that sensitivity.",
+    "An outcome-dependent delay violates the known independent-maturity correction. Compare deliberately misspecified versus evaluator-known joint probability on a frozen test cohort."
+  ],
+  "arms": ["observed", "ipw_raw", "ipw_normalized"],
+  "delay_by_outcome_days": {"0": [2, 15], "1": [10, 25]},
+  "interpretation": "new seed and prespecified supplemental protocol; oracle joint probability is evaluator-only, unavailable to a deployed learner; no repair of old test conclusions"
+}

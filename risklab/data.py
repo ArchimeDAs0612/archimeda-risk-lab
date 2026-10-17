@@ -15,6 +15,13 @@ def assert_unique(frame, key, name):
         raise AdmissionError(f"{name}: missing or duplicate {key}; join multiplication blocked")
 
 
+def require_epoch_seconds(frame, name):
+    if name not in frame or frame[name].dtype.kind not in 'iuf':
+        raise AdmissionError('numeric epoch seconds required: '+name)
+    if not np.isfinite(frame[name].to_numpy(float)).all():
+        raise AdmissionError('missing/nonfinite epoch seconds: '+name)
+
+
 def build_samples(events, labels):
     required_events = {"event_id", "user_id", "decision_ts", "action", "result_ts"}
     required_labels = {"event_id", "risk_label", "label_available_ts"}
@@ -24,6 +31,7 @@ def build_samples(events, labels):
     assert_unique(labels, "event_id", "labels")
     if events.decision_ts.isna().any():
         raise AdmissionError("missing decision timestamp; temporal conclusions blocked")
+    require_epoch_seconds(events, 'decision_ts')
     with sqlite3.connect(":memory:") as db:
         events.to_sql("events", db, index=False)
         db.execute("CREATE INDEX event_time ON events(user_id,decision_ts)")
@@ -56,6 +64,12 @@ def split_samples(sample, config):
 
 def pair_cases(events, window_hours):
     """Earliest later successful payment by same user, many-to-one; not same order assumed."""
+    assert_unique(events, 'event_id', 'pairing events')
+    require_epoch_seconds(events, 'decision_ts')
+    if not {'order_id', 'user_id', 'payment_result', 'action'}.issubset(events) or events.user_id.isna().any():
+        raise AdmissionError('missing pairing schema or subject')
+    if isinstance(window_hours, bool) or not isinstance(window_hours, (int, float)) or not np.isfinite(window_hours) or window_hours <= 0:
+        raise AdmissionError('pairing window must be positive finite hours')
     with sqlite3.connect(":memory:") as db:
         events.to_sql("events", db, index=False)
         db.execute("CREATE INDEX pair_idx ON events(user_id,decision_ts)")

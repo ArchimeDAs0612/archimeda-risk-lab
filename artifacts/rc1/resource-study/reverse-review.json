@@ -1,0 +1,29 @@
+{
+  "status": "VERIFIED_LOCAL_PENDING_REMOTE_REPRODUCTION",
+  "tests": 148,
+  "log_sha256": "454d3383f079f2da2e393ac6c7fc3645272e54cea2e49539e5eced72d5628281",
+  "reverse_review": {
+    "mode": "same implementer, separate hypothesis-first review; not independent human review",
+    "frozen_snapshot": "cc9f7e3",
+    "hypotheses": "Frozen source cc9f7e3 / research changes; original accepted baseline e437816.\nIndependent reverse review hypotheses before implementation of the following checks:\n1. Strings, booleans, nonfinite and timezone-formatted timestamps may escape numeric as-of admission or crash instead of structured rejection.\n2. SQL windows may disagree with an independent Python reference on equality, lower boundaries, shared entities or shuffled input rows.\n3. Event duplicates may multiply case-pair coverage and should fail explicitly.\n4. Modified rule paths may inherit original leaf counts; repaired before this snapshot with a regression.\n5. Cache identity ordering may be tampered without changing per-field values; repaired before this snapshot with a regression.\n6. Model selection must remain unchanged if final labels are permuted; existing regression and new frozen selection boundaries to inspect.\n7. Source-mix or missingness monitoring alone cannot establish conditional-risk safety; preregister null and conditional-shift falsification before running.\n",
+    "checked_behaviors": [
+      "SQL 10 windows against independent Python sets at equal/lower boundaries and shuffled rows",
+      "text/bool/timezone/nonfinite timestamps rejected before SQL/model operations",
+      "duplicate pairing blocked",
+      "all final labels inverted: fit/calibration/model selection/thresholds/rules/predictions identical, final metrics change",
+      "parent JSON veto removes real child vectors and blocks old materialization",
+      "controlled conditional shift leaves features and prevalence unchanged while score quality changes"
+    ]
+  },
+  "failed_attempts": [
+    "Initial standalone unittest module import lacked tests search path; use unittest discover -s tests.",
+    "Initial final-label fixture chose split before decimal CSV roundtrip; changed fixture to exact integers to preserve target split, assertions unchanged.",
+    "Legacy missing timestamp message regression detected; original error contract restored, test unchanged.",
+    "macOS physical-core discovery unavailable in sandbox under -Werror; explicit one-core environment in public commands, no warning filtering."
+  ],
+  "limits": [
+    "automated invariants and reference comparisons are not general statistical proof",
+    "LLM tool use not implemented or evaluated; no authorized model channel",
+    "remote clean-room reproduction still pending at this receipt"
+  ]
+}

@@ -1,5 +1,6 @@
 """Explicit workspace and finite-resource contracts for new research entrypoints."""
 from pathlib import Path
+import math
 
 
 def workspace_path(value, workspace=None):
@@ -30,7 +31,7 @@ def credit_config(config):
         raise ValueError('one to five training seeds required')
     for seed in config['seeds']+[config['primary_seed'], config['split_seed']]:
         bounded_integer(seed, 'seed', 0, 2**32-1)
-    if config['primary_seed'] not in config['seeds'] or config['review_fraction'] != .1:
+    if config['primary_seed'] not in config['seeds'] or not math.isclose(config['review_fraction'], .1, rel_tol=0, abs_tol=0):
         raise ValueError('invalid primary seed or unregistered review fraction')
     if config['cost_ratios'] != [2, 5, 10]:
         raise ValueError('unregistered cost matrix')
@@ -47,5 +48,5 @@ def label_config(config):
              config['select_end_day'], config['select_asof_day'], config['test_start_day'], config['days'], config['evaluation_asof_day']]
     if not all(type(v) is int for v in times) or times != sorted(times) or times[-1] > 400:
         raise ValueError('unbounded or unordered temporal protocol')
-    if config['costs'] != [4, 25, 100] or config['review_fraction'] != .1:
+    if config['costs'] != [4, 25, 100] or not math.isclose(config['review_fraction'], .1, rel_tol=0, abs_tol=0):
         raise ValueError('unregistered strategy matrix')

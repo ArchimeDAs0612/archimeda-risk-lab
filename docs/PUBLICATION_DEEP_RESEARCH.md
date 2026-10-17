@@ -9,7 +9,9 @@
 - 02:33—02:50：修复资源/路径边界与macOS兼容问题，执行实际检查；首批PR15于02:50:46合入。期间等待CI时推进独立反向审查及后续实验。
 - 02:50—03:06：滚动验证、监控失败实验、结果依赖延迟与归一IPW补充实验、JSON子字段和性能优化；提交`e504911`于03:06:35保存。
 - 03:06—03:17：修复报告输出边界，干净远程克隆/安装/重建、源码外安装包运行及逐项比较；PR16最终研究头`a83ce9d`在03:17:14前通过全部PR必需检查，随后合入main `afb0379`。
-- 后续仅进行公开站点验收、保存复现收据与本报告；本轮实际结束时刻及最终公开提交见聊天最终交付、[main CI](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)和公开`site-provenance.json`。本报告不预写尚未发生的部署成功。
+- 后续仅进行公开站点验收、保存复现收据与本报告；本轮实际结束时刻及最终公开提交见聊天最终交付、[main CI](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml?query=branch%3Amain)和公开`site-provenance.json`。研究main `afb0379`的匿名访问、同SHA CI与Pages已实际核验九项通过，[收据](../artifacts/rc1/resource-study/publication-research.json)记录确认时刻；最后文档提交仍另作同SHA检查。
+
+停止理由：本轮全部具备输入条件的主要任务及扩展已实际完成；真实LLM部分按条件条款保留阻塞，确定性替代已验收。无必要为了用满8小时扩项。
 
 这些区间以真实提交/CI和运行记录为边界，包含阅读、编码、检查与网络等待，不是纯CPU时间。干净环境中信用矩阵17.71秒、选择性标签1.13秒、补充标签1.19秒、滚动研究5.61秒；计算短不等于完成了研究审查。没有用sleep、重复无关实验或无限轮询凑满8小时。自动续跑未启用，未使用屏幕或现有浏览器控制。
 

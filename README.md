@@ -2,13 +2,13 @@
 
 **Archimeda Risk Lab**
 
-**用独立合成支付实验，研究风险信号、完整规则与决策证据。**
+**用独立模拟与许可明确的外部信用观测，研究风险信号、完整规则与决策证据。**
 
-Independent risk decision research, with reproducible synthetic evidence and explicit limits.
+Independent risk research with reproducible synthetic and external observational evidence.
 
 Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段治理能力重新实现为可复核的公开实验：帮助作者深化方法，让招聘者看懂贡献，让面试官能运行代码、改变输入并质疑结论。研究围绕同一长期问题链增量积累。
 
-独立模拟数据和代码；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[archimeda-risk-lab](https://github.com/ArchimeDAs0612/archimeda-risk-lab) · **[在线静态 Demo](https://archimedas0612.github.io/archimeda-risk-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
+独立模拟与代码，另有UCI公开信用数据的聚合实验；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[archimeda-risk-lab](https://github.com/ArchimeDAs0612/archimeda-risk-lab) · **[在线静态 Demo](https://archimedas0612.github.io/archimeda-risk-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
 
 [![reproducible-research](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ArchimeDAs0612/archimeda-risk-lab/badge)](https://scorecard.dev/viewer/?uri=github.com/ArchimeDAs0612/archimeda-risk-lab)
@@ -18,11 +18,21 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 [![Sonar new-code quality gate](https://sonarcloud.io/api/project_badges/measure?project=ArchimeDAs0612_archimeda-risk-lab&metric=alert_status)](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)
 [![Archived snapshot DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23423965.svg)](https://doi.org/10.5281/zenodo.23423965)
 
-[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。Codecov完整覆盖19个Python模块，首次路径丢失已修复；平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；[Sonar默认新增代码门槛](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)已在提交cec86f6真实通过；整体安全评级仍为E、65项扫描发现待复核，徽章不代表全库安全认证；[OpenSSF自评](https://www.bestpractices.dev/en/projects/15545)已保存76%，尚未Passing。
+[English interface guide](docs/PUBLICATION_ENGLISH_GUIDE.md) · [覆盖率、安全扫描与来源证明](docs/PUBLICATION_ASSESSMENTS.md) · [引用信息](CITATION.cff) · [已独立验签的安装包来源](docs/PUBLICATION_PROVENANCE.json)。此前Codecov收据完整覆盖当时19个Python模块，首次路径丢失已修复；历史平台81.4%与Coverage.py行覆盖86.61%口径不同，见[真实收据](docs/PUBLICATION_CODECOV.json)。质量徽章链接实际自动检查；[Sonar默认新增代码门槛](https://sonarcloud.io/project/overview?id=ArchimeDAs0612_archimeda-risk-lab)已在提交cec86f6真实通过；整体安全评级仍为E、65项扫描发现待复核，徽章不代表全库安全认证；[OpenSSF自评](https://www.bestpractices.dev/en/projects/15545)已保存76%，尚未Passing。
 
 [Zenodo 可引用归档](https://doi.org/10.5281/zenodo.23423965)固定保存源码提交 `d8848a2` 的361个文件，不随main更新；这是公开归档标识，模型结论仍以对应快照的验证证据为准。[发布及校验收据](docs/PUBLICATION_ZENODO.json)。
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
+
+## 三个新增可质疑案例
+
+| 问题与新增方法 | 实际结果与反证 | 运行与证据 |
+| --- | --- | --- |
+| **在外部观测约束下比较模型**：UCI 30,000条信用客户记录，重复特征组不跨区；训练/校准/选择/最终四区，LR/森林/梯度提升、族消融、配对区间 | 最终6045条：LR AP 0.5311、森林0.5476、梯度提升0.5625；提升对LR的配对95%区间[0.0176,0.0450]。校准Brier 0.134743→0.134755，未改善。不是OOT或支付误伤识别 | [数据卡、协议与命令](studies/external-credit.md) · [交互结果](artifacts/rc1/external-credit/index.html) · [实现](risklab/external_credit.py) |
+| **有富集的规则也可能难以重复发现**：完整树路径逐成员匹配，候选选择与最终评价隔离，简化及阈值扰动重新算人群 | 完整候选328人、224违约；删掉最后条件369人、247违约。12次重新发现有2次Jaccard=0；额度分层有共同支持，但单来源数据无法排除来源差异或证明因果 | [完整中文案例](studies/models-patterns.md#外部信用中的规则简化与选择不稳定) · [冻结条件](artifacts/rc1/external-credit/frozen_selection.json) |
+| **纠偏不是保证变好，策略取决于假设**：已知随机审计×成熟概率，实际IPW训练与观测训练比较；零覆盖机制明确不可识别；字段变更约束模型输入 | 观测训练最终AP 0.16264，IPW训练0.16110。冻结额外拒绝策略在正常需求拒绝成本4时模拟成本下降，成本25时反转。字段禁用使真实向量与旧报告失效，增量结果等于全算；没有LLM调用 | [标签研究](studies/strategy-replay.md#审计抽样成熟延迟与成本反转) · [模拟交互](artifacts/rc1/selective-maturity/index.html) · [字段变更交互](artifacts/rc1/incremental-fields/index.html) |
+
+上述结果来自预先冻结的有限实验，保留所有模型与失败候选；外部信用数据是单一历史观察队列，模拟支付是独立生成机制，两者不拼接成同一业务指标。
 
 ## 关键贡献
 
@@ -45,10 +55,12 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 
 ## 研究地图与实际架构
 
-数据与字段理解 → 案例分析 → 模型与信号增益 → Pattern研究 → 策略模拟 → 字段工具与可复现交付。以下为已实现连接，真实LLM、外部域验证与生产监控属于后续研究。
+数据与字段理解 → 案例分析 → 模型与信号增益 → Pattern研究 → 策略模拟 → 字段工具与可复现交付。以下为已实现连接，真实LLM、跨机构/跨期外部迁移与生产监控属于后续研究。
 
 ```mermaid
 flowchart LR
+    U[UCI许可数据 / external_credit.py] --> V[分组冻结 / LR·Forest·HGB / Pattern]
+    V --> L
     A[独立模拟器 generate.py] --> B[事件与延迟审计标签]
     B --> C[SQL as-of窗口 / entities.py]
     C --> D[字段合同与准入 contracts.py]

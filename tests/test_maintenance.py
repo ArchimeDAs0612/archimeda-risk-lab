@@ -106,7 +106,10 @@ class MaintenanceTests(unittest.TestCase):
         public = set(candidate_files(ROOT))
         docs = ['README.md', 'AGENTS.md', 'CHECKPOINT.md', 'docs/GITHUB_FIRST.md', 'docs/PUBLICATION_STATUS.md']
         docs += sorted(p.relative_to(ROOT).as_posix() for p in (ROOT/'studies').glob('*.md'))
-        self.assertEqual(len([p for p in docs if p.startswith('studies/')]), 6)
+        self.assertEqual({p for p in docs if p.startswith('studies/')}, {
+            'studies/README.md', 'studies/payment-cases.md', 'studies/strategy-replay.md',
+            'studies/models-patterns.md', 'studies/field-governance.md',
+            'studies/field-workflow.md', 'studies/external-credit.md'})
         for name in docs:
             self.assertIn(name, public)
             for url in re.findall(r'\[[^\]]*\]\(([^)]+)\)', (ROOT/name).read_text()):

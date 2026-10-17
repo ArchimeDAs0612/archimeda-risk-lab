@@ -1,0 +1,97 @@
+{
+  "rows": 30000,
+  "unique_ID": 30000,
+  "missing": 0,
+  "duplicate_feature_rows": 56,
+  "unique_feature_profiles": 29944,
+  "conflicting_label_profiles": 21,
+  "repayment_codes": {
+    "PAY_0": [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "PAY_2": [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "PAY_3": [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "PAY_4": [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "PAY_5": [
+      -2,
+      -1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "PAY_6": [
+      -2,
+      -1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "undocumented_education_codes": [
+    0,
+    5,
+    6
+  ],
+  "undocumented_marriage_codes": [
+    0
+  ],
+  "split_profile_overlap": false,
+  "time_claim": "single 2005 observation cohort; monthly predictors are not multiple evaluation cohorts",
+  "selection": "existing card clients; original recruitment probabilities and operational label delays unavailable"
+}

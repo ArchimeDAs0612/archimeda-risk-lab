@@ -56,7 +56,7 @@ class FieldWorkflow:
                 metadata = {name: dict(info, availability_ts=(
                     "geo_available_ts" if name == "geo_distance" else "available_ts"))
                     for name, info in before["contract"]["fields"].items()}
-                output = inventory(self.frame, metadata)
+                output = inventory(self.frame, metadata, domain=before['contract']['domain'])
                 output["evidence_matches_registry"] = (
                     before["evidence_sha256"] == frame_digest(self.frame))
                 candidate = before

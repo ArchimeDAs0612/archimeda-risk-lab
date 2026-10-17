@@ -25,3 +25,19 @@
 1. 解释物理类型、逻辑语义、决策时点与人工批准为何不是同一检查。
 2. 在独立输入副本修改字段版本或禁用上游，跟踪受影响的训练准入及恢复条件。
 3. 构造点号路径碰撞、循环依赖及过期摘要，验证必须失败且旧批准不能沿用。
+
+## 增量字段变更与旧产物失效
+
+[增量模块](../risklab/field_incremental.py)沿用现有registry JSON，加上revision和幂等收据；未建立另一套状态服务。变更必须携带期望版本，文件锁覆盖读—检查—提交全过程，原子提交保留前一有效文件。相同请求号和相同内容返回旧收据，不重复加版本；同号不同内容、旧版本覆盖和失效数据证据被拒绝。
+
+字段身份绑定业务域、源字段与字面JSON键序列，标准JSON Pointer区分字面`a.b`和嵌套`a/b`，父容器有稳定身份。盘点原先写死钱包域的问题已修复：当前合同域单独传入；钱包与外卖同名字段不能共享缓存或语义。
+
+实跑以原已验收样本训练一个只接受准入向量的LR，然后禁用设备源字段：依赖向量被移除，后续模型/候选矩阵被拒绝，旧报告消费校验返回INVALIDATED；未受影响金额字段复用。增量和全算字段结果完全一致。单位改动必须重新人工审核；类型、时间、删除、语义和描述中夹带指令都不会自动放行。注入提交前失败后文件字节不变，修正重试可从原revision继续。
+
+空值、空白、字面null、0、False分别计数；NO_SAMPLE、ZERO_COVERAGE、NOT_COMPUTED、NOT_APPLICABLE分开表达，0和False是有效观测。样例期望手写，未由待测函数倒填答案。缓存内容被篡改时不能只凭旧key复用。
+
+```bash
+python -m risklab field-incremental --data artifacts/rc1/research/normal --out runs/field-incremental
+```
+
+[实际前后差异与24项检查](../artifacts/rc1/incremental-fields/result.json) · [交互证据](../artifacts/rc1/incremental-fields/index.html) · [边界与故障测试](../tests/test_field_incremental.py)。边界：仅保护使用同一文件锁的本地写者，没有认证审核身份；旧报告是消费时验证失效，不能远程撤回已下载副本；此处重算现有数值样本的字段向量，SQL源窗口另行验证。没有实际LLM调用，不称模型Agent。

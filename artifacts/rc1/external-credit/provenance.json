@@ -1,0 +1,104 @@
+{
+  "data_sha256": "45bcf4df62ff2e237a74eb155cabfb4bbbc171219a0637daef44fdad07503dd0",
+  "protocol_sha256": "ed91f7ef4b4dfe1d91ed41bafbfa0c51b18accfe8bdf1db50b7e0ced45bca802",
+  "python": "3.9.6",
+  "sklearn": "1.6.1",
+  "numpy": "2.0.2",
+  "pandas": "2.3.3",
+  "source_sha256": {
+    "external_credit.py": "eeb62bf3d299b6b46d0ff6cd5f80d6731121f281fb3f0f2f708a9b2fdf5a750e",
+    "models.py": "5527cf9b7c9300ea6a92f83ee084ca1d0f03b7f588c8f3dfd9352ce3cc58d00a",
+    "research_models.py": "e3f537e6bddf93fb4cdbd4d64e12973a97f2b0ee54bfe6bad2e966cea14dcbd0"
+  },
+  "split_counts": {
+    "train": 17915,
+    "calibration": 2968,
+    "select": 3072,
+    "test": 6045
+  },
+  "split_id_sha256": {
+    "train": "21bb91ee9869e2d91789edbb7e8cbab546ec3741b519cd942f8ff1f2ee98c6c6",
+    "calibration": "ae481d2192747a62fd74026ce107e9dbd2b4b59a7850eef0b49319a3a7259702",
+    "select": "bc48518c4f6c64bb319361aac9cc2eeed147031241229cf1a19fc67ce565b520",
+    "test": "ff76e32762ad795330db9cc10809ac3b5a0f20768f865c291206181576fccb86"
+  },
+  "onehot_categories": [
+    [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    [
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    [
+      -2,
+      -1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    [
+      -2,
+      -1,
+      0,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  ],
+  "cpu_threads": 1,
+  "raw_records_published": false
+}

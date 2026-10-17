@@ -35,7 +35,7 @@ def flatten_container(value,prefix='',depth=0):
     return {prefix:value}
 
 
-def inventory(frame,metadata=None):
+def inventory(frame,metadata=None,domain='fictional_wallet'):
     """Infer candidates; descriptions and instructions remain untrusted data."""
     columns={name:frame[name] for name in frame.columns};failures=[]
     if 'context_json' in frame:
@@ -56,7 +56,7 @@ def inventory(frame,metadata=None):
         logical='identifier' if name.endswith('_id') else 'epoch_seconds_candidate' if name.endswith('_ts') and physical=='numeric' else 'boolean' if physical=='boolean' else 'numeric_candidate' if physical=='numeric' else 'categorical_candidate' if physical=='text' else physical
         contract=(metadata or {}).get(name,{})
         conflicts=[]
-        if contract.get('domain','fictional_wallet')!='fictional_wallet':conflicts.append('DOMAIN_CONFLICT')
+        if contract.get('domain',domain)!=domain:conflicts.append('DOMAIN_CONFLICT')
         declared=contract.get('physical_type')
         if declared and declared!=physical and not (declared=='numeric' and physical=='boolean'):conflicts.append('PHYSICAL_TYPE_CONFLICT')
         available=contract.get('availability_ts')
@@ -77,7 +77,7 @@ def inventory(frame,metadata=None):
         records.append({'field':name,'physical_type_observed':physical,'logical_type_candidate':logical,'n':n,
           'coverage':len(observed)/n if n else 0,'unique_values':int(serialized.nunique()),'repeated_value_rows':int(serialized.duplicated().sum()),
           'nonfinite_values':nonfinite,'non_integer_numeric_values':int(np.sum(finite!=np.floor(finite))),'outside_declared_bounds':outside,'min':float(finite.min()) if len(finite) else None,'max':float(finite.max()) if len(finite) else None,
-          'domain':contract.get('domain','fictional_wallet'),'observation_object':contract.get('observation_object','payment_attempt_candidate'),
+          'domain':contract.get('domain',domain),'observation_object':contract.get('observation_object','payment_attempt_candidate'),
           'window':contract.get('window'),'family':contract.get('family','unclassified'),'parents':contract.get('parents',[parent] if parent else []),
           'availability':time_status,'conflicts':conflicts,'semantic_status':'CANDIDATE_NEEDS_HUMAN_REVIEW',
           'description_untrusted':str(contract.get('meaning','')),'direct_model_use_forbidden':name in FORBIDDEN or logical=='identifier'})
@@ -140,7 +140,7 @@ def run_change(registry,proposal,frame):
             field=fields.get(name,sources.get(name))
             if operation=='modify':
                 changes=proposal.get('changes',{})
-                permitted={'meaning','physical_type','logical_type','domain','availability','family','parents','bounds','nullable','enabled','observation_object','window'}
+                permitted={'meaning','physical_type','logical_type','domain','availability','family','parents','bounds','nullable','enabled','observation_object','window','unit'}
                 if not isinstance(changes,dict) or not set(changes)<=permitted:raise AdmissionError('unsupported/self-approval metadata keys')
                 was_disabled=not field.get('enabled',False);field.update(copy.deepcopy(changes));field['semantic_status']='pending_human_review'
                 if was_disabled:field['enabled']=False

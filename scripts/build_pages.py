@@ -19,7 +19,8 @@ def build(out,root=ROOT):
            'artifacts/rc1/research/normal/frozen_selection.json','artifacts/rc1/research/normal/field/workflow.json',
            'artifacts/rc1/label-visibility/index.html','artifacts/rc1/label-visibility/result.json',
            'artifacts/rc1/field-tools/transcript.json','artifacts/rc1/field-tools/evaluation.json']
-    for directory in ['artifacts/rc1/research/normal','artifacts/rc1/label-visibility','artifacts/rc1/field-tools']:
+    for directory in ['artifacts/rc1/research/normal','artifacts/rc1/label-visibility','artifacts/rc1/field-tools',
+                      'artifacts/rc1/external-credit','artifacts/rc1/selective-maturity','artifacts/rc1/incremental-fields']:
         paths.extend(p.relative_to(root).as_posix() for p in (root/directory).rglob('*') if p.is_file())
     paths.extend(['artifacts/rc1/seed-summary.json','artifacts/rc1/seed-20261018/result.json'])
     paths.extend(p.relative_to(root).as_posix() for p in (root/'docs').glob('*.md')

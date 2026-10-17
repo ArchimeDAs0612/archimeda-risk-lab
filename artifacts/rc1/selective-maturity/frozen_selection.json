@@ -1,0 +1,179 @@
+{
+  "winner": "observed_lr",
+  "thresholds": {
+    "observed_lr": 0.10437046326833628,
+    "ipw_lr": 0.10419368207368135
+  },
+  "selection": {
+    "observed_lr": {
+      "status": "KNOWN_DESIGN_ESTIMATE",
+      "prevalence": 0.05864947246175132,
+      "recall": 0.24614959954746152,
+      "precision": 0.15066507336382168,
+      "ap": 0.15643576247240432,
+      "effective_sample_size": 2793.8742640376804,
+      "max_weight": 4.706345731207825,
+      "scope": "Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains"
+    },
+    "ipw_lr": {
+      "status": "KNOWN_DESIGN_ESTIMATE",
+      "prevalence": 0.05864947246175132,
+      "recall": 0.24614959954746152,
+      "precision": 0.14956475735046706,
+      "ap": 0.15443494312645561,
+      "effective_sample_size": 2793.8742640376804,
+      "max_weight": 4.706345731207825,
+      "scope": "Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains"
+    }
+  },
+  "columns": [
+    "amount",
+    "account_age_days",
+    "device_age_days",
+    "auth_strength",
+    "geo_distance",
+    "attempts_24h",
+    "declines_7d",
+    "prior_score"
+  ],
+  "fitted": {
+    "observed_lr": {
+      "preprocessing": {
+        "input_columns": [
+          "amount",
+          "account_age_days",
+          "device_age_days",
+          "auth_strength",
+          "geo_distance",
+          "attempts_24h",
+          "declines_7d",
+          "prior_score"
+        ],
+        "output_columns": [
+          "amount",
+          "account_age_days",
+          "device_age_days",
+          "auth_strength",
+          "geo_distance",
+          "attempts_24h",
+          "declines_7d",
+          "prior_score",
+          "amount__missing",
+          "account_age_days__missing",
+          "device_age_days__missing",
+          "auth_strength__missing",
+          "geo_distance__missing",
+          "attempts_24h__missing",
+          "declines_7d__missing",
+          "prior_score__missing"
+        ],
+        "train_medians": {
+          "amount": 30.169240523399942,
+          "account_age_days": 41.84533564814815,
+          "device_age_days": 37.99487104690599,
+          "auth_strength": 1.0,
+          "geo_distance": 0.21730848245539708,
+          "attempts_24h": 1.0,
+          "declines_7d": 0.0,
+          "prior_score": 0.25637494127392335
+        },
+        "missing": "replace by train median and append a missing indicator per input",
+        "dtype": "float32",
+        "fit_scope": "train only"
+      },
+      "coef": [
+        [
+          0.07805317008177196,
+          -0.2601846131238541,
+          -0.32568136103897527,
+          -0.3055300272368119,
+          0.3221495339505185,
+          -0.012395597391928283,
+          0.008212092627886781,
+          0.15983058716174642,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.023063038782690563,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "intercept": [
+        -2.8414157423335555
+      ]
+    },
+    "ipw_lr": {
+      "preprocessing": {
+        "input_columns": [
+          "amount",
+          "account_age_days",
+          "device_age_days",
+          "auth_strength",
+          "geo_distance",
+          "attempts_24h",
+          "declines_7d",
+          "prior_score"
+        ],
+        "output_columns": [
+          "amount",
+          "account_age_days",
+          "device_age_days",
+          "auth_strength",
+          "geo_distance",
+          "attempts_24h",
+          "declines_7d",
+          "prior_score",
+          "amount__missing",
+          "account_age_days__missing",
+          "device_age_days__missing",
+          "auth_strength__missing",
+          "geo_distance__missing",
+          "attempts_24h__missing",
+          "declines_7d__missing",
+          "prior_score__missing"
+        ],
+        "train_medians": {
+          "amount": 30.169240523399942,
+          "account_age_days": 41.84533564814815,
+          "device_age_days": 37.99487104690599,
+          "auth_strength": 1.0,
+          "geo_distance": 0.21730848245539708,
+          "attempts_24h": 1.0,
+          "declines_7d": 0.0,
+          "prior_score": 0.25637494127392335
+        },
+        "missing": "replace by train median and append a missing indicator per input",
+        "dtype": "float32",
+        "fit_scope": "train only"
+      },
+      "coef": [
+        [
+          0.059892150389803445,
+          -0.25651523125084635,
+          -0.3108750156318184,
+          -0.31003141199595285,
+          0.34170176905958105,
+          -0.025438950863404544,
+          0.011495484650999498,
+          0.155760144492251,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.02057249242300705,
+          0.0,
+          0.0,
+          0.0
+        ]
+      ],
+      "intercept": [
+        -2.8383086194877776
+      ]
+    }
+  },
+  "protocol_sha256": "5d1996b82a03682b9d28eee94019281a3663e7b6c6762b2c71a4cc851a2f0b6c",
+  "oracle_used_for_selection": false
+}

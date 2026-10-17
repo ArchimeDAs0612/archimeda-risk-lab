@@ -35,7 +35,8 @@ def main():
         if not args.config:
             parser.error('selection-study requires --config frozen protocol')
         from .selection_experiment import run_selection_study
-        r = run_selection_study(json.loads(Path(args.config).read_text()), out)
+        from .study_contracts import workspace_path
+        r = run_selection_study(json.loads(workspace_path(args.config).read_text()), out)
         print(json.dumps({'status': 'SAVED', 'winner': r['frozen']['winner'], 'seconds': r['elapsed_seconds']}))
     elif args.command == 'field-incremental':
         if not args.data:
@@ -47,7 +48,8 @@ def main():
         if not args.data or not args.config:
             parser.error('credit-study requires --data UCI CSV and --config frozen protocol')
         from .external_credit import run_credit
-        result = run_credit(args.data, out, json.loads(Path(args.config).read_text()))
+        from .study_contracts import workspace_path
+        result = run_credit(args.data, out, json.loads(workspace_path(args.config).read_text()))
         print(json.dumps({'status': 'SAVED', 'winner': result['winner'], 'seconds': result['elapsed_seconds']}))
     elif args.command == 'predict':
         if not args.model or not args.data:

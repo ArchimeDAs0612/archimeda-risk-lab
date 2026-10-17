@@ -27,6 +27,7 @@ from .models import (fit_model, complete_paths, replay, verify_membership, proba
 from .research_models import rank_metrics
 from .pipeline import save_json, sha
 from .field_intelligence import digest
+from .study_contracts import workspace_path, bounded_integer, credit_config
 
 
 NAMES = ['LIMIT_BAL', 'SEX', 'EDUCATION', 'MARRIAGE', 'AGE', 'PAY_0', 'PAY_2',
@@ -113,11 +114,12 @@ def fit_credit(train, columns, kind, seed, config):
 
 
 def paired_profile_interval(frame, a, b, repeats, seed):
+    repeats = bounded_integer(repeats, 'bootstrap repeats', 20, 1000)
     y = frame.risk_label.to_numpy(int)
     groups = list(frame.groupby('profile_key', sort=True).indices.values())
     rng = np.random.default_rng(seed)
     differences = []
-    for _ in range(repeats):
+    for _ in range(min(repeats, 1000)):
         idx = np.concatenate([groups[i] for i in rng.integers(len(groups), size=len(groups))])
         if len(np.unique(y[idx])) == 2:
             differences.append(average_precision_score(y[idx], a[idx]) - average_precision_score(y[idx], b[idx]))
@@ -212,7 +214,9 @@ def counterchecks(frame, mask, limit_edges):
 
 
 def run_credit(data, out, config):
-    out = Path(out)
+    credit_config(config)
+    out = workspace_path(out)
+    data = workspace_path(data)
     if out.exists() and any(out.iterdir()):
         raise ValueError('choose an empty output; accepted runs are immutable')
     out.mkdir(parents=True, exist_ok=True)
@@ -303,7 +307,7 @@ def run_credit(data, out, config):
         rng = np.random.default_rng(1771)
         groups = list(encoded['train'].groupby('profile_key', sort=True).indices.values())
         rediscovery = []
-        for repetition in range(config['rediscovery_repeats']):
+        for repetition in range(min(bounded_integer(config['rediscovery_repeats'], 'rediscovery repeats', 1, 30), 30)):
             idx = np.concatenate([groups[i] for i in rng.integers(len(groups), size=len(groups))])
             b, path, found = discover_rule(encoded['train'].iloc[idx], encoded['select'], encoder.columns(FINANCIAL), config, 1771+repetition)
             rediscovery.append(dict(repetition=repetition, path=path, candidate_count=len(found),

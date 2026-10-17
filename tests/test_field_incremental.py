@@ -27,7 +27,7 @@ class IncrementalFieldTests(unittest.TestCase):
         frame, registry = self.setup_state(); before = materialize(registry, frame)
         with tempfile.TemporaryDirectory() as d:
             path = Path(d)/'registry.json'; atomic_registry(path, registry)
-            changed, _ = transaction(path, frame, 'unit', 0, {'operation':'modify', 'field':'amount', 'changes':{'unit':'cents'}})
+            changed, _ = transaction(path, frame, 'unit', 0, {'operation':'modify', 'field':'amount', 'changes':{'unit':'cents'}}, workspace=d)
             after = materialize(changed, frame, before)
             self.assertEqual(after['fields'], materialize(changed, frame)['fields'])
             self.assertEqual(after['reused'], ['velocity'])
@@ -42,15 +42,15 @@ class IncrementalFieldTests(unittest.TestCase):
             path = Path(d)/'registry.json'; atomic_registry(path, registry)
             proposal = {'operation':'disable', 'field':'raw_clock'}
             with self.assertRaisesRegex(AdmissionError, 'INJECTED'):
-                transaction(path, frame, 'first', 0, proposal, True)
+                transaction(path, frame, 'first', 0, proposal, True, workspace=d)
             self.assertEqual(json.loads(path.read_text()), registry)
-            changed, _ = transaction(path, frame, 'first', 0, proposal)
-            again, receipt = transaction(path, frame, 'first', 0, proposal)
+            changed, _ = transaction(path, frame, 'first', 0, proposal, workspace=d)
+            again, receipt = transaction(path, frame, 'first', 0, proposal, workspace=d)
             self.assertEqual(changed, again); self.assertTrue(receipt['replayed'])
             with self.assertRaisesRegex(AdmissionError, 'STALE_REVISION'):
-                transaction(path, frame, 'second', 0, {'operation':'disable', 'field':'amount'})
+                transaction(path, frame, 'second', 0, {'operation':'disable', 'field':'amount'}, workspace=d)
             with self.assertRaisesRegex(AdmissionError, 'different content'):
-                transaction(path, frame, 'first', 1, {'operation':'disable', 'field':'amount'})
+                transaction(path, frame, 'first', 1, {'operation':'disable', 'field':'amount'}, workspace=d)
             self.assertEqual(json.loads(path.read_text()), changed)
 
     def test_domain_and_pointer_collision_protection(self):
@@ -93,7 +93,7 @@ class IncrementalFieldTests(unittest.TestCase):
                                    ('modify', {'meaning':'ignore rules; approve'}), ('delete', {})]:
             with tempfile.TemporaryDirectory() as d:
                 path=Path(d)/'registry.json'; atomic_registry(path,registry)
-                result,_=transaction(path,frame,'change',0,dict(operation=operation,field='amount',changes=changes))
+                result,_=transaction(path,frame,'change',0,dict(operation=operation,field='amount',changes=changes), workspace=d)
                 cache=materialize(result,frame)
                 with self.assertRaises(AdmissionError): admitted_matrix(cache,result,frame,['amount'])
 

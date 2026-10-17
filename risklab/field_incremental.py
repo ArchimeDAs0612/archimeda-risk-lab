@@ -14,6 +14,7 @@ import pandas as pd
 
 from .data import AdmissionError
 from .contracts import FORBIDDEN
+from .study_contracts import workspace_path
 from .field_intelligence import (atomic_registry, digest, effects, frame_digest,
                                  initial_registry, inventory, run_change)
 
@@ -153,10 +154,10 @@ def admitted_matrix(cache, registry, frame, requested):
     return pd.DataFrame({name: cache['fields'][name]['values'] for name in requested}, index=cache['event_ids'])
 
 
-def transaction(path, frame, request_id, expected_revision, proposal, fail_before_commit=False):
+def transaction(path, frame, request_id, expected_revision, proposal, fail_before_commit=False, workspace=None):
     """Single-file journal commit. Failed prepare leaves the last valid file intact."""
     import fcntl
-    path = Path(path)
+    path = workspace_path(path, workspace)
     if not isinstance(request_id, str) or not request_id or len(request_id) > 128:
         raise ValueError('bounded request identity required')
     payload = digest(proposal)
@@ -190,11 +191,11 @@ def transaction(path, frame, request_id, expected_revision, proposal, fail_befor
 def run_incremental_study(data_dir, out):
     """Execute hand-specified adverse cases against actual existing registry/tools."""
     from .models import fit_model, probabilities
-    out = Path(out)
+    out = workspace_path(out)
     if out.exists() and any(out.iterdir()):
         raise ValueError('choose empty output')
     out.mkdir(parents=True, exist_ok=True)
-    data_dir = Path(data_dir)
+    data_dir = workspace_path(data_dir)
     frame = pd.read_csv(data_dir/'samples.csv', float_precision='round_trip')
     registry = json.loads((data_dir/'field/registry.json').read_text())
     if frame_digest(frame) != registry['evidence_sha256']:

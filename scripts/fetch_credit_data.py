@@ -25,7 +25,10 @@ class SameOriginRedirect(HTTPRedirectHandler):
 
 
 def fetch(destination):
-    target = Path(destination)
+    target = Path(destination).expanduser().resolve()
+    root = Path.cwd().resolve()
+    if not target.is_relative_to(root) or target == root:
+        raise ValueError('download destination must be inside the selected workspace')
     if target.exists():
         if hashlib.sha256(target.read_bytes()).hexdigest() == EXPECTED:
             return 'VERIFIED_EXISTING'

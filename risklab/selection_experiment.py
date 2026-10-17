@@ -21,6 +21,7 @@ from .models import Transform, probabilities, metrics
 from .label_visibility import identification_bounds
 from .pipeline import save_json, sha
 from .field_intelligence import digest
+from .study_contracts import workspace_path, bounded_integer, label_config
 
 
 def maturity_probability(decision_ts, asof, minimum, maximum):
@@ -105,7 +106,8 @@ def policy_summary(frame, y, candidate, legitimate_cost, action):
 
 
 def run_selection_study(config, out):
-    out = Path(out)
+    label_config(config)
+    out = workspace_path(out)
     if out.exists() and any(out.iterdir()):
         raise ValueError('choose an empty output')
     out.mkdir(parents=True, exist_ok=True); tic = time.perf_counter()
@@ -149,7 +151,7 @@ def run_selection_study(config, out):
                              oracle_evaluation_only=metrics(oracle['test'], p, threshold))
     p = probabilities(bundles[winner], parts['test']); threshold = thresholds[winner]
     repeats = []
-    for repetition in range(config['audit_repeats']):
+    for repetition in range(min(bounded_integer(config['audit_repeats'], 'audit repeats', 1, 300), 300)):
         visible = observe(parts['test'], oracle['test'], ORIGIN+config['evaluation_asof_day']*DAY,
                           config['audit_probability'], config['delay_min_days'], config['delay_max_days'], 8100+repetition)
         seen = visible.observed.to_numpy(bool)

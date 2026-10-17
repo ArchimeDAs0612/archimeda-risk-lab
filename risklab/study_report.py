@@ -10,7 +10,7 @@ def render_study(result, kind, destination):
     page = '''<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Archimeda Risk Lab · 可复核研究</title><style>
 body{font:16px/1.7 system-ui,sans-serif;background:#f4f8fb;color:#18324a;margin:0}main{max-width:1100px;margin:auto;padding:32px}h1,h2{color:#185c92}section{background:white;padding:22px;margin:20px 0;border:1px solid #d7e2ec}table{border-collapse:collapse;width:100%;font-size:14px}td,th{padding:8px;border-bottom:1px solid #ddd;text-align:left}pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}select{font:inherit;max-width:100%;padding:6px}.scroll{overflow:auto}.notice{border-left:4px solid #185c92;padding:12px}a{color:#185c92}</style>
-<main><h1 id="title"></h1><p class="notice">所有数字来自同一份保存结果。下拉框仅选择已运行的实验，不进行在线训练或调用模型。数据、假设和失败结果均可检查。</p>
+<main><h1 id="title">Archimeda Risk Lab · 可复核研究</h1><p class="notice">所有数字来自同一份保存结果。下拉框仅选择已运行的实验，不进行在线训练或调用模型。数据、假设和失败结果均可检查。</p>
 <p><a href="result.json">完整结果 JSON</a> · <a href="https://github.com/ArchimeDAs0612/archimeda-risk-lab">代码与复现命令</a></p>
 <section><h2>选择已运行的比较</h2><select id="choice" aria-label="已运行的实验"></select><div id="summary" class="scroll"></div></section>
 <section><h2>完整条件、失败与边界</h2><div id="details"></div></section>

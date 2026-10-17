@@ -1,0 +1,103 @@
+{
+  "winner": "observed",
+  "thresholds": {
+    "observed": 0.10513536237053621,
+    "ipw_raw": 0.10571688575804902,
+    "ipw_normalized": 0.10572918784010946
+  },
+  "selection": {
+    "observed": {
+      "status": "KNOWN_DESIGN_ESTIMATE",
+      "prevalence": 0.07063353961333756,
+      "recall": 0.23537101535032137,
+      "precision": 0.16992926032580297,
+      "ap": 0.13402619836571367,
+      "effective_sample_size": 2782.0199703760663,
+      "max_weight": 5.604028394342586,
+      "scope": "Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains"
+    },
+    "ipw_raw": {
+      "status": "KNOWN_DESIGN_ESTIMATE",
+      "prevalence": 0.07063353961333756,
+      "recall": 0.23537101535032137,
+      "precision": 0.17088150261398727,
+      "ap": 0.13385230219778302,
+      "effective_sample_size": 2782.0199703760663,
+      "max_weight": 5.604028394342586,
+      "scope": "Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains"
+    },
+    "ipw_normalized": {
+      "status": "KNOWN_DESIGN_ESTIMATE",
+      "prevalence": 0.07063353961333756,
+      "recall": 0.23537101535032137,
+      "precision": 0.17088150261398727,
+      "ap": 0.1338546873094369,
+      "effective_sample_size": 2782.0199703760663,
+      "max_weight": 5.604028394342586,
+      "scope": "Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains"
+    }
+  },
+  "coefficients": {
+    "observed": [
+      [
+        0.11645089016980253,
+        -0.12531361245268896,
+        -0.3554572345557302,
+        -0.3460705361788787,
+        0.3750449647198994,
+        0.02067879399675275,
+        0.03121465023200434,
+        0.20223163049513382,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.059502250985753784,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "ipw_raw": [
+      [
+        0.11935199178365533,
+        -0.12140229286528408,
+        -0.34403634833619645,
+        -0.351892201483176,
+        0.37277638017894765,
+        0.027451728840415638,
+        0.028585857500760484,
+        0.19906212987773458,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.057367734473072404,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "ipw_normalized": [
+      [
+        0.11932953650474645,
+        -0.12138713566060912,
+        -0.34394580662642604,
+        -0.3518112719404089,
+        0.3727079421980335,
+        0.027449537808857626,
+        0.02858189205073345,
+        0.19904532125179245,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.05734869693259977,
+        0.0,
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "protocol_sha256": "9650675aeab30ac929ac5e606673d678f33f003a8d522ef6a0788557e62969f7"
+}

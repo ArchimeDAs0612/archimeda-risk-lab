@@ -50,6 +50,8 @@ def validate_events(events):
     for key in ['order_id','user_id','account_id','linked_device_id','payment_tool_id']:
         if events[key].isna().any(): raise AdmissionError('missing entity key: '+key)
     for field in ['decision_ts','available_ts','geo_available_ts','device_available_ts','tool_available_ts','result_ts']:
+        if not pd.api.types.is_numeric_dtype(events[field]) or pd.api.types.is_bool_dtype(events[field]):
+            raise AdmissionError('timestamp must be numeric epoch seconds, not text/bool: '+field)
         try: values=events[field].to_numpy(dtype=float)
         except (ValueError,TypeError): raise AdmissionError('non-numeric event time: '+field)
         if not np.isfinite(values).all(): raise AdmissionError('missing/nonfinite event time: '+field)

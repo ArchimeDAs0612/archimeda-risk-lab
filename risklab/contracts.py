@@ -49,6 +49,9 @@ def check_admission(sample, contract, requested, semantics=None):
     if any(f["code"] == "SCHEMA" for f in findings):
         return {"evidence_admission":"BLOCKED", "findings":findings, "allow_model":False}
     for name in ['decision_ts','available_ts','label_available_ts','result_ts']:
+        if sample[name].dtype.kind not in 'iuf':
+            block('TIME_TYPE', f'{name}: numeric epoch seconds required; text, bool and timezone objects need explicit ingestion conversion')
+            return {'evidence_admission':'BLOCKED','findings':findings,'allow_model':False}
         try:
             if not np.isfinite(sample[name].to_numpy(dtype=float)).all():
                 block('NONFINITE_TIME', f'{name}: timestamp must be finite and known')

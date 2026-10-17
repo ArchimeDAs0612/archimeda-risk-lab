@@ -32,6 +32,8 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 | **有富集的规则也可能难以重复发现**：完整树路径逐成员匹配，候选选择与最终评价隔离，简化及阈值扰动重新算人群 | 完整候选328人、224违约；删掉最后条件369人、247违约。12次重新发现有2次Jaccard=0；额度分层有共同支持，但单来源数据无法排除来源差异或证明因果 | [完整中文案例](studies/models-patterns.md#外部信用中的规则简化与选择不稳定) · [冻结条件](artifacts/rc1/external-credit/frozen_selection.json) |
 | **纠偏不是保证变好，策略取决于假设**：已知随机审计×成熟概率，实际IPW训练与观测训练比较；零覆盖机制明确不可识别；字段变更约束模型输入 | 观测训练最终AP 0.16264，IPW训练0.16110。冻结额外拒绝策略在正常需求拒绝成本4时模拟成本下降，成本25时反转。字段禁用使真实向量与旧报告失效，增量结果等于全算；没有LLM调用 | [标签研究](studies/strategy-replay.md#审计抽样成熟延迟与成本反转) · [模拟交互](artifacts/rc1/selective-maturity/index.html) · [字段变更交互](artifacts/rc1/incremental-fields/index.html) |
 
+**进一步反证：** [三个滚动时间窗与监控失败](studies/models-patterns.md#滚动时间窗同一规则迁移与重新发现不是一回事)中，梯度提升对LR的区间均跨0；监控名义5%阈值的独立用户误报达13.75%。[结果依赖标签延迟](studies/strategy-replay.md#补充反证权重总量与错误的成熟假设)使错误IPW风险率5.27%低于真值6.66%。[字段资源剖析与优化](studies/field-governance.md#实际json子字段与资源瓶颈)保留全算一致性和实际耗时。
+
 上述结果来自预先冻结的有限实验，保留所有模型与失败候选；外部信用数据是单一历史观察队列，模拟支付是独立生成机制，两者不拼接成同一业务指标。
 
 ## 关键贡献
@@ -136,6 +138,24 @@ python3 -m venv .venv
 
 字段工具另提供 `field-inventory`、`field-change`、`field-review`；新释义保持待人工审核。已保存的JSON模型仅支持本Lab的二分类LR/CART/森林，不是通用模型格式，不执行pickle。`predict`不代表线上模型服务或字段治理授权。
 
+### 重建新增研究
+
+先完成上面的依赖安装。所有命令从仓库根目录运行，新输出目录不能覆盖已验收产物。UCI下载需要网络；原始记录保留在忽略的runs目录，公开报告只有聚合证据。
+
+```sh
+export OMP_NUM_THREADS=1
+export LOKY_MAX_CPU_COUNT=1
+.venv/bin/python scripts/fetch_credit_data.py --out runs/credit-input.csv
+.venv/bin/python -W error -m risklab credit-study --data runs/credit-input.csv --config config/credit_protocol.json --out runs/credit-study
+.venv/bin/python -W error -m risklab selection-study --config config/label_protocol.json --out runs/selection-study
+.venv/bin/python -W error -m risklab label-sensitivity --config config/label_sensitivity_protocol.json --out runs/label-sensitivity
+.venv/bin/python -W error -m risklab rolling-study --config config/rolling_protocol.json --out runs/rolling-study
+.venv/bin/python -W error -m risklab field-incremental --data artifacts/rc1/research/normal --out runs/field-incremental
+.venv/bin/python -W error -m scripts.benchmark_studies --data artifacts/rc1/research/normal --out runs/resource-study
+```
+
+两个线程环境变量约束单机资源并避免沙箱物理核查询失败，不关闭数值警告。外部数据协议、特征分组、隔离划分及具体边界见[数据卡](studies/external-credit.md)。干净远程复现收据在本轮验收完成后记录，不能把本地运行先写成远程复现成功。
+
 ## 工程目录与深入阅读
 
 | 入口 | 作用 |
@@ -155,7 +175,7 @@ python3 -m venv .venv
 
 本项目由作者定义研究问题并借助AI实现与修订工程；公开价值由可检查的代码、实际实验和失败证据支持。工程验收不代表本人已独立掌握，专题提供解释设计、修改核心逻辑、验证失败反例的练习，尚无本人完成记录。实习经验只作为问题意识来源，Lab成果不倒填为企业贡献。
 
-[MIT](LICENSE)覆盖本项目独立代码与合成数据，无外部用户数据集；[第三方依赖许可](docs/third-party-licenses.txt)单独保留。模拟器机制、时间切分、标签可见性、探索性多重比较和不稳定候选限制外推；没有真实生产收益、企业采用或真实LLM效果声明。测试数量不作为成熟度证据。
+[MIT](LICENSE)覆盖本项目独立代码与合成数据；UCI信用数据另适用CC BY 4.0，原记录不进入仓库，引用与派生成果见[数据许可](docs/licenses.md)；[第三方依赖许可](docs/third-party-licenses.txt)单独保留。模拟器机制、时间切分、标签可见性、探索性多重比较和不稳定候选限制外推；没有真实生产收益、企业采用或真实LLM效果声明。测试数量不作为成熟度证据。
 
 ## 公开自动评估与申请
 

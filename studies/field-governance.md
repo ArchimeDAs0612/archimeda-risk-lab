@@ -41,3 +41,17 @@ python -m risklab field-incremental --data artifacts/rc1/research/normal --out r
 ```
 
 [实际前后差异与24项检查](../artifacts/rc1/incremental-fields/result.json) · [交互证据](../artifacts/rc1/incremental-fields/index.html) · [边界与故障测试](../tests/test_field_incremental.py)。边界：仅保护使用同一文件锁的本地写者，没有认证审核身份；旧报告是消费时验证失效，不能远程撤回已下载副本；此处重算现有数值样本的字段向量，SQL源窗口另行验证。没有实际LLM调用，不称模型Agent。
+
+### 实际JSON子字段与资源瓶颈
+
+注册的`context_json.client.latency`现在从父容器解析成真实数值向量，包含0值；身份包含域、源、Pointer及父身份。禁用父容器后子向量被清除，模型/Pattern不能消费旧缓存。未批准的新语义不会自动进入此链。点号键歧义、缺失源、重复事件身份均拒绝；[真实故障测试](../tests/test_field_incremental.py)包含向量取值和父禁用后的拒绝。
+
+剖析发现字段循环反复排序整表、重复计算整表摘要。改为每次物化只排序一次、共享已计算证据摘要，未降低统计要求。在同一串行进程交替运行优化前公开提交`d2a31d0`与当前实现，300/1500/6000行的五次中位耗时改善约1.245/1.272/1.281倍，**完整输出逐项相等**。[原始计时与代码哈希](../artifacts/rc1/resource-study/optimization.json)。这是本机测量，非跨机器保证。
+
+统一性能入口另外测量三个规模的SQL构建、字段全算/增量和全部完整路径回放；时间与内存分开采样，内存为Python tracemalloc峰值，不含所有原生数组/RSS。每个规模均核对增量等于全算、回放等于树成员，未用删字段或缩减条件换速度。
+
+```bash
+python -m scripts.benchmark_studies --data artifacts/rc1/research/normal --out runs/resource-study
+```
+
+[统一实测结果](../artifacts/rc1/resource-study/result.json) · [有界基准入口](../scripts/benchmark_studies.py)。本地仅300/1500/6000行，单线程，无无限增量任务。

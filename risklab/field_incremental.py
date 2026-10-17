@@ -16,7 +16,7 @@ from .data import AdmissionError
 from .contracts import FORBIDDEN
 from .study_contracts import workspace_path
 from .field_intelligence import (atomic_registry, digest, effects, frame_digest,
-                                 initial_registry, inventory, run_change)
+                                 initial_registry, inventory, run_change, flatten_container)
 
 
 def stable_field_id(domain, source, path=()):
@@ -74,27 +74,47 @@ def dependency_closure(contract, name):
     return {key: fields[key] for key in sorted(found)}
 
 
-def field_key(registry, frame, name):
+def field_key(registry, frame, name, ordered_frame=None):
     graph = dependency_closure(registry['contract'], name)
     columns = sorted(set(graph)&set(frame.columns))
     # Sort by unique event key: row ordering must not cause unnecessary work.
     if 'event_id' not in frame or frame.event_id.isna().any() or frame.event_id.duplicated().any():
         raise AdmissionError('materialization requires unique event identity')
-    observed = frame.sort_values('event_id')[sorted(set(columns)|{'event_id'})]
+    ordered = frame.sort_values('event_id') if ordered_frame is None else ordered_frame
+    observed = ordered[sorted(set(columns)|{'event_id'})]
     return digest(dict(domain=registry['contract']['domain'], graph=graph,
                        observed_sha256=frame_digest(observed)))
 
 
 def materialize(registry, frame, previous=None):
     """Cache real per-field vectors and stats; blocked fields never retain vectors."""
+    if 'event_id' not in frame or frame.event_id.isna().any() or frame.event_id.duplicated().any():
+        raise AdmissionError('materialization requires unique event identity')
     graph = effects(registry['contract'])
-    fresh = registry['evidence_sha256'] == frame_digest(frame)
+    observed_digest = frame_digest(frame)
+    fresh = registry['evidence_sha256'] == observed_digest
     old = (previous or {}).get('fields', {})
     result = {}; recomputed = []; reused = []
-    ordered = frame.sort_values('event_id')
+    nested = [name for name in registry['contract']['fields'] if name.startswith('context_json.')]
+    expanded = frame
+    if nested:
+        if 'context_json' not in frame:
+            raise AdmissionError('registered structured source is missing')
+        expanded = frame.copy()
+        parsed = []
+        for value in frame.context_json:
+            if not isinstance(value,str) or len(value)>16384:
+                raise AdmissionError('invalid structured source size/type')
+            try:
+                parsed.append(flatten_container(json.loads(value),'context_json'))
+            except (ValueError,TypeError) as error:
+                raise AdmissionError('invalid structured source') from error
+        for name in nested:
+            expanded[name]=[row.get(name) for row in parsed]
+    ordered = expanded.sort_values('event_id')
     for name, metadata in sorted(registry['contract']['fields'].items()):
         domain = registry['contract']['domain']
-        identity = stable_field_id(domain, name)
+        identity = stable_field_id(domain, 'context_json', name.split('.')[1:]) if name in nested else stable_field_id(domain, name)
         reasons = list(graph[name]['reasons'])
         if not fresh:
             reasons.append('STALE_DATA_EVIDENCE')
@@ -103,7 +123,7 @@ def materialize(registry, frame, previous=None):
         if reasons:
             result[name] = dict(identity=identity, status='BLOCKED', reasons=sorted(set(reasons)), values=None, key=None)
             continue
-        key = field_key(registry, frame, name)
+        key = field_key(registry, expanded, name, ordered_frame=ordered)
         cached = old.get(name)
         if cached and cached.get('status') == 'VALID' and cached.get('key') == key:
             # Revalidate content digest; never trust a stale/tampered cache by key alone.
@@ -123,7 +143,7 @@ def materialize(registry, frame, previous=None):
                    stats=stats, unit=metadata.get('unit'), domain=domain)
         row['content_sha256'] = digest(row)
         result[name] = row; recomputed.append(name)
-    return dict(registry_sha256=digest(registry), frame_sha256=frame_digest(frame),
+    return dict(registry_sha256=digest(registry), frame_sha256=observed_digest,
                 domain=registry['contract']['domain'], revision=registry.get('revision', 0),
                 event_ids=ordered.event_id.tolist(), fields=result,
                 recomputed=recomputed, reused=reused, llm_used=False)

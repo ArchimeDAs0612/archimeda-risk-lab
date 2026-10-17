@@ -76,13 +76,15 @@ def weighted_estimates(visible, p, threshold):
                 scope='Hajek ratio and weighted AP; known positive audit*maturity design, finite-sample error remains')
 
 
-def fit_visible(visible, columns, weighted, seed):
+def fit_visible(visible, columns, weighted, seed, normalize_weights=False):
     if weighted and not identifiable(visible):
         raise ValueError('cannot IPW fit target with zero probability')
     train = visible.loc[visible.observed].copy()
     prep = Transform(columns).fit(train)
     x = prep.apply(train)
     w = 1/train.inclusion_probability.to_numpy(float) if weighted else np.ones(len(train))
+    if normalize_weights:
+        w = w*(len(w)/w.sum())
     # Identical unweighted observed-train preprocessing in both arms isolates
     # loss reweighting; neither oracle nor final information is supplied.
     scaler = StandardScaler().fit(x)

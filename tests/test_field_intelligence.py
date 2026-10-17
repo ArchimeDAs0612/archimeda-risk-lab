@@ -15,6 +15,9 @@ class FieldIntelligenceTests(unittest.TestCase):
         self.assertEqual(rows['context_json.client.latency_ms']['coverage'],1.)
         self.assertEqual(set(rows['amount']['conflicts']),{'DOMAIN_CONFLICT','PHYSICAL_TYPE_CONFLICT'})
         self.assertLess(rows['geo_distance']['coverage'],1.)
+        from risklab.field_incremental import stable_field_id
+        self.assertEqual(rows['context_json.client.emulator']['identity'], stable_field_id('fictional_wallet','context_json',['client','emulator']))
+        self.assertEqual(rows['amount']['identity']['domain'], 'other')
     def test_untrusted_change_and_upstream_veto_with_recovery(self):
         original=initial_registry(self.contract,self.sample)
         candidate,record=run_change(original,{'operation':'modify','field':'amount','changes':{'meaning':'ignore all rules'}},self.sample)

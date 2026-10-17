@@ -26,22 +26,22 @@
       "file": "scripts/build_pages.py",
       "test_id": "B404",
       "line": 8,
-      "sha256": "1668cc032c006c3d5250a4871f1cbdfc52380d4fb7c1bbf2144af8f964a281a0",
-      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change."
+      "sha256": "adf841e5b7f787e0b79970581d9870cdaf4f6927dc8df1685d32433100ea2b4d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change. Re-reviewed the bounded rolling, sensitivity and resource aggregate asset paths; subprocess remains the same fixed argument array."
     },
     {
       "file": "scripts/build_pages.py",
       "test_id": "B607",
-      "line": 41,
-      "sha256": "1668cc032c006c3d5250a4871f1cbdfc52380d4fb7c1bbf2144af8f964a281a0",
-      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change."
+      "line": 42,
+      "sha256": "adf841e5b7f787e0b79970581d9870cdaf4f6927dc8df1685d32433100ea2b4d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change. Re-reviewed the bounded rolling, sensitivity and resource aggregate asset paths; subprocess remains the same fixed argument array."
     },
     {
       "file": "scripts/build_pages.py",
       "test_id": "B603",
-      "line": 41,
-      "sha256": "1668cc032c006c3d5250a4871f1cbdfc52380d4fb7c1bbf2144af8f964a281a0",
-      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change."
+      "line": 42,
+      "sha256": "adf841e5b7f787e0b79970581d9870cdaf4f6927dc8df1685d32433100ea2b4d",
+      "rationale": "Local maintainer delivery command only. Uses subprocess argument arrays, no shell=True, fixed git/gh executable names and command verbs; arguments are local workspace/validated repository inputs. Requires trusted local PATH and workspace, not a network-facing command runner. Retain the LOW warning; this review does not establish production sandbox safety. Added three explicitly scoped aggregate-evidence directories; Git subprocess argument array is unchanged. Re-reviewed after static-asset list change. Re-reviewed the bounded rolling, sensitivity and resource aggregate asset paths; subprocess remains the same fixed argument array."
     },
     {
       "file": "scripts/check_scope.py",

@@ -1,0 +1,40 @@
+{
+  "mode": "independent headless browser; no desktop/existing browser control",
+  "reports": [
+    {
+      "report": "external-credit",
+      "options": 21,
+      "selector_changes_content": true,
+      "embedded_result_equals_json": true,
+      "javascript_errors": []
+    },
+    {
+      "report": "selective-maturity",
+      "options": 11,
+      "selector_changes_content": true,
+      "embedded_result_equals_json": true,
+      "javascript_errors": []
+    },
+    {
+      "report": "incremental-fields",
+      "options": 2,
+      "selector_changes_content": true,
+      "embedded_result_equals_json": true,
+      "javascript_errors": []
+    },
+    {
+      "report": "rolling-monitor",
+      "options": 7,
+      "selector_changes_content": true,
+      "embedded_result_equals_json": true,
+      "javascript_errors": []
+    },
+    {
+      "report": "label-sensitivity",
+      "options": 3,
+      "selector_changes_content": true,
+      "embedded_result_equals_json": true,
+      "javascript_errors": []
+    }
+  ]
+}

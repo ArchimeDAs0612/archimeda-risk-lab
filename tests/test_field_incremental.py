@@ -97,5 +97,22 @@ class IncrementalFieldTests(unittest.TestCase):
                 cache=materialize(result,frame)
                 with self.assertRaises(AdmissionError): admitted_matrix(cache,result,frame,['amount'])
 
+    def test_registered_json_child_has_real_vector_and_source_veto(self):
+        frame,registry=self.setup_state()
+        frame['context_json']=['{"client":{"latency":0}}','{"client":{"latency":3}}','{"client":{"latency":8}}']
+        contract=copy.deepcopy(registry['contract']);source=copy.deepcopy(contract['source_fields']['raw_clock'])
+        contract['source_fields']['context_json']=source
+        field=copy.deepcopy(contract['fields']['amount']);field['parents']=['context_json']
+        name='context_json.client.latency';contract['fields'][name]=field
+        registry=initial_registry(contract,frame);cache=materialize(registry,frame)
+        self.assertEqual(admitted_matrix(cache,registry,frame,[name])[name].tolist(),[0.,3.,8.])
+        self.assertEqual(cache['fields'][name]['identity'],stable_field_id('fictional_wallet','context_json',['client','latency']))
+        with tempfile.TemporaryDirectory() as d:
+            path=Path(d)/'registry.json';atomic_registry(path,registry)
+            disabled,_=transaction(path,frame,'veto',0,dict(operation='disable',field='context_json'),workspace=d)
+            blocked=materialize(disabled,frame,cache)
+            self.assertIsNone(blocked['fields'][name]['values'])
+            with self.assertRaises(AdmissionError):admitted_matrix(blocked,disabled,frame,[name])
+
 
 if __name__ == '__main__': unittest.main()

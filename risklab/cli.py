@@ -5,6 +5,8 @@ from pathlib import Path
 from .pipeline import generate_data, run_experiment, save_json
 from .report import render_demo
 
+STUDY_INDEX = "index.html"
+
 
 def main():
     parser = argparse.ArgumentParser(description="Independent synthetic payment-risk evidence chain")
@@ -38,7 +40,7 @@ def main():
         from .study_contracts import workspace_path
         r = run_sensitivity(json.loads(workspace_path(args.config).read_text()), out)
         from .study_report import render_study
-        render_study(r, 'sensitivity', out/'index.html')
+        render_study(r, 'sensitivity', out/STUDY_INDEX)
         print(json.dumps({'status': 'SAVED', 'winner': r['frozen']['winner'], 'seconds': r['elapsed_seconds']}))
     elif args.command == 'rolling-study':
         if not args.config:
@@ -47,7 +49,7 @@ def main():
         from .study_contracts import workspace_path
         from .study_report import render_study
         result = run_rolling(json.loads(workspace_path(args.config).read_text()), out)
-        render_study(result, 'rolling', out/'index.html')
+        render_study(result, 'rolling', out/STUDY_INDEX)
         print(json.dumps({'status': 'SAVED', 'windows': len(result['windows']), 'seconds': result['elapsed_seconds']}))
     elif args.command == 'selection-study':
         if not args.config:
@@ -56,7 +58,7 @@ def main():
         from .study_contracts import workspace_path
         r = run_selection_study(json.loads(workspace_path(args.config).read_text()), out)
         from .study_report import render_study
-        render_study(r, 'selection', out/'index.html')
+        render_study(r, 'selection', out/STUDY_INDEX)
         print(json.dumps({'status': 'SAVED', 'winner': r['frozen']['winner'], 'seconds': r['elapsed_seconds']}))
     elif args.command == 'field-incremental':
         if not args.data:
@@ -64,7 +66,7 @@ def main():
         from .field_incremental import run_incremental_study
         r = run_incremental_study(args.data, out)
         from .study_report import render_study
-        render_study(r, 'fields', out/'index.html')
+        render_study(r, 'fields', out/STUDY_INDEX)
         print(json.dumps({'status': r['status'], 'checks': len(r['checks']), 'llm_used': False}))
     elif args.command == 'credit-study':
         if not args.data or not args.config:
@@ -73,7 +75,7 @@ def main():
         from .study_contracts import workspace_path
         result = run_credit(args.data, out, json.loads(workspace_path(args.config).read_text()))
         from .study_report import render_study
-        render_study(result, 'credit', out/'index.html')
+        render_study(result, 'credit', out/STUDY_INDEX)
         print(json.dumps({'status': 'SAVED', 'winner': result['winner'], 'seconds': result['elapsed_seconds']}))
     elif args.command == 'predict':
         if not args.model or not args.data:

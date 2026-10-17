@@ -1,9 +1,10 @@
 """Offline views of saved research evidence; selectors never simulate training."""
 import json
-from pathlib import Path
+from .study_contracts import workspace_path
 
 
 def render_study(result, kind, destination):
+    destination = workspace_path(destination)
     if kind not in ['credit', 'selection', 'fields', 'rolling', 'sensitivity']:
         raise ValueError('unknown report kind')
     payload = json.dumps(dict(kind=kind, result=result), ensure_ascii=False, allow_nan=False).replace('<', '\\u003c').replace('>', '\\u003e').replace('&', '\\u0026')
@@ -50,4 +51,4 @@ block(details,'确定性工具实际执行；没有LLM调用，没有自动语�
 for(const name of Object.keys(options)){const o=document.createElement('option');o.value=name;o.textContent=name;choice.appendChild(o)}
 function update(){summary.replaceChildren();table(summary,options[choice.value]);if(data.kind==='credit')table(summary,{'固定10%容量':r.fixed_capacity[choice.value]})}choice.addEventListener('change',update);update();document.getElementById('evidence').textContent=JSON.stringify(r,null,2);
 </script></html>'''.replace('PAYLOAD', payload)
-    Path(destination).write_text(page, encoding='utf-8')
+    destination.write_text(page, encoding='utf-8')

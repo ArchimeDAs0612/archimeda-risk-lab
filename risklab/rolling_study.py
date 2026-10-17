@@ -144,7 +144,7 @@ def run_rolling(config, out):
             select_scores = {kind: probabilities(model, parts['select']) for kind, model in models.items()}
             thresholds = {kind: float(np.quantile(p, .9)) for kind,p in select_scores.items()}
             selection = {kind: rank_metrics(parts['select'].risk_label,p,thresholds[kind]) for kind,p in select_scores.items()}
-            winner = max(selection,key=lambda k:(selection[k]['ap'],k))
+            winner = max(selection,key=lambda k, selection=selection:(selection[k]['ap'],k))
             rule_model, rule, candidates = discover_rule(parts['train'],parts['select'],columns,config,config['seed'])
             if first_rule is None:
                 first_rule = (rule_model, rule)

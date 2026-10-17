@@ -24,6 +24,8 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 
 **直接演示：** [真实研究入口](demo/index.html) · [交互研究工作台](artifacts/rc1/research/normal/index.html) · [选择性标签实验](artifacts/rc1/label-visibility/index.html) · [审计与修复](docs/RC1_AUDIT.md) · [5分钟技术演示](docs/INTERVIEW_GUIDE.md)。在线Demo可直接操作；GitHub文件源码预览不会执行HTML。克隆或下载后也可离线打开，核心演示无需外部服务。
 
+[本轮中文交付报告](docs/PUBLICATION_DEEP_RESEARCH.md) · [干净远程复现收据](artifacts/rc1/resource-study/clean-reproduction.json)
+
 ## 三个新增可质疑案例
 
 | 问题与新增方法 | 实际结果与反证 | 运行与证据 |
@@ -120,6 +122,8 @@ OR拒绝回放使模拟拒绝从9变为99，额外拒绝72个风险零事件；�
 本地实测CPython3.9.6 / macOS arm64，真实GitHub Actions另验收Ubuntu24.04的Python3.9与3.11。其他环境及跨平台逐比特一致性未声称。免费依赖安装后，实验和工作台可离线运行。
 
 ```sh
+export OMP_NUM_THREADS=1
+export LOKY_MAX_CPU_COUNT=1
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-lock.txt
 .venv/bin/python -m pip install .
@@ -154,7 +158,7 @@ export LOKY_MAX_CPU_COUNT=1
 .venv/bin/python -W error -m scripts.benchmark_studies --data artifacts/rc1/research/normal --out runs/resource-study
 ```
 
-两个线程环境变量约束单机资源并避免沙箱物理核查询失败，不关闭数值警告。外部数据协议、特征分组、隔离划分及具体边界见[数据卡](studies/external-credit.md)。全部新增核心实验已在远程克隆的新虚拟环境中重建；冻结模型、规则和聚合统计逐项核对。运行后的独立核对命令为 `.venv/bin/python -m scripts.verify_deep_results --out runs/reproduction-comparison.json`，详细收据随本轮最终验收记录公开。
+两个线程环境变量约束单机资源并避免沙箱物理核查询失败，不关闭数值警告。外部数据协议、特征分组、隔离划分及具体边界见[数据卡](studies/external-credit.md)。全部新增核心实验已在远程克隆的新虚拟环境中重建；冻结模型、规则和聚合统计逐项核对。运行后的独立核对命令为 `.venv/bin/python -m scripts.verify_deep_results --out runs/reproduction-comparison.json`，[干净复现收据](artifacts/rc1/resource-study/clean-reproduction.json)保留全部核对与AP故障注入。
 
 ## 工程目录与深入阅读
 

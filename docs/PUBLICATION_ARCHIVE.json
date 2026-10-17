@@ -4,9 +4,15 @@
   "bytes": 30813931,
   "sha256": "5ff5a0631af3589e60075adb0cae02c7d345d5d497152d03f951a2af2f38a899",
   "all_entries_match_git": true,
-  "doi": null,
-  "zenodo_published": false,
+  "doi": "10.5281/zenodo.23423965",
+  "zenodo_published": true,
   "creator": "ArchimeDAs0612",
   "license": "MIT",
-  "note": "Manual Zenodo upload requires account access. No DOI has been reserved or published."
+  "note": "The original ZIP above remains local. Zenodo publishes a tar.xz with identical 361 file contents, bound to source commit d8848a2. The DOI does not refer to the moving main branch. See PUBLICATION_ZENODO.json for publication and verification limits.",
+  "published_archive": {
+    "filename": "archimeda-risk-lab-d8848a2.tar.xz",
+    "bytes": 13646112,
+    "md5": "md5:f610d5535a3809e47c8f01496b8e0090",
+    "sha256": "fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee"
+  }
 }

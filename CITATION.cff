@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite the exact commit or archived version used for your experiments. No DOI has been assigned yet."
+message: "For archived snapshot d8848a2 use the preferred citation below. For later code cite the exact commit used; this DOI does not track main."
 type: software
 title: "Archimeda Risk Lab"
 authors:
@@ -18,3 +18,14 @@ keywords:
   - reproducible research
   - synthetic data
   - pattern discovery
+preferred-citation:
+  type: software
+  title: "Archimeda Risk Lab — source snapshot d8848a2"
+  authors:
+    - name: "ArchimeDAs0612"
+  version: "d8848a2"
+  date-released: "2026-10-16"
+  doi: "10.5281/zenodo.23423965"
+  url: "https://zenodo.org/records/23423965"
+  repository-code: "https://github.com/ArchimeDAs0612/archimeda-risk-lab/tree/d8848a2753423c266bce93764c89d4f47bd8d3a4"
+  license: MIT

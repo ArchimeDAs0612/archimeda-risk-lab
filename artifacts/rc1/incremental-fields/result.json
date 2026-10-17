@@ -1,0 +1,253 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "model_before_rows",
+      "actual": 9577,
+      "expected": 9577,
+      "passed": true
+    },
+    {
+      "name": "incremental_equals_full",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "unaffected_amount_reused",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "device_vector_removed",
+      "actual": null,
+      "expected": null,
+      "passed": true
+    },
+    {
+      "name": "old_report_invalidated",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "model_and_candidate_blocked",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "identical_request_idempotent",
+      "actual": 1,
+      "expected": 1,
+      "passed": true
+    },
+    {
+      "name": "stale_writer:rejected",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "stale_writer:file_unchanged",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "key_collision:rejected",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "key_collision:file_unchanged",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "interrupted_prepare:rejected",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "interrupted_prepare:file_unchanged",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "retry_after_prepare_failure",
+      "actual": 2,
+      "expected": 2,
+      "passed": true
+    },
+    {
+      "name": "unit_change_requires_review",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "same_name_domain_isolated",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    },
+    {
+      "name": "other_domain_not_reused",
+      "actual": 0,
+      "expected": 0,
+      "passed": true
+    },
+    {
+      "name": "correct_domain_not_falsely_conflicted",
+      "actual": false,
+      "expected": false,
+      "passed": true
+    },
+    {
+      "name": "null_blank_literal_zero_false_distinct",
+      "actual": {
+        "null": 1,
+        "blank": 2,
+        "literal_null": 1,
+        "zero": 1,
+        "false": 1,
+        "value": 1
+      },
+      "expected": {
+        "null": 1,
+        "blank": 2,
+        "literal_null": 1,
+        "zero": 1,
+        "false": 1,
+        "value": 1
+      },
+      "passed": true
+    },
+    {
+      "name": "zero_coverage_distinct_no_sample",
+      "actual": "ZERO_COVERAGE",
+      "expected": "ZERO_COVERAGE",
+      "passed": true
+    },
+    {
+      "name": "no_sample_distinct",
+      "actual": "NO_SAMPLE",
+      "expected": "NO_SAMPLE",
+      "passed": true
+    },
+    {
+      "name": "not_applicable",
+      "actual": null,
+      "expected": null,
+      "passed": true
+    },
+    {
+      "name": "not_computed",
+      "actual": "NOT_COMPUTED",
+      "expected": "NOT_COMPUTED",
+      "passed": true
+    },
+    {
+      "name": "literal_dot_path_is_not_nested",
+      "actual": true,
+      "expected": true,
+      "passed": true
+    }
+  ],
+  "changes": [
+    {
+      "request_id": "disable-device",
+      "revision": 1,
+      "proposal_sha256": "f799bfca3341faa73d09d97ab85dc84675737e0d6043c733d349ec18bfb3f793",
+      "affected": [
+        "device_users_7d",
+        "user_devices_7d"
+      ],
+      "status": "CANDIDATE_SAVED",
+      "replayed": false
+    },
+    {
+      "scenario": "stale_writer",
+      "error": "STALE_REVISION: reload, never overwrite newer state"
+    },
+    {
+      "scenario": "key_collision",
+      "error": "idempotency key reused with different content"
+    },
+    {
+      "scenario": "interrupted_prepare",
+      "error": "INJECTED_BEFORE_COMMIT: previous registry retained"
+    }
+  ],
+  "before": {
+    "valid": [
+      "account_age_days",
+      "amount",
+      "attempts_24h",
+      "auth_strength",
+      "client_emulator",
+      "client_latency_ms",
+      "declines_7d",
+      "device_age_days",
+      "device_users_7d",
+      "geo_distance",
+      "prior_score",
+      "tool_users_7d",
+      "user_amount_1h",
+      "user_amount_24h",
+      "user_amount_7d",
+      "user_attempts_1h",
+      "user_attempts_24h",
+      "user_attempts_7d",
+      "user_devices_7d",
+      "user_tools_7d"
+    ],
+    "model_rows": 9577
+  },
+  "after": {
+    "blocked": {
+      "device_users_7d": [
+        "UPSTREAM:DISABLED"
+      ],
+      "user_devices_7d": [
+        "UPSTREAM:DISABLED"
+      ]
+    },
+    "reused": [
+      "account_age_days",
+      "amount",
+      "attempts_24h",
+      "auth_strength",
+      "client_emulator",
+      "client_latency_ms",
+      "declines_7d",
+      "device_age_days",
+      "geo_distance",
+      "prior_score",
+      "tool_users_7d",
+      "user_amount_1h",
+      "user_amount_24h",
+      "user_amount_7d",
+      "user_attempts_1h",
+      "user_attempts_24h",
+      "user_attempts_7d",
+      "user_tools_7d"
+    ],
+    "recomputed": []
+  },
+  "evidence_sha256": "3ae9c8e8e3f366ee54b4d1eca03b994f970e9613e70c3af6156ee07b5c68ca1e",
+  "llm_used": false,
+  "limits": [
+    "local cooperating writers only",
+    "no authenticated reviewer identity",
+    "no semantic auto-approval",
+    "numeric sample materialization, upstream SQL remains separately validated",
+    "old artifacts require validator at consumption"
+  ]
+}

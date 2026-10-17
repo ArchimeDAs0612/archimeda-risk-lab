@@ -8,7 +8,7 @@ from .report import render_demo
 
 def main():
     parser = argparse.ArgumentParser(description="Independent synthetic payment-risk evidence chain")
-    parser.add_argument("command", choices=["generate", "run", "demo", "research", "research-demo", "field-inventory", "field-change", "field-review", "field-workflow", "label-study", "predict"])
+    parser.add_argument("command", choices=["generate", "run", "demo", "research", "research-demo", "field-inventory", "field-change", "field-review", "field-workflow", "label-study", "predict", "credit-study", "field-incremental", "selection-study"])
     parser.add_argument("--config")
     parser.add_argument("--out", required=True)
     parser.add_argument("--data")
@@ -31,7 +31,27 @@ def main():
     out = Path(args.out)
     if out.exists() and any(out.iterdir()):
         parser.error("output directory must be absent or empty; choose a new run path")
-    if args.command == 'predict':
+    if args.command == 'selection-study':
+        if not args.config:
+            parser.error('selection-study requires --config frozen protocol')
+        from .selection_experiment import run_selection_study
+        from .study_contracts import workspace_path
+        r = run_selection_study(json.loads(workspace_path(args.config).read_text()), out)
+        print(json.dumps({'status': 'SAVED', 'winner': r['frozen']['winner'], 'seconds': r['elapsed_seconds']}))
+    elif args.command == 'field-incremental':
+        if not args.data:
+            parser.error('field-incremental requires --data accepted research directory')
+        from .field_incremental import run_incremental_study
+        r = run_incremental_study(args.data, out)
+        print(json.dumps({'status': r['status'], 'checks': len(r['checks']), 'llm_used': False}))
+    elif args.command == 'credit-study':
+        if not args.data or not args.config:
+            parser.error('credit-study requires --data UCI CSV and --config frozen protocol')
+        from .external_credit import run_credit
+        from .study_contracts import workspace_path
+        result = run_credit(args.data, out, json.loads(workspace_path(args.config).read_text()))
+        print(json.dumps({'status': 'SAVED', 'winner': result['winner'], 'seconds': result['elapsed_seconds']}))
+    elif args.command == 'predict':
         if not args.model or not args.data:
             parser.error('predict requires --model JSON and --data samples.csv')
         import pandas as pd

@@ -1,0 +1,22 @@
+{
+  "seed": 918731,
+  "orders": 18000,
+  "days": 120,
+  "train_end_day": 64,
+  "train_asof_day": 71,
+  "select_start_day": 71,
+  "select_end_day": 88,
+  "select_asof_day": 95,
+  "test_start_day": 95,
+  "evaluation_asof_day": 127,
+  "audit_probability": 0.25,
+  "audit_repeats": 80,
+  "delay_min_days": 2,
+  "delay_max_days": 15,
+  "review_fraction": 0.1,
+  "costs": [4, 25, 100],
+  "study": "known randomized audit and conditionally independent delay; weights inverse joint inclusion probability",
+  "fit": "LR observed-only and known-design IPW; preprocessing only observed training; selection IPW AP; no oracle fitting or selection",
+  "nonidentification": ["deterministic declines", "zero maturity probability", "unknown outcome-dependent maturity", "settled-only labels"],
+  "extensions": "seen/unseen users separately; subsequent frozen score monitor under population, prior and conditional shifts"
+}

@@ -1,7 +1,7 @@
 {
   "draft_id": 23423965,
-  "published": false,
-  "doi": null,
+  "published": true,
+  "doi": "10.5281/zenodo.23423965",
   "source_commit": "d8848a2753423c266bce93764c89d4f47bd8d3a4",
   "title": "Archimeda Risk Lab — source snapshot d8848a2",
   "creator": "ArchimeDAs0612",
@@ -9,7 +9,7 @@
   "saved_metadata": true,
   "original_upload": {
     "filename": "archimeda-risk-lab-d8848a2.zip",
-    "status": "Pending, zero bytes, no checksum after refresh",
+    "status": "Historical failed zero-byte entry; removed under exact human approval.",
     "last_progress_before_refresh": "88%",
     "page_error": "AxiosError HTTP 400 observed in page console; failed request not independently mapped to an endpoint"
   },
@@ -20,6 +20,41 @@
     "sha256": "fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee",
     "all_entries_match_verified_zip": true
   },
-  "next_action": "Await exact confirmation to remove failed zero-byte draft entry, then upload identical-content tar.xz; verify completed checksum before publishing.",
-  "publication_status": "Saved draft only; no DOI badge."
+  "next_action": "No remaining upload or publication action. Security-review findings and owner knowledge remain separate OpenSSF work.",
+  "publication_status": "PUBLISHED: exact source snapshot d8848a2, not the moving main branch.",
+  "concept_doi": "10.5281/zenodo.23423964",
+  "record_url": "https://zenodo.org/records/23423965",
+  "record_created_at": "2026-10-17T03:38:40.514057+00:00",
+  "publication_date": "2026-10-16",
+  "verified_at": "2026-10-17T03:51:13.943166+00:00",
+  "anonymous_api_state": "done",
+  "anonymous_api_submitted": true,
+  "doi_resolver": {
+    "http_status": 200,
+    "final_url": "https://zenodo.org/records/23423965"
+  },
+  "published_file": {
+    "id": "c02ca331-601e-4228-8bd6-edb7d50c7abb",
+    "key": "archimeda-risk-lab-d8848a2.tar.xz",
+    "size": 13646112,
+    "checksum": "md5:f610d5535a3809e47c8f01496b8e0090",
+    "links": {
+      "self": "https://zenodo.org/api/records/23423965/files/archimeda-risk-lab-d8848a2.tar.xz/content"
+    }
+  },
+  "original_failed_entry_removed": true,
+  "human_approval": {
+    "remove_failed_entry_and_reupload": true,
+    "final_publication": true
+  },
+  "upload_retry_tool_elapsed_seconds": 12552.3704,
+  "verification": {
+    "server_size_equals_local": true,
+    "server_md5_equals_local": true,
+    "local_sha256": "fe91186f964020e08469ba4f230980709c4d19fb66aaf89b5f42d8dd7ba2d3ee",
+    "all_361_tar_entries_match_verified_source_zip": true,
+    "official_doi_badge_verified": true,
+    "complete_independent_redownload": false,
+    "redownload_limitation": "Anonymous download timed out after 45 seconds with 719496/13646112 bytes. No full downloaded SHA-256 match is claimed; the full server-computed MD5 and exact size match local."
+  }
 }

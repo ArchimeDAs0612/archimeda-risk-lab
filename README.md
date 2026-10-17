@@ -154,7 +154,7 @@ export LOKY_MAX_CPU_COUNT=1
 .venv/bin/python -W error -m scripts.benchmark_studies --data artifacts/rc1/research/normal --out runs/resource-study
 ```
 
-两个线程环境变量约束单机资源并避免沙箱物理核查询失败，不关闭数值警告。外部数据协议、特征分组、隔离划分及具体边界见[数据卡](studies/external-credit.md)。干净远程复现收据在本轮验收完成后记录，不能把本地运行先写成远程复现成功。
+两个线程环境变量约束单机资源并避免沙箱物理核查询失败，不关闭数值警告。外部数据协议、特征分组、隔离划分及具体边界见[数据卡](studies/external-credit.md)。全部新增核心实验已在远程克隆的新虚拟环境中重建；冻结模型、规则和聚合统计逐项核对。运行后的独立核对命令为 `.venv/bin/python -m scripts.verify_deep_results --out runs/reproduction-comparison.json`，详细收据随本轮最终验收记录公开。
 
 ## 工程目录与深入阅读
 

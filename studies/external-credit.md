@@ -42,3 +42,9 @@ python -m risklab credit-study --data runs/credit-input/uci350.csv --config conf
 首次运行在macOS密集矩阵运算中出现浮点警告，按-W error中止。改用liblinear拟合sigmoid、用sklearn稀疏输入概率作为独立参考，不关闭浮点警告；完整重新运行后概率误差在浮点容差内。新增容量指标的复现中，全部既有模型和Pattern结果精确一致。此次维护未根据最终区重新选择模型或规则。
 
 [聚合结果](../artifacts/rc1/external-credit/result.json) · [分区/代码/依赖指纹](../artifacts/rc1/external-credit/provenance.json) · [完整中文Pattern案例](models-patterns.md#外部信用中的规则简化与选择不稳定)。原数据有56条重复特征行、21组冲突标签；重复组不跨区，保留矛盾，不按标签删除不利样本。
+
+### 校准与固定预算的实际对照
+
+使用已冻结的sigmoid参数对保存预测复算，严格10%容量为604条；校准前后都命中431个违约，精确选中记录集合相同，Precision 0.713576、Recall 0.318551。[实际容量收据](../artifacts/rc1/external-credit/calibration_capacity.json)由[远程复现核对器](../scripts/verify_deep_results.py)重建，未重新拟合或选择阈值。
+
+独立选择区确定的成本阈值在最终区的每客户假设成本：成本比2时0.306700→0.306865，成本比5时0.549545→0.552192，成本比10时0.707692→0.704715。小幅变化方向不一致，并未建立校准普遍改善决策的结论；固定排序预算不变与概率阈值动作变化是两种不同约束。

@@ -12,7 +12,7 @@ class StudyContractTests(unittest.TestCase):
             root=Path(outer)/'workspace';root.mkdir()
             outside=Path(outer)/'private';outside.write_text('unrelated')
             (root/'link').symlink_to(outside)
-            self.assertEqual(workspace_path(root/'runs'/'new', root), root/'runs'/'new')
+            self.assertEqual(workspace_path(root/'runs'/'new', root), (root/'runs'/'new').resolve())
             for p in [root/'..'/'private', outside, root/'link', root]:
                 with self.assertRaises(ValueError): workspace_path(p,root)
 

@@ -1,0 +1,345 @@
+{
+  "protocol": "instrument-intake-v1",
+  "window_sizes_train_select_final": [
+    6000,
+    3000,
+    4000
+  ],
+  "unit": "one independent synthetic instrument at one decision tick",
+  "audit_probability": 0.25,
+  "seeds": [
+    {
+      "seed": 3119,
+      "selection": {
+        "winners": {
+          "ticket": "combined",
+          "audit": "signal"
+        },
+        "ticket": {
+          "signal": {
+            "rows": 3000,
+            "positives": 135,
+            "ap": 0.139007,
+            "auc": 0.763534
+          },
+          "channel": {
+            "rows": 3000,
+            "positives": 135,
+            "ap": 0.12644,
+            "auc": 0.80859
+          },
+          "combined": {
+            "rows": 3000,
+            "positives": 135,
+            "ap": 0.352207,
+            "auc": 0.896863
+          }
+        },
+        "audit": {
+          "signal": {
+            "rows": 770,
+            "positives": 120,
+            "ap": 0.427994,
+            "auc": 0.786167
+          },
+          "channel": {
+            "rows": 770,
+            "positives": 120,
+            "ap": 0.151177,
+            "auc": 0.479936
+          },
+          "combined": {
+            "rows": 770,
+            "positives": 120,
+            "ap": 0.245602,
+            "auc": 0.677218
+          }
+        }
+      },
+      "final": {
+        "signal": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 206,
+            "ap": 0.141786,
+            "auc": 0.762516
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 429,
+            "ap": 0.307489,
+            "auc": 0.772924
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 647,
+            "ap": 0.44539,
+            "auc": 0.790563
+          }
+        },
+        "channel": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 206,
+            "ap": 0.130735,
+            "auc": 0.793772
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 429,
+            "ap": 0.106517,
+            "auc": 0.326655
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 647,
+            "ap": 0.15811,
+            "auc": 0.485456
+          }
+        },
+        "combined": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 206,
+            "ap": 0.380097,
+            "auc": 0.889729
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 429,
+            "ap": 0.10588,
+            "auc": 0.548316
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 647,
+            "ap": 0.292696,
+            "auc": 0.678136
+          }
+        }
+      }
+    },
+    {
+      "seed": 7741,
+      "selection": {
+        "winners": {
+          "ticket": "combined",
+          "audit": "signal"
+        },
+        "ticket": {
+          "signal": {
+            "rows": 3000,
+            "positives": 125,
+            "ap": 0.118376,
+            "auc": 0.747762
+          },
+          "channel": {
+            "rows": 3000,
+            "positives": 125,
+            "ap": 0.112676,
+            "auc": 0.79913
+          },
+          "combined": {
+            "rows": 3000,
+            "positives": 125,
+            "ap": 0.32876,
+            "auc": 0.889149
+          }
+        },
+        "audit": {
+          "signal": {
+            "rows": 748,
+            "positives": 127,
+            "ap": 0.455582,
+            "auc": 0.774925
+          },
+          "channel": {
+            "rows": 748,
+            "positives": 127,
+            "ap": 0.162105,
+            "auc": 0.466025
+          },
+          "combined": {
+            "rows": 748,
+            "positives": 127,
+            "ap": 0.267099,
+            "auc": 0.663586
+          }
+        }
+      },
+      "final": {
+        "signal": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 183,
+            "ap": 0.15865,
+            "auc": 0.76619
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 443,
+            "ap": 0.311979,
+            "auc": 0.776667
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 651,
+            "ap": 0.479528,
+            "auc": 0.799099
+          }
+        },
+        "channel": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 183,
+            "ap": 0.13306,
+            "auc": 0.822166
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 443,
+            "ap": 0.109548,
+            "auc": 0.342022
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 651,
+            "ap": 0.160103,
+            "auc": 0.489675
+          }
+        },
+        "combined": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 183,
+            "ap": 0.406002,
+            "auc": 0.914627
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 443,
+            "ap": 0.113718,
+            "auc": 0.565197
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 651,
+            "ap": 0.312554,
+            "auc": 0.687608
+          }
+        }
+      }
+    },
+    {
+      "seed": 2903,
+      "selection": {
+        "winners": {
+          "ticket": "combined",
+          "audit": "signal"
+        },
+        "ticket": {
+          "signal": {
+            "rows": 3000,
+            "positives": 146,
+            "ap": 0.135361,
+            "auc": 0.762751
+          },
+          "channel": {
+            "rows": 3000,
+            "positives": 146,
+            "ap": 0.129433,
+            "auc": 0.793693
+          },
+          "combined": {
+            "rows": 3000,
+            "positives": 146,
+            "ap": 0.361113,
+            "auc": 0.88911
+          }
+        },
+        "audit": {
+          "signal": {
+            "rows": 763,
+            "positives": 118,
+            "ap": 0.46005,
+            "auc": 0.805098
+          },
+          "channel": {
+            "rows": 763,
+            "positives": 118,
+            "ap": 0.159075,
+            "auc": 0.515386
+          },
+          "combined": {
+            "rows": 763,
+            "positives": 118,
+            "ap": 0.336551,
+            "auc": 0.706464
+          }
+        }
+      },
+      "final": {
+        "signal": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 199,
+            "ap": 0.189518,
+            "auc": 0.783794
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 432,
+            "ap": 0.307798,
+            "auc": 0.772901
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 642,
+            "ap": 0.472163,
+            "auc": 0.794915
+          }
+        },
+        "channel": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 199,
+            "ap": 0.134747,
+            "auc": 0.804326
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 432,
+            "ap": 0.105696,
+            "auc": 0.347056
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 642,
+            "ap": 0.159997,
+            "auc": 0.498115
+          }
+        },
+        "combined": {
+          "ticket": {
+            "rows": 4000,
+            "positives": 199,
+            "ap": 0.419836,
+            "auc": 0.898407
+          },
+          "swapped_ticket": {
+            "rows": 4000,
+            "positives": 432,
+            "ap": 0.110798,
+            "auc": 0.561914
+          },
+          "fault": {
+            "rows": 4000,
+            "positives": 642,
+            "ap": 0.305208,
+            "auc": 0.686162
+          }
+        }
+      }
+    }
+  ]
+}

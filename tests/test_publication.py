@@ -1,3 +1,4 @@
+import hashlib
 import tempfile
 from pathlib import Path
 import unittest
@@ -61,12 +62,16 @@ class PublicationTests(unittest.TestCase):
                       'artifacts/rc1/research/normal/frozen_selection.json','artifacts/rc1/research/normal/field/workflow.json',
                       'artifacts/rc1/label-visibility/index.html','artifacts/rc1/label-visibility/result.json',
                       'artifacts/rc1/field-tools/transcript.json','artifacts/rc1/field-tools/evaluation.json']
+            for study in ('sequence-order', 'observation-study', 'rule-evidence'):
+                required.extend([f'artifacts/rc1/{study}/result.json', f'studies/{study}.md'])
             for name in required:
                 p=root/name;p.parent.mkdir(parents=True,exist_ok=True);p.write_text('<a href="../README.md">Risk Decision Lab</a>')
             (root/'docs').mkdir()
             private=root/'.lab-run/private.json';private.parent.mkdir();private.write_text('private fixture only')
             with patch('scripts.build_pages.subprocess.check_output',return_value='a'*40+'\n'):
                 result=build(Path(tmp)/'site',root)
+            for name in required:
+                self.assertEqual(result['files_sha256'][name], hashlib.sha256((root/name).read_bytes()).hexdigest())
             self.assertEqual(result['commit'],'a'*40)
             self.assertNotIn('.lab-run/private.json',result['files_sha256'])
             self.assertFalse((Path(tmp)/'site/.lab-run').exists())

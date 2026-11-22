@@ -1,0 +1,570 @@
+{
+  "definition_support": {
+    "per_rule": {
+      "both_referenced": {
+        "known_denominator": 6,
+        "no": 1,
+        "population": 7,
+        "unknown": 1,
+        "yes": 5,
+        "yes_per_known": 0.8333333333333334
+      },
+      "jointly_possible": {
+        "known_denominator": 7,
+        "no": 5,
+        "population": 7,
+        "unknown": 0,
+        "yes": 2,
+        "yes_per_known": 0.2857142857142857
+      }
+    },
+    "per_template": {
+      "both_referenced": {
+        "known_denominator": 5.0,
+        "no": 1.0,
+        "population": 6.0,
+        "unknown": 1.0,
+        "yes": 4.0,
+        "yes_per_known": 0.8
+      },
+      "jointly_possible": {
+        "known_denominator": 6.0,
+        "no": 5.0,
+        "population": 6.0,
+        "unknown": 0,
+        "yes": 1.0,
+        "yes_per_known": 0.16666666666666666
+      }
+    }
+  },
+  "events": [
+    {
+      "sensors": {
+        "fog": false,
+        "gust": false,
+        "roof_open": true
+      },
+      "tick": 1
+    },
+    {
+      "sensors": {
+        "fog": false,
+        "gust": true,
+        "roof_open": true
+      },
+      "tick": 2
+    },
+    {
+      "sensors": {
+        "fog": true,
+        "gust": true,
+        "roof_open": false
+      },
+      "tick": 3
+    },
+    {
+      "sensors": {
+        "fog": false,
+        "gust": false,
+        "roof_open": true
+      },
+      "tick": 4
+    },
+    {
+      "sensors": {
+        "fog": false,
+        "gust": true,
+        "roof_open": true
+      },
+      "tick": 5
+    },
+    {
+      "sensors": {
+        "fog": false,
+        "gust": null,
+        "roof_open": true
+      },
+      "tick": 6
+    }
+  ],
+  "fixture_version": 1,
+  "focus_pair": [
+    "gust",
+    "roof_open"
+  ],
+  "frozen_at": 6,
+  "input_sha256": "4f369548d15c74c0dda38058a549686c00df97f73018a87c146f25b4c77dfd16",
+  "replay": [
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": null,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 1,
+      "version_from": 1
+    },
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "annex",
+      "pair_path_active": true,
+      "pause": true,
+      "tick": 2,
+      "version_from": 2
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 2,
+      "version_from": 1
+    },
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "annex",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 3,
+      "version_from": 2
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 3,
+      "version_from": 1
+    },
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 4,
+      "version_from": 1
+    },
+    {
+      "id": "annex",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 4,
+      "version_from": 2
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": null,
+      "tick": 4,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 4,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 4,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 4,
+      "version_from": 4
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 4,
+      "version_from": 1
+    },
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 5,
+      "version_from": 1
+    },
+    {
+      "id": "annex",
+      "pair_path_active": true,
+      "pause": true,
+      "tick": 5,
+      "version_from": 2
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 5,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 5,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 5,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": true,
+      "pause": true,
+      "tick": 5,
+      "version_from": 4
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 5,
+      "version_from": 1
+    },
+    {
+      "id": "alternatives",
+      "pair_path_active": false,
+      "pause": true,
+      "tick": 6,
+      "version_from": 1
+    },
+    {
+      "id": "annex",
+      "pair_path_active": null,
+      "pause": null,
+      "tick": 6,
+      "version_from": 2
+    },
+    {
+      "id": "fallback",
+      "pair_path_active": false,
+      "pause": null,
+      "tick": 6,
+      "version_from": 1
+    },
+    {
+      "id": "fog_gate",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 6,
+      "version_from": 1
+    },
+    {
+      "id": "fog_only",
+      "pair_path_active": false,
+      "pause": false,
+      "tick": 6,
+      "version_from": 1
+    },
+    {
+      "id": "north",
+      "pair_path_active": null,
+      "pause": null,
+      "tick": 6,
+      "version_from": 4
+    },
+    {
+      "id": "obstructed",
+      "pair_path_active": false,
+      "pause": null,
+      "tick": 6,
+      "version_from": 1
+    }
+  ],
+  "replay_support": {
+    "pair_path_active": {
+      "known_denominator": 39,
+      "no": 36,
+      "population": 41,
+      "unknown": 2,
+      "yes": 3,
+      "yes_per_known": 0.07692307692307693
+    },
+    "pause": {
+      "known_denominator": 35,
+      "no": 18,
+      "population": 41,
+      "unknown": 6,
+      "yes": 17,
+      "yes_per_known": 0.4857142857142857
+    }
+  },
+  "rule_versions": [
+    {
+      "expression": {
+        "any": [
+          {
+            "flag": "gust"
+          },
+          {
+            "flag": "roof_open"
+          }
+        ]
+      },
+      "from": 1,
+      "id": "north"
+    },
+    {
+      "expression": {
+        "all": [
+          {
+            "flag": "gust"
+          },
+          {
+            "flag": "roof_open"
+          }
+        ]
+      },
+      "from": 4,
+      "id": "north"
+    },
+    {
+      "expression": {
+        "all": [
+          {
+            "flag": "gust"
+          },
+          {
+            "flag": "roof_open"
+          }
+        ]
+      },
+      "from": 2,
+      "id": "annex"
+    },
+    {
+      "expression": {
+        "all": [
+          {
+            "flag": "gust"
+          },
+          {
+            "not": {
+              "flag": "roof_open"
+            }
+          }
+        ]
+      },
+      "from": 1,
+      "id": "fog_gate"
+    },
+    {
+      "expression": {
+        "any": [
+          {
+            "flag": "gust"
+          },
+          {
+            "unmapped": "spare"
+          }
+        ]
+      },
+      "from": 1,
+      "id": "fallback"
+    },
+    {
+      "expression": {
+        "all": [
+          {
+            "flag": "gust"
+          },
+          {
+            "flag": "roof_open"
+          },
+          {
+            "not": {
+              "flag": "gust"
+            }
+          }
+        ]
+      },
+      "from": 1,
+      "id": "obstructed"
+    },
+    {
+      "expression": {
+        "flag": "fog"
+      },
+      "from": 1,
+      "id": "fog_only"
+    },
+    {
+      "expression": {
+        "any": [
+          {
+            "flag": "gust"
+          },
+          {
+            "flag": "roof_open"
+          }
+        ]
+      },
+      "from": 1,
+      "id": "alternatives"
+    }
+  ],
+  "snapshot": [
+    {
+      "both_referenced": true,
+      "from": 1,
+      "id": "alternatives",
+      "jointly_possible": false,
+      "template": "34c3a565dd41a69d5ba6f6c23a871c82e49da7c16ee57546d4ccce0fae12603e"
+    },
+    {
+      "both_referenced": true,
+      "from": 2,
+      "id": "annex",
+      "jointly_possible": true,
+      "template": "7b6d9b39b6e2de69543b443456756a960604e1683476772678fce57482fdbd04"
+    },
+    {
+      "both_referenced": null,
+      "from": 1,
+      "id": "fallback",
+      "jointly_possible": false,
+      "template": "4dbdf20b38ad7a89439c3b6715df79e8c00d1aa859de03117def385202e7f764"
+    },
+    {
+      "both_referenced": true,
+      "from": 1,
+      "id": "fog_gate",
+      "jointly_possible": false,
+      "template": "ab798fdd37e17fc615ed51544a9698f41193b09ea8751400d8e10203263b8076"
+    },
+    {
+      "both_referenced": false,
+      "from": 1,
+      "id": "fog_only",
+      "jointly_possible": false,
+      "template": "a229a4df3ad73323efe58d7751ab4d0a16e8297b0a98535b2934bc23a2e5be28"
+    },
+    {
+      "both_referenced": true,
+      "from": 4,
+      "id": "north",
+      "jointly_possible": true,
+      "template": "7b6d9b39b6e2de69543b443456756a960604e1683476772678fce57482fdbd04"
+    },
+    {
+      "both_referenced": true,
+      "from": 1,
+      "id": "obstructed",
+      "jointly_possible": false,
+      "template": "6dce25ba8c90ff345401448b8c784ba4145f6b4daacc9892d820f4ad89517257"
+    }
+  ],
+  "study": "Synthetic observatory exposure interlock"
+}

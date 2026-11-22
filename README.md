@@ -10,6 +10,24 @@ Lab把通用风险分析、算法建模、Pattern研究、策略设计与字段�
 
 独立模拟与代码，另有UCI公开信用数据的聚合实验；不含企业资料。软件版本 **0.3.0rc1**（公开预发布）。正式公开仓库：[archimeda-risk-lab](https://github.com/ArchimeDAs0612/archimeda-risk-lab) · **[在线静态 Demo](https://archimedas0612.github.io/archimeda-risk-lab/)** · [公开交付记录](docs/PUBLICATION_STATUS.md)。
 
+### 三分钟看三个判断
+
+| 问题 | 怎样验证 | 实际结果 |
+|---|---|---|
+| [事件的先后顺序值多少？](studies/sequence-order.md) | 同一批人的历史分别交给计数树、计数 LR、转移 LR 和可训练单头注意力，再只打乱顺序 | 稳定晚窗计数 LR 的 AP 为 0.477，转移 LR 为 0.653。顺序打乱后，转移 LR 降到 0.391 |
+| [标签来源会让验证选错模型吗？](studies/observation-study.md) | 固定三个模型，用历史工单和随机抽检分别选模，再对独立晚窗的全体模拟故障评分 | 三个种子均选出不同模型。第一个种子按工单选出的模型故障 AP 为 0.293，按抽检选出的为 0.445 |
+| [两个条件真的共同起作用吗？](studies/rule-evidence.md) | 对版本化规则逐条解析，区分引用、可满足的正向分支和实际事件命中 | 6 条可判定规则中有 5 条共同引用，7 条规则中只有 2 条存在正向联合路径。按历史版本回放，39 次可判定配对中命中 3 次，另 2 次未知 |
+
+完成下方环境安装后，运行任一实验可在本机重新生成完整 JSON：
+
+```bash
+python -m risklab.sequence_study --out runs/sequence-order/result.json
+python -m risklab.observation_study --out runs/observation-study/result.json
+python -m risklab.rule_evidence --out runs/rule-evidence/result.json
+```
+
+[面试官视角技术讲解指南](docs/INTERVIEW_GUIDE.md) · [全部研究专题](studies/README.md)
+
 [![reproducible-research](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml/badge.svg?branch=main)](https://github.com/ArchimeDAs0612/archimeda-risk-lab/actions/workflows/check.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/ArchimeDAs0612/archimeda-risk-lab/badge)](https://scorecard.dev/viewer/?uri=github.com/ArchimeDAs0612/archimeda-risk-lab)
 

@@ -109,7 +109,8 @@ class MaintenanceTests(unittest.TestCase):
         self.assertEqual({p for p in docs if p.startswith('studies/')}, {
             'studies/README.md', 'studies/payment-cases.md', 'studies/strategy-replay.md',
             'studies/models-patterns.md', 'studies/field-governance.md',
-            'studies/field-workflow.md', 'studies/external-credit.md'})
+            'studies/field-workflow.md', 'studies/external-credit.md',
+            'studies/observation-study.md', 'studies/rule-evidence.md', 'studies/sequence-order.md'})
         for name in docs:
             self.assertIn(name, public)
             for url in re.findall(r'\[[^\]]*\]\(([^)]+)\)', (ROOT/name).read_text()):
